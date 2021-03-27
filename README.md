@@ -8,16 +8,15 @@
 
 ## Overview
 ### Description
-[Description of your app]
+An application for businesses that allows clients to schedule appointments through their availability.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
-- **Category:**
-- **Mobile:**
-- **Story:**
-- **Market:**
-- **Habit:**
-- **Scope:**
+- **Category:** Business/Social Network.
+- **Mobile:** Primarily developed for Android mobile applications but may extend the idea to the web and iOS.
+- **Story:** Provides the user with nearby local businesses depending on the specified filters.
+- **Market:** Small businesses and their clients.
+- **Habit:** The app will be used as often as the user needs to schedule appointments for their daily lists and neccessities. 
+- **Scope:** Business would primarily post their availabilty on the app, which will allow users to specify their appointment. That will provide a bussiness with a confirmation of the appointment. Provide both the bussiness and individuals with a reminder. 
 
 ## Product Spec
 
@@ -25,39 +24,93 @@
 
 **Required Must-have Stories**
 
-* [fill in your required user stories here]
-* ...
+### User
+* Login to view nearby businesses
+* Filter nearby businesses by location/favorites
+* Register through sign up 
+* Favorited/liked businesses
+* Notifications and Reminders of Appointment
+* Setup profile
+
+#### Business
+* Sign up or log in
+* Create business profile
+* Set availability hours
+* View all upcoming appointments
+
+#### Overall
+* Infinite scrolling
+* Floating Action Button to compose an appointment (user/business)
+* Swipe to refresh
+* Modal overlays (fragments)
+* Bottom Navigation Bar
+* Data binding
+* Google API Maps
+* Google API Calendar
+* Phone number confirmation
 
 **Optional Nice-to-have Stories**
 
-* [fill in your required user stories here]
-* ...
+* Maps Archetype Screen
+   * Show the nearby businesses in a map screen
+* Login with Google
+   * Login with Google™ functionality
+* Offline persistence
+* MVVM
+* GitHub Actions setup
+    * CI - build
+    * CD - deploy
+
 
 ### 2. Screen Archetypes
 
-* [list first screen here]
-   * [list associated required story here]
-   * ...
-* [list second screen here]
-   * [list associated required story here]
-   * ...
+* Login
+* Register - Setup business or user credentials
+    * Phone number confirmation
+* Home
+    * Shows list of scheduled appointments
+* Stream
+   * Show list of local businesses 
+   * User can filter by distance, favorited, and type of business
+* Detail (Profile view)
+   * Provide a detailed information from the profile
+* Creation (Appointment)
+   * View availability, create, reschedule, cancel appointments
+   * Manange appointment(s) section
+* Profile
+   * Provide email, password, phone number
+   * Setup photo, username, bio
+   * Business: name, appointment availability, phone number, location, hours of operation
+   * User: name, secheduled appointments (if it's with your business)
+* Settings
+   * Change theme light/dark mode
+   * About
+   * Logout
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* Stream (Businesses)
+* Home (Manage appoinments)
+* Creation
+* Profile
+* Settings
 
 **Flow Navigation** (Screen to Screen)
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* Home
+   * View created appointments
+* Creation
+   * Manage appointments
+* Signup -> Profile setup
+* Login -> Stream screen
+* Stream -> detail view
+* Stream -> compose
+* Profile
+   * Modify user attributes
+* Settings
+    * Show app settings
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
