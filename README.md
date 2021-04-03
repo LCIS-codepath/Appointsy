@@ -130,15 +130,6 @@ An application for businesses that allows clients to schedule appointments throu
 ## Schema 
 ## Models 
 
-#### Login
-
-| Property    | Type        |Description |
-| ----------- | ----------- |----------- |
-| ObjectID    | Integer     | Unique id for user          |
-| Email       | String      | Unique user email         |
-| Password    | Char        | User password           |
-| PhoneNumber | Integer     |  Optional/Required  |
-
 #### User Profile
 
 | Property    | Type        |Description |
@@ -148,6 +139,7 @@ An application for businesses that allows clients to schedule appointments throu
 | Email       | String      |User's unique email            |
 | Password    | String      |User's password            |
 | Image       | File        | Optional profile image |
+| Phone Number | Integer     |  Optional/Required  |
 | Bio         | String      | Optional bio for user           |
 |Notifiction Freq.|   Int   | Number of times the user will be notified of their appointments           |
 
@@ -161,6 +153,7 @@ An application for businesses that allows clients to schedule appointments throu
 | Email       | String      |Unique email            |
 | Password    | String      |Business' password            |
 | Image       | File        | Business image |
+| Phone Number | Integer     |  Optional/Required  |
 | Bio         | String      |Optional bio           |
 | Location    |   Int       |Business location           |
 | Hours       |   Int       | Business hours of service |
