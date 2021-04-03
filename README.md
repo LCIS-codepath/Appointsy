@@ -128,9 +128,67 @@ An application for businesses that allows clients to schedule appointments throu
 
 
 ## Schema 
-[This section will be completed in Unit 9]
-### Models
-[Add table of models]
+## Models 
+
+#### Login
+
+| Property    | Type        |Description |
+| ----------- | ----------- |----------- |
+| ObjectID    | Integer     | Unique id for user          |
+| Email       | String      | Unique user email         |
+| Password    | Char        | User password           |
+| PhoneNumber | Integer     |  Optional/Required  |
+
+#### User Profile
+
+| Property    | Type        |Description |
+| ----------- | ----------- |----------- |
+| ObjectID    | Title       |Unique profile ID            |
+| Name        | String      |User's full name            |
+| Email       | String      |User's unique email            |
+| Password    | String      |User's password            |
+| Image       | File        | Optional profile image |
+| Bio         | String      | Optional bio for user           |
+|Notifiction Freq.|   Int   | Number of times the user will be notified of their appointments           |
+
+#### Business Profile 
+
+| Property    | Type        |Description |
+| ----------- | ----------- |----------- |
+| ObjectID    | Integer     |Unique object ID            |
+| Business name | String    |Business's name            |
+| Owner name  | String      |Owner's name |
+| Email       | String      |Unique email            |
+| Password    | String      |Business' password            |
+| Image       | File        | Business image |
+| Bio         | String      |Optional bio           |
+| Location    |   Int       |Business location           |
+| Hours       |   Int       | Business hours of service |
+| Service/Avg Price|   Int  |  Average price of service       |
+| Business Type|   String   |  Type of bussiness   |
+
+#### Settings
+
+| Property      | Type    | Description    |
+| ------------- | ------- |:-------------- |
+| Dark Theme    | Boolean |  Set light or dark theme of the app              |
+| Notifications | Boolean |  If the user wants notifications             |
+| Credits       | String  |  Developers who worked on app   |
+| App Version   | String  | What revision the  app is on               |
+| Release Notes | String  |  Release notes of the app    |
+| License/Legal | File    |  License about the app              |
+
+#### Appointments
+| Property    | Type        |Description |
+| ----------- | ----------- |----------- |
+| ObjectID    | Integer     | Unique ID        |
+| Name        | String      | Name of the appointee           |
+| Time        | String      | Time of the appoinment          |
+| Details     | String      | Information about the appoinment           |
+| Status      | Boolean     | Indicate if appoinment is canceled or confirmed           |
+| Image       | File        | Business image 
+| isReschedule| Boolean     | User can reschedule only 1 time           |
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
