@@ -114,7 +114,7 @@ An application for businesses that allows clients to schedule appointments throu
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src=https://i.ibb.co/brLhN5g/Screen-Shot-2021-04-02-at-7-34-33-PM.png width=500>
 
 ### [BONUS] Digital Wireframes & Mockups
 
