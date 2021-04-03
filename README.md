@@ -113,12 +113,14 @@ An application for businesses that allows clients to schedule appointments throu
     * Show app settings
 
 ## Wireframes
-#### Wireframe Link: https://www.figma.com/file/KJusfudVAfpp5y9wHIzaW7/Protoype?node-id=0%3A1
-<img src=https://i.ibb.co/brLhN5g/Screen-Shot-2021-04-02-at-7-34-33-PM.png width=500>
 
 ### [BONUS] Digital Wireframes & Mockups
+#### Wireframe Link: https://www.figma.com/file/KJusfudVAfpp5y9wHIzaW7/Protoype?node-id=0%3A1
+<img src='https://i.ibb.co/brLhN5g/Screen-Shot-2021-04-02-at-7-34-33-PM.png' width=500>
 
 ### [BONUS] Interactive Prototype
+<img src='https://github.com/LCIS-codepath/Appointsy/blob/main/appointsy_prototype.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
+
 
 ## Schema 
 [This section will be completed in Unit 9]
