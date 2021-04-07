@@ -126,8 +126,9 @@ An application for businesses that allows clients to schedule appointments throu
 ### [BONUS] Interactive Prototype
 <img src='https://github.com/LCIS-codepath/Appointsy/blob/main/appointsy_prototype.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
 
-## Schema 1.0
-![Schema](https://i.imgur.com/p2gtb9s.png)
+## Schema 1.1
+![Schema](https://user-images.githubusercontent.com/25497457/113808142-3b9cae80-971a-11eb-87a6-4d008b83cb08.png)
+
 
 ## Models
 
