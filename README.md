@@ -176,12 +176,14 @@ An application for businesses that allows clients to schedule appointments throu
 | Property    | Type        |Description |
 | ----------- | ----------- |----------- |
 | ObjectID    | Integer     | Unique ID        |
+| Business Name| String     | Name of Business        |
 | Name        | String      | Name of the appointee           |
 | Time        | String      | Time of the appoinment          |
 | Details     | String      | Information about the appoinment           |
 | Status      | Boolean     | Indicate if appoinment is canceled or confirmed           |
 | Image       | File        | Business image 
 | isReschedule| Boolean     | User can reschedule only 1 time           |
+
 
 ### Networking
 - [Add list of network requests by screen ]
