@@ -174,6 +174,7 @@ An application for businesses that allows clients to schedule appointments throu
 | License/Legal | File    |  License about the app              |
 
 #### Appointments
+
 | Property    | Type        |Description |
 | ----------- | ----------- |----------- |
 | ObjectID    | Integer     | Unique ID        |
@@ -187,6 +188,65 @@ An application for businesses that allows clients to schedule appointments throu
 
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+* Login
+   * Google Login
+        * (READ/GET) google access token
+* Register - Setup business or user credentials
+    * (CREATE/POST) Create new user profile for client/business
+* Stream
+    * (READ/GET) Appointment details
+* Home 
+    * Business
+        * (READ/GET) get the list of events from user calendar
+        * (UPDATE/PUT) Favorite
+    * Client
+        * (READ/GET) Get appointments from calendar
+        * (Read/GET) Get distance of business in relation to users current location 
+* Detail
+    * Business desc.
+        * (READ/GET) Get Business details
+        * (Create/POST) Create new Google Maps intent for driving directions
+        * (READ/GET) Get appointments from calendar
+    * Appointment
+        * (DELETE) Cancel appointment
+        * (UPDATE/PUT) Reschedule appointment
+        * (POST/CREATE) Intent for Maps directions
+* Creation (Appointment)
+    * (READ/GET) Get business details
+    * (CREATE/POST) Add event to calendar
+* Appointment Overlay
+    * (Create/POST) Create a new appointments
+    * (READ/GET) Get events from calendar
+    * (READ/GET) Get business details
+* Profile
+    * (GET/CREATE) Create a new user Profile
+* Settings
+    * (POST/GET) User preference for dark mode
+    * (POST/GET) Logout
+
+--- Basic snippets for each Parse network request
+```
+public void createObject() {
+  ParseObject entity = new ParseObject("Appointment");
+
+  entity.put("BusinessName", "A string");
+  entity.put("Time", "2323" );
+  entity.put("Status", "Confirmed" );
+  entity.put("Details", "Business 123" );
+  entity.put("isReschedule", "false" );
+
+  entity.put("user", ParseUser.getCurrentUser());
+
+  // Saves the new object.
+  // Notice that the SaveCallback is totally optional!
+  entity.saveInBackground(e -> {
+    if (e==null){
+      //Save was done
+    }else{
+      //Something went wrong
+      Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+  });
+}
+```
