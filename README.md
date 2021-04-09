@@ -270,10 +270,6 @@ public void createObject() {
 |-------------|----------------------------------------------|-------------------------|
 |GET          |/calendars/calendarId/events/eventId          |Returns an event.        |
 
-#### Google Login API
-
-| HTTP VERB    | Endpoint        |Description |
-| ----------- | ----------- |----------- |
 
 #### Stripe API
 
@@ -283,3 +279,12 @@ public void createObject() {
 | HTTP VERB    | Endpoint        |Description |
 | ----------- | ----------- |----------- |
 | POST    | /create-payment-intent | Payment lifecycle |
+
+#### Google Pay
+- Documentation: https://developers.google.com/pay/api/android/overview
+- Setup: https://developers.google.com/android/guides/setup
+
+#### Google Login
+- documentation: https://developers.google.com/identity/sign-in/android/start
+- Reference: https://developers.google.com/android/reference/com/google/android/gms/auth/api/signin/GoogleSignInApi
+
