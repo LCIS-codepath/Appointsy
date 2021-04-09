@@ -250,3 +250,36 @@ public void createObject() {
   });
 }
 ```
+— End points & APIs
+#### Google Maps API
+
+- Base URL - http://maps.googleapis.com/maps/api
+- Documentation - https://developers.google.com/maps/documentation/distance-matrix/overview#json
+
+| HTTP VERB   | Endpoint                     |Description                        |
+| ----------- | -----------------------------|-----------------------------------|
+| GET         | distancematrix/rows/distance |gets distance between two locations|
+
+#### Google Calendar API
+
+- Base URL - https://www.googleapis.com/calendar/v3
+- Documentation - https://developers.google.com/calendar/v3/reference
+
+
+|HTTP VERB    |Endpoint                                      |Description              |
+|-------------|----------------------------------------------|-------------------------|
+|GET          |/calendars/calendarId/events/eventId          |Returns an event.        |
+
+#### Google Login API
+
+| HTTP VERB    | Endpoint        |Description |
+| ----------- | ----------- |----------- |
+
+#### Stripe API
+
+- Base URL - https://api.stripe.com
+- Documentation - https://stripe.com/docs/development/quickstart
+
+| HTTP VERB    | Endpoint        |Description |
+| ----------- | ----------- |----------- |
+| POST    | /create-payment-intent | Payment lifecycle |
