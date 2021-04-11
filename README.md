@@ -288,3 +288,6 @@ public void createObject() {
 - documentation: https://developers.google.com/identity/sign-in/android/start
 - Reference: https://developers.google.com/android/reference/com/google/android/gms/auth/api/signin/GoogleSignInApi
 
+## Open-Source Libraries & Resources
+- iconmonstr
+
