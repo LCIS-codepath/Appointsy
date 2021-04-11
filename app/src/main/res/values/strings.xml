@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Appointsy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_settings">Hello Settings!</string>
+    <string name="hello_profile">Hello Proflle!</string>
+    <string name="hello_appoinment">Hello Appointments!</string>
+    <string name="hello_business">Hello Business!</string>
+    <string name="menu_businesses">Businesses</string>
+    <string name="menu_appointments">Appointments</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_settings">Settings</string>
 </resources>
