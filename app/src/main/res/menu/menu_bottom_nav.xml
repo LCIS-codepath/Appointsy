@@ -1,4 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/action_business"
+        android:enabled="true"
+        android:icon="@drawable/ic_iconmonstr_building_16"
+        android:title="@string/menu_businesses"
+        app:showAsAction="ifRoom">
+    </item>
+    <item
+        android:id="@+id/action_appointments"
+        android:enabled="true"
+        android:icon="@drawable/ic_iconmonstr_calendar_6"
+        android:title="@string/menu_appointments"
+        app:showAsAction="ifRoom">
+    </item>
+    <item
+        android:id="@+id/action_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_iconmonstr_user_6"
+        android:title="@string/menu_profile"
+        app:showAsAction="ifRoom">
+    </item>
+    <item
+        android:id="@+id/action_settings"
+        android:enabled="true"
+        android:icon="@drawable/ic_iconmonstr_gear_1"
+        android:title="@string/menu_settings"
+        app:showAsAction="ifRoom">
+    </item>
 
 </menu>
