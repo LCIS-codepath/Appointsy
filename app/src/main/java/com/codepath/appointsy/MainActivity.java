@@ -1,7 +1,11 @@
 package com.codepath.appointsy;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -24,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     // Views references
     BottomNavigationView bottomNavigationView;
     RelativeLayout rlMain;
+     DrawerLayout drawer;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,17 @@ public class MainActivity extends AppCompatActivity {
         // reference the BottomNavBar
         bottomNavigationView = binding.bottomNavBar;
         rlMain = binding.rlMain;
+
+        //TopNavbar and side bar
+        toolbar = binding.toolbar;
+        setSupportActionBar(toolbar);
+        drawer = binding.drawerlayout;
+
+        //Enable sideBar to open
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.nav_drawer_open, R.string.nav_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
 
         // create the fragments
         Fragment frag_business = new BusinessFragment();
@@ -69,5 +86,15 @@ public class MainActivity extends AppCompatActivity {
         });
         // Default
         bottomNavigationView.setSelectedItemId(R.id.action_business);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
     }
 }

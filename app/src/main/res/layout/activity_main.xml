@@ -1,33 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
-<RelativeLayout
-    android:id="@+id/rlMain"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
 
-<!--    Fragment placeholder -->
-    <FrameLayout
-        android:id="@+id/flFragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNavBar"
-        >
-    </FrameLayout>
-<!--    BottomNavBar, Items in the Res > Menu folder -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/menu_bottom_nav"
-        />
 
-</RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
+
+            <androidx.drawerlayout.widget.DrawerLayout
+                android:id="@+id/drawerlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/flFragmentContainer"
+                android:layout_marginBottom="0dp"
+                android:fitsSystemWindows="true"
+                tools:context=".MainActivity"
+                tools:openDrawer="start">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!--    TopNavBar, Items in the Res > Access menu icon -->
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize"
+                        android:background="@color/design_default_color_secondary"
+                        android:elevation="4dp"
+                        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                </LinearLayout>
+                <!--- Generic SideBar Items, > Business and Appoinment filters -->
+                <com.google.android.material.navigation.NavigationView
+                    android:id="@+id/nav_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/flFragmentContainer"
+                    android:layout_gravity="start"
+                    android:layout_marginBottom="0dp"
+                    app:headerLayout="@layout/nav_header"
+                    app:menu="@menu/menu_side_bar_nav" />
+            </androidx.drawerlayout.widget.DrawerLayout>
+
+
+            <!--    Fragment placeholder -->
+            <FrameLayout
+                android:id="@+id/flFragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bottomNavBar">
+
+            </FrameLayout>
+            <!--    BottomNavBar, Items in the Res > Menu folder -->
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                app:menu="@menu/menu_bottom_nav" />
+
+
+
+        </RelativeLayout>
 
 </layout>

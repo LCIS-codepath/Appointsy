@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <!---this section is for navigation -->
+    <!--- should be removed -->
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_favorites"
+            android:icon="@drawable/ic_iconmonstr_building_16"
+            android:title="@string/favorites"/>
+        <item android:id="@+id/nav_Location"
+            android:icon="@drawable/ic_iconmonstr_building_16"
+            android:title="@string/location"/>
+        <item android:id="@+id/nav_type"
+            android:icon="@drawable/ic_iconmonstr_gear_1"
+            android:title="@string/type_of_business"/>
+    </group>
+
+    <!---this section is for navigation -->
+    <item android:title="@string/communicate">
+        <menu>
+            <item android:id="@+id/nav_share"
+                android:title="@string/share"/>
+            <item android:id="@+id/nav_send"
+                android:title="@string/send"/>
+        </menu>
+    </item>
+    <!--- should be removed -->
+
+</menu>

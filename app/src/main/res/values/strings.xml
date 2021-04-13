@@ -10,4 +10,30 @@
     <string name="menu_appointments">Appointments</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_settings">Settings</string>
+    <string name="business_image">business image</string>
+    <string name="indicate_if_business_is_open">Indicate if business is open</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="favorites">Favorites</string>
+    <string name="location">Location</string>
+    <string name="type_of_business">Type of Business</string>
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="send">Send</string>
+    <string name="example_text">example text</string>
+    <string name="coding_in_flow">Coding in Flow</string>
+    <string name="nav_drawer_open">Open navigation drawer</string>
+    <string name="nav_drawer_close">Close navigation drawer</string>
+    <string name="appointsy_developer">Appointsy Developer</string>
+    <string name="sample_user_image">sample user image</string>
+
 </resources>
