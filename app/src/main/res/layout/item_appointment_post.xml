@@ -28,7 +28,7 @@
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:text="Snipz" />
+        tools:text="Name" />
 
     <TextView
         android:id="@+id/tvAppointmentTime"
@@ -41,7 +41,7 @@
         android:layout_marginEnd="57dp"
         android:layout_toEndOf="@+id/ivBusinessImage"
         android:textStyle="bold"
-        tools:text="Barber/Barberrette Shop" />
+        tools:text="Time" />
 
     <TextView
         android:id="@+id/tvDetails"
@@ -51,22 +51,22 @@
         android:layout_marginStart="23dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/ivBusinessImage"
-        tools:text="The world best business in town" />
+        tools:text="Details" />
 
     <TextView
         android:id="@+id/tvAppoinmentStatus"
-        android:layout_width="51dp"
+        android:layout_width="52dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvBusinessName"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="18dp"
-        android:layout_marginEnd="45dp"
+        android:layout_marginEnd="34dp"
         android:layout_marginBottom="8dp"
         android:layout_toEndOf="@+id/ivStatusIcon"
         android:textSize="18sp"
-        tools:text="Open" />
+        tools:text="Status" />
 
     <ImageView
         android:id="@+id/ivStatusIcon"
@@ -79,14 +79,5 @@
         android:contentDescription="@string/indicate_if_business_is_open"
         app:srcCompat="@android:drawable/presence_online" />
 
-    <TextView
-        android:id="@+id/tvDistance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvDetails"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="13dp"
-        android:textStyle="bold"
-        tools:text="3.2 mi" />
+
 </RelativeLayout>

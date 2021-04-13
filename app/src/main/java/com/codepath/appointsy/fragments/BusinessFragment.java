@@ -62,8 +62,8 @@ public class BusinessFragment extends Fragment {
 
         // 1. create layout for one row in the list
         // 2. create the adapter
-        // 3. create teh data source
+        // 3. create the data source
         // 4. set the adapter on the recycler view
-        // 5. set the layout manaager on the recylcer view
+        // 5. set the layout manager on the recycler view
     }
 }
