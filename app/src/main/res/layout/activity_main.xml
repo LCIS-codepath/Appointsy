@@ -50,14 +50,17 @@
 
 
             <!--    Fragment placeholder -->
+            <!--    BottomNavBar, Items in the Res > Menu folder -->
             <FrameLayout
                 android:id="@+id/flFragmentContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/bottomNavBar">
+                android:layout_height="619dp"
+                android:layout_above="@+id/bottomNavBar"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="56dp">
 
             </FrameLayout>
-            <!--    BottomNavBar, Items in the Res > Menu folder -->
+
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavBar"
                 android:layout_width="match_parent"
