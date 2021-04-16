@@ -41,7 +41,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/swNotifications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvNotifications"
@@ -49,4 +49,71 @@
         android:layout_marginBottom="0dp"
         android:layout_toEndOf="@+id/tvNotifications"
         android:text="Switch" />
+
+    <TextView
+        android:id="@+id/tvCredits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvNotifications"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="60dp"
+        android:text="Credits:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <TextView
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCredits"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="App version: x.xx.x"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+    <Button
+        android:id="@+id/btnRelease"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvVersion"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Release Notes" />
+
+    <Button
+        android:id="@+id/btnContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnRelease"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="220dp"
+        android:text="Contact Us" />
+
+    <Button
+        android:id="@+id/btnAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnRelease"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="220dp"
+        android:layout_toEndOf="@+id/btnContact"
+        android:text="About Us" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnContact"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/btnContact"
+        android:text="Logout" />
+
+    <TextView
+        android:id="@+id/tvCopyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="Appointsy Copyright @ 2021" />
 </RelativeLayout>
