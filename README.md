@@ -144,7 +144,6 @@ An application for businesses that allows clients to schedule appointments throu
 | Image       | File        | Optional profile image |
 | Phone Number | Integer     |  Optional/Required  |
 | Bio         | String      | Optional bio for user           |
-|Notifiction Freq.|   Int   | Number of times the user will be notified of their appointments           |
 
 #### Business Profile 
 
@@ -165,14 +164,15 @@ An application for businesses that allows clients to schedule appointments throu
 
 #### Settings
 
-| Property      | Type    | Description    |
-| ------------- | ------- |:-------------- |
-| Dark Theme    | Boolean |  Set light or dark theme of the app              |
-| Notifications | Boolean |  If the user wants notifications             |
-| Credits       | String  |  Developers who worked on app   |
-| App Version   | String  | What revision the  app is on               |
-| Release Notes | String  |  Release notes of the app    |
-| License/Legal | File    |  License about the app              |
+| Property         | Type    | Description    |
+| ---------------  | ------- |:-------------- |
+| Dark Theme       | Boolean | Set light or dark theme of the app              |
+| Notifications    | Boolean | If the user wants notifications             |
+| Credits          | String  | Developers who worked on app   |
+| App Version      | String  | What revision the  app is on               |
+| Release Notes    | String  | Release notes of the app    |
+| License/Legal    | File    | License about the app              |
+| Notifiction Freq.| Int     | Number of times the user will be notified of their appointments           |
 
 #### Appointments
 
