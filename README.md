@@ -5,6 +5,7 @@
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
 2. [Schema](#Schema)
+3. [App Updates](#App-Updates)
 
 ## Overview
 ### Description
@@ -290,4 +291,19 @@ public void createObject() {
 
 ## Open-Source Libraries & Resources
 - iconmonstr
+
+
+## App Updates
+#### Current App Gif need to merge features
+<img src='https://github.com/LCIS-codepath/Appointsy/blob/HomeStream/appointsy_gif1.gif' title='Video Walkthrough' 
+width='250' alt='Video Walkthrough' style="margin-right: 100px;" />  
+<img src='https://github.com/LCIS-codepath/Appointsy/blob/HomeStream/appointsygif2.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
+
+#### Need to read data from back 4 app to display it's content
+<img src='https://github.com/LCIS-codepath/Appointsy/blob/HomeStream/Appointment.png' title='Video Walkthrough' width='250' alt='Video Walkthrough' /> <img src='https://github.com/LCIS-codepath/Appointsy/blob/HomeStream/Business.png' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
+
+
+
+
+
 
