@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
             // handle error with SnackBar rather than a Toast
 
             // if login successful route to Business
-            Intent intent = new Intent(this, BusinessFragment.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             // remove stack call backs to prevent user from going back to register/login
             finishAffinity();
