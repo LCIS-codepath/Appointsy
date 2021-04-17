@@ -25,42 +25,54 @@ An application for businesses that allows clients to schedule appointments throu
 
 **Required Must-have Stories**
 
-### User
-* Login to view nearby businesses
-* Filter nearby businesses by location/favorites
-* Register through sign up 
-* Favorited/liked businesses
-* Notifications and Reminders of Appointment
-* Setup profile
+
+
+#### User
+* [x]  User can login & register
+* [ ]  User can favorite Businesses
+* [ ] Login to view nearby businesses
+* [ ] Filter nearby businesses by location/favorites
+* [ ] Register through sign up 
+* [ ] Favorited/liked businesses
+* [ ] Notifications and Reminders of Appointment
+* [ ] Setup profile
+* [ ]  Google Maps API to show distance between User and Business
 
 #### Business
-* Sign up or log in
-* Create business profile
-* Set availability hours
-* View all upcoming appointments
+* [ ] Sign up or log in
+* [ ] Create business profile
+* [ ] Set availability hours
+* [ ] View all upcoming appointments
 
-#### Overall
-* Infinite scrolling
-* Floating Action Button to compose an appointment (user/business)
-* Swipe to refresh
-* Modal overlays (fragments)
-* Bottom Navigation Bar
-* Data binding
-* Google API Maps
-* Google API Calendar
-* Phone number confirmation
+#### General
+* [x] UI Setup
+* [ ] Custom App Icon
+* [ ] Infinite scrolling
+* [ ] Floating Action Button to compose an appointment (user/business)
+* [ ] Swipe to refresh
+* [ ] Modal overlays (fragments)
+* [ ] Bottom Navigation Bar
+* [ ] Data binding MVVM
+* [ ] Google API Maps
+* [ ] Google API Calendar
+* [ ]   Back4App connect
+* [ ] Connect Google Calendar API to allow users to add their appointment
 
-**Optional Nice-to-have Stories**
-
-* Maps Archetype Screen
-   * Show the nearby businesses in a map screen
-* Login with Google
-   * Login with Google™ functionality
-* Offline persistence
-* MVVM
-* GitHub Actions setup
-    * CI - build
-    * CD - deploy
+**Optional: Nice-to-have Stories**
+* [ ]  Data Binding
+* [ ]  Stride API Payment system for SaaS
+* [ ]  Table Orders
+* [ ]  Splash Screen
+* [ ]  Business Analytics
+* [ ]  Google Login API
+* [ ]  Offline persistence (to view nearby places)
+* [ ]  Login with Google™ functionality
+* [ ]  Offline persistence
+* [ ]  MVVM
+* [ ]  Phone number confirmation
+* [ ]  GitHub Actions setup
+    * * [ ]  CI - build
+    * * [ ] CD - deploy
 
 
 ### 2. Screen Archetypes
