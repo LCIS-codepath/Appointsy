@@ -35,5 +35,12 @@
     <string name="nav_drawer_close">Close navigation drawer</string>
     <string name="appointsy_developer">Appointsy Developer</string>
     <string name="sample_user_image">sample user image</string>
+    <string name="appoinment">Appoinment</string>
+    <string name="sort_by_date">Sort by Date</string>
+    <string name="sort_by_name">Sort By name</string>
+    <string name="business">Business</string>
+    <string name="services">Services</string>
+    <string name="price">Price</string>
+    <string name="booked">Booked</string>
 
 </resources>
