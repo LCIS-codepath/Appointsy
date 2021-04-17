@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <!---this section is for navigation -->
+
     <item android:title="Client Business">
         <menu>
             <item android:id="@+id/nav_favorites"
@@ -14,7 +14,7 @@
                 android:title="@string/location"/>
         </menu>
     </item>
-    <!--- should be removed -->
+
 
     <item android:title="@string/business">
         <menu>
