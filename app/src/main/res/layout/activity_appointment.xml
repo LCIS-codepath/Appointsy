@@ -12,20 +12,10 @@
     android:padding="24dp"
     >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="@string/appointments"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="48sp" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="320dp">
+        android:layout_height="458dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDetails"
