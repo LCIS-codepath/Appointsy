@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 <LinearLayout
+    android:id="@+id/llRegister"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
@@ -34,6 +35,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
+            >
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tiUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="@string/username"
+        android:layout_marginBottom="10dp"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             >
 
         </com.google.android.material.textfield.TextInputEditText>
@@ -119,12 +137,13 @@
         android:text="@string/businessQ"
         android:layoutDirection="rtl"
         android:textSize="18sp"
-        android:checked="false"
+        android:checked="true"
+        android:buttonTint="@color/purple_500"
         />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnConfirm"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="28dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:textSize="20sp"

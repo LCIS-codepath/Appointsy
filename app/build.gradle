@@ -1,6 +1,11 @@
 plugins {
     id 'com.android.application'
 }
+//load api key props file
+def apiKeyPropertiesFile = rootProject.file("apikey.properties")
+//create props file and load it in
+def apiKeyProps = new Properties()
+apiKeyProps.load(new FileInputStream(apiKeyPropertiesFile))
 
 android {
     compileSdkVersion 29
@@ -18,8 +23,11 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // configure keys to use
+        buildConfigField("String", "PARSE_APP_ID", apiKeyProps["PARSE_APP_ID"])
+        buildConfigField("String", "PARSE_CLIENT_KEY", apiKeyProps["PARSE_CLIENT_KEY"])
+
     }
 
     buildTypes {
@@ -47,4 +55,5 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation "com.github.parse-community.Parse-SDK-Android:parse:1.25.0"
 }
