@@ -55,5 +55,7 @@
     <string name="phoneNumber">Phone Number</string>
     <string name="confirm">Confirm</string>
     <string name="businessQ">Is this for a business?</string>
+    <string name="directions">Directions</string>
+    <string name="scheduleAppt">Schedule an Appointment</string>
 
 </resources>
