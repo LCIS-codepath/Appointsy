@@ -64,5 +64,6 @@ local.properties
 build
 import-summary.txt
 
+# Ignored for Security
 apikey.properties
 
