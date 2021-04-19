@@ -54,7 +54,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/ivIcon"
             app:layout_constraintTop_toBottomOf="@+id/tvName"
-            tools:text="Contact info" />
+            tools:text="Owner" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvPhoneNumber"
