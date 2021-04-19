@@ -4,20 +4,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
+
 <LinearLayout
     android:id="@+id/llRegister"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity"
     android:orientation="vertical"
-    android:padding="24dp"
+    android:paddingEnd="24dp"
+    android:paddingStart="24dp"
+    android:paddingTop="24dp"
+
     >
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/Register"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -137,13 +140,12 @@
         android:text="@string/businessQ"
         android:layoutDirection="rtl"
         android:textSize="18sp"
-        android:checked="true"
+        android:checked="false"
         android:buttonTint="@color/purple_500"
         />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnConfirm"
-        android:layout_marginTop="28dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:textSize="20sp"
