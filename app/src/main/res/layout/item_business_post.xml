@@ -31,7 +31,7 @@
         tools:text="Snipz" />
 
     <TextView
-        android:id="@+id/tvAppointmentTime"
+        android:id="@+id/tvBusinessType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvBusinessName"
@@ -47,14 +47,14 @@
         android:id="@+id/tvDetails"
         android:layout_width="wrap_content"
         android:layout_height="39dp"
-        android:layout_below="@+id/tvAppointmentTime"
+        android:layout_below="@+id/tvBusinessType"
         android:layout_marginStart="23dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/ivBusinessImage"
         tools:text="The world best business in town" />
 
     <TextView
-        android:id="@+id/tvAppoinmentStatus"
+        android:id="@+id/tvBusinessStatus"
         android:layout_width="51dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvBusinessName"

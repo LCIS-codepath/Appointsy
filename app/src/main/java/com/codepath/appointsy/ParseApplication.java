@@ -2,12 +2,15 @@ package com.codepath.appointsy;
 
 import android.app.Application;
 import com.parse.Parse;
+import com.parse.ParseObject;
 
 public class ParseApplication extends Application{
 
     @Override
     public void onCreate() {
         super.onCreate();
+        ParseObject.registerSubclass(BusinessPost.class);
+        ParseObject.registerSubclass(AppointmentPost.class);
 
         // Initializes Parse SDK when app is created, api keys hidden
         Parse.initialize(new Parse.Configuration.Builder(this)
