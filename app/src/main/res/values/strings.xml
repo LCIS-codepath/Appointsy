@@ -56,5 +56,6 @@
     <string name="confirm">Confirm</string>
     <string name="businessQ">Is this for a business?</string>
     <string name="username">Username</string>
+    <string name="Example">Example</string>
 
 </resources>
