@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 <RelativeLayout
+    android:id="@+id/rlLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
@@ -15,7 +16,7 @@
         android:id="@+id/ivIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tiEmail"
+        android:layout_above="@+id/tiUsername"
         android:layout_alignParentStart="true"
         android:layout_marginStart="37dp"
         android:layout_marginBottom="26dp"
@@ -26,7 +27,7 @@
         android:id="@+id/tvAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tiEmail"
+        android:layout_above="@+id/tiUsername"
         android:layout_marginStart="11dp"
         android:layout_marginBottom="33dp"
         android:layout_toEndOf="@+id/ivIcon"
@@ -35,18 +36,18 @@
         android:textSize="46sp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tiEmail"
+        android:id="@+id/tiUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/tiPassword"
         android:layout_marginBottom="15dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="@string/email"
+        android:hint="@string/username"
         >
     <com.google.android.material.textfield.TextInputEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
+        android:inputType="textPersonName"
         />
     </com.google.android.material.textfield.TextInputLayout>
 
