@@ -1,14 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
+    android:paddingTop="16dp">
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:context=".fragments.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_settings" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvDarkMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp">
 
-</FrameLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDarkMode"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Dark Mode"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/swDarkMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvDarkMode"
+        android:layout_alignEnd="@+id/swNotifications"
+        android:layout_alignParentRight="false"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="0dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvNotifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvDarkMode"
+        android:layout_marginTop="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNotifications"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Notifications"
+            android:textSize="18sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/swNotifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvNotifications"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toEndOf="@+id/tvNotifications" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvCredits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvNotifications"
+        android:layout_marginTop="60dp" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCredits"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Credits:"
+            android:textSize="10sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCredits"
+        android:layout_marginTop="20dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Version: x.xx.x"
+            android:textSize="10sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRelease"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvVersion"
+        android:layout_marginTop="20dp"
+        android:text="Release Notes"
+        android:textSize="10sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnRelease"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="50dp"
+        android:text="Contact Us" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnRelease"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_toEndOf="@+id/btnContact"
+        android:text="About Us" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnContact"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/btnContact"
+        android:text="Logout" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tvCopyright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCopyright"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Appointsy Copyright @2021"
+            android:textSize="10sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</RelativeLayout>

@@ -27,7 +27,7 @@
         android:textSize="48sp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tiName"
+        android:id="@+id/tvName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
