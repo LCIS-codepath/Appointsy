@@ -32,7 +32,7 @@ An application for businesses that allows clients to schedule appointments throu
 * [ ]  User can favorite Businesses
 * [ ] Login to view nearby businesses
 * [ ] Filter nearby businesses by location/favorites
-* [ ] Register through sign up 
+* [x] Register through sign up 
 * [ ] Favorited/liked businesses
 * [ ] Notifications and Reminders of Appointment
 * [ ] Setup profile
