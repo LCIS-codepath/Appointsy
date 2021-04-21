@@ -59,5 +59,7 @@
     <string name="reschedule">Reschedule</string>
     <string name="directions">Directions</string>
     <string name="appointments">Appointments</string>
+    <string name="directions">Directions</string>
+    <string name="scheduleAppt">Schedule an Appointment</string>
 
 </resources>
