@@ -40,6 +40,7 @@ public class BusinessFragment extends Fragment {
     private List<BusinessPost> allBusinessPost;
 
 
+
     public BusinessFragment() {
         // Required empty public constructor
     }
@@ -69,6 +70,7 @@ public class BusinessFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.i(TAG, "Post started");
+
 
         swipeContainer =  view.findViewById(R.id.swipeContainer);
         swipeContainer.setOnRefreshListener(()->{
