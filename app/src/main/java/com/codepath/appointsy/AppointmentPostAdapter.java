@@ -45,6 +45,19 @@ public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPost
         return appointmentPosts.size();
     }
 
+    // Clean all elements of the recycler
+    public void clear() {
+        appointmentPosts.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<AppointmentPost> list) {
+        appointmentPosts.addAll(list);
+        notifyDataSetChanged();
+    }
+
+
 
     class ViewHolder extends RecyclerView.ViewHolder{
 

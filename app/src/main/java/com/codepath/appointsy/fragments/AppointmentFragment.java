@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,6 +35,7 @@ public class AppointmentFragment extends Fragment {
 
     public String TAG = "AppointmentFragment";
     private RecyclerView rvAppointmentPost;
+    private SwipeRefreshLayout swipeContainerAppointment;
     private AppointmentPostAdapter adapter;
     private List<AppointmentPost> allAppointmentPost;
 
@@ -67,6 +69,13 @@ public class AppointmentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rvAppointmentPost = view.findViewById(R.id.rvAppointmentPost);
+
+        swipeContainerAppointment= view.findViewById(R.id.swipeContainerAppointment);
+        swipeContainerAppointment.setOnRefreshListener(() -> {
+            Log.i(TAG, "fetching Data");
+            queryPosts();
+        });
+
         allAppointmentPost = new ArrayList<>();
         adapter = new AppointmentPostAdapter(getContext(), allAppointmentPost);
 
@@ -103,8 +112,9 @@ public class AppointmentFragment extends Fragment {
                 post.setAppointmentBusinessImage(image);
                 Log.i(TAG, "Post " + userName  + " #" + businessName + " img: " + post.getAppointmentBusinessName());
             }
-            allAppointmentPost.addAll(posts);
-            adapter.notifyDataSetChanged();
+            adapter.clear();
+            adapter.addAll(posts);
+            swipeContainerAppointment.setRefreshing(false);
         });
     }
 }

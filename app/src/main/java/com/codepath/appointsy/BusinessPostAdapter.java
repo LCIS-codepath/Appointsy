@@ -75,6 +75,17 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
         return businessPost.size();
     }
 
+    // Clean all elements of the recycler
+    public void clear() {
+        businessPost.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<BusinessPost> list) {
+        businessPost.addAll(list);
+        notifyDataSetChanged();
+    }
 
 
 }

@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ public class BusinessFragment extends Fragment {
     private String TAG = "BusinessFragment";
     private RecyclerView rvBusinessPost;
     private BusinessPostAdapter adapter;
+    private SwipeRefreshLayout swipeContainer;
     private List<BusinessPost> allBusinessPost;
 
 
@@ -68,6 +70,12 @@ public class BusinessFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Log.i(TAG, "Post started");
 
+        swipeContainer =  view.findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(()->{
+            Log.i(TAG, "fetching Data");
+            queryPosts();
+        });
+
         rvBusinessPost = view.findViewById(R.id.rvBusinessPost);
         allBusinessPost = new ArrayList<>();
         adapter = new BusinessPostAdapter(getContext(), allBusinessPost);
@@ -84,6 +92,7 @@ public class BusinessFragment extends Fragment {
     private void queryPosts(){
         ParseQuery<BusinessPost> query = ParseQuery.getQuery(BusinessPost.class);
         query.include(BusinessPost.KEY_BUSINESS_NAME);
+        query.setLimit(20);
         query.findInBackground((posts, e) -> {
             if(e != null){
                 Log.e(TAG, "Issues with getting post", e);
@@ -92,8 +101,11 @@ public class BusinessFragment extends Fragment {
             for(BusinessPost post: posts){
                 Log.i(TAG, "Post " + post.getBusinessName());
             }
-            allBusinessPost.addAll(posts);
-            adapter.notifyDataSetChanged();
+            adapter.clear();
+            adapter.addAll(posts);
+            swipeContainer.setRefreshing(false);
+            //allBusinessPost.addAll(posts);
+          //  adapter.notifyDataSetChanged();
         });
     }
 }

@@ -5,9 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".fragments.AppointmentFragment">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeContainerAppointment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAppointmentPost"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </FrameLayout>
