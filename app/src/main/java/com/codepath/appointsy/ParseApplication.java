@@ -10,7 +10,7 @@ public class ParseApplication extends Application{
     public void onCreate() {
         super.onCreate();
         ParseObject.registerSubclass(BusinessPost.class);
-        ParseObject.registerSubclass(AppointmentPost.class);
+         ParseObject.registerSubclass(AppointmentPost.class);
 
         // Initializes Parse SDK when app is created, api keys hidden
         Parse.initialize(new Parse.Configuration.Builder(this)

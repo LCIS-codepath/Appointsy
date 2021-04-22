@@ -16,8 +16,11 @@ public class AppointmentPost extends ParseObject {
     public static final String KEY_APPOINTMENT_IS_RESCHEDULE = "isReschedule";
     public static final String KEY_BUSINESS_ID = "businessObjectID";
     public static final String KEY_USER_OBJECT_ID = "userObjectID";
-    public static final String KEY_BUSINESS_IMAGE = "businessImage";
+    public static final String KEY_BUSINESS_IMAGE = "profileImage";
     public static final String KEY_BUSINESS_NAME = "businessName";
+    public  ParseFile businessImage;
+
+
 
     // Set and Getters for Items need for the Appointment
     //Details
@@ -65,15 +68,6 @@ public class AppointmentPost extends ParseObject {
         put(KEY_APPOINTMENT_IS_RESCHEDULE, status);
     }
 
-    //BusinessID
-    public String getBusinessId(){
-        return  getString(KEY_BUSINESS_ID);
-    }
-
-    public void setBusinessId(String status){
-        put(KEY_BUSINESS_ID, status);
-    }
-
     //UserId
     public ParseUser getUserId(){
         return  getParseUser(KEY_USER_OBJECT_ID);
@@ -83,12 +77,35 @@ public class AppointmentPost extends ParseObject {
         put(KEY_USER_OBJECT_ID, status);
     }
 
+    //BusinessID
+    public ParseObject getBusinessId(){
+        return  getParseObject(KEY_BUSINESS_ID);
+    }
+
+    public void setBusinessId(ParseObject status){
+        put(KEY_BUSINESS_ID, status);
+    }
+
+
+
     // Items from Business needed for the Appointment
+    // retrieve the object ID from the business table then get the specified query
+    public void setAppointmentBusinessName(String status){
+        put(KEY_BUSINESS_NAME, status);
+    }
+
+
+
     public String getAppointmentBusinessName(){
         return  getString(KEY_BUSINESS_NAME);
     }
 
+    public void setAppointmentBusinessImage(ParseFile status){
+        put(KEY_BUSINESS_IMAGE, status);
+    }
+
     public ParseFile getAppointmentBusinessImage(){
+
         return getParseFile(KEY_BUSINESS_IMAGE);
     }
 

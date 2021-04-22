@@ -51,7 +51,7 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
             tvDetails.setText(businessPosts.getBusinessBio());
             ParseFile image = businessPosts.getBusinessImage();
             if(image != null){
-                Glide.with(context).load(businessPosts.getBusinessImage().getUrl()).override(300, 200).into(ivBusinessImage);
+                Glide.with(context).load(image.getUrl()).override(300, 200).into(ivBusinessImage);
             }
 
         }

@@ -17,6 +17,8 @@ import com.codepath.appointsy.AppointmentPost;
 import com.codepath.appointsy.AppointmentPostAdapter;
 import com.codepath.appointsy.BusinessPost;
 import com.codepath.appointsy.R;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
@@ -34,7 +36,6 @@ public class AppointmentFragment extends Fragment {
     private RecyclerView rvAppointmentPost;
     private AppointmentPostAdapter adapter;
     private List<AppointmentPost> allAppointmentPost;
-
 
 
     public AppointmentFragment() {
@@ -81,18 +82,26 @@ public class AppointmentFragment extends Fragment {
 
     private void queryPosts(){
         ParseQuery<AppointmentPost> query = ParseQuery.getQuery(AppointmentPost.class);
-        query.whereEqualTo(AppointmentPost.KEY_USER_OBJECT_ID, ParseUser.getCurrentUser());
-        //Log.i(TAG, String.valueOf(ParseUser.getCurrentUser()));
-        //query.include(AppointmentPost.KEY_BUSINESS_ID);
+        //find the appointments for the signed in user
+        query.whereEqualTo(AppointmentPost.KEY_USER_OBJECT_ID, ParseUser.getCurrentUser() );
+        // include will join the business Table with Appointment Table
+        query.include(AppointmentPost.KEY_BUSINESS_ID);
         query.findInBackground((posts, e) -> {
             if(e != null){
                 Log.e(TAG, "Issues with getting post", e);
                 return;
             }
             for(AppointmentPost post: posts){
-                // Log.i(TAG, "Post " + post.getAppointmentBusinessImage() );
-                // Log.i(TAG, "Post " + post.getAppointmentBusinessName() );
-                Log.i(TAG, "Post " + post.getBusinessId() );
+                // to access the Business Table
+                // Use ParseObject on business Object Id to access it's data
+                ParseObject businessTable = post.getParseObject("businessObjectID");
+                String userName = businessTable.getString("businessType");
+                String businessName = businessTable.getString("businessName");
+                ParseFile image = businessTable.getParseFile("businessImage");
+                post.setAppointmentBusinessName(businessName);
+                // add a null check for business Image
+                post.setAppointmentBusinessImage(image);
+                Log.i(TAG, "Post " + userName  + " #" + businessName + " img: " + post.getAppointmentBusinessName());
             }
             allAppointmentPost.addAll(posts);
             adapter.notifyDataSetChanged();
