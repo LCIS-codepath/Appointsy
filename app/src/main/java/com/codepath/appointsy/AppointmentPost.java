@@ -16,8 +16,8 @@ public class AppointmentPost extends ParseObject {
     public static final String KEY_APPOINTMENT_IS_RESCHEDULE = "isReschedule";
     public static final String KEY_BUSINESS_ID = "businessObjectID";
     public static final String KEY_USER_OBJECT_ID = "userObjectID";
-    public static final String KEY_BUSINESS_IMAGE = "businessObjectID.businessImage";
-    public static final String KEY_BUSINESS_NAME = "businessObjectID.businessName";
+    public static final String KEY_BUSINESS_IMAGE = "businessImage";
+    public static final String KEY_BUSINESS_NAME = "businessName";
 
     // Set and Getters for Items need for the Appointment
     //Details
