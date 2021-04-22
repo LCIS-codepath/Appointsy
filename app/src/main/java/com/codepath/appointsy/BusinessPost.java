@@ -3,6 +3,7 @@ package com.codepath.appointsy;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 @ParseClassName("BusinessProfile")
 public class BusinessPost extends ParseObject {
@@ -15,6 +16,7 @@ public class BusinessPost extends ParseObject {
     public static final String KEY_BUSINESS_EMAIL = "email";
     public static final String KEY_BUSINESS_OWNER_NAME = "ownerName";
     public static final String KEY_BUSINESS_BIO = "bio";
+    public static final String KEY_Business_OBJECT_ID = "objectID";
 
     public String getBusinessName(){
         return  getString(KEY_BUSINESS_NAME);
@@ -23,11 +25,12 @@ public class BusinessPost extends ParseObject {
     public void setBusinessName(String businessName){
         put(KEY_BUSINESS_NAME, businessName);
     }
-    public String getServicePrice(){
-        return  getString(KEY_BUSINESS_NAME);
+
+    public Number getServicePrice(){
+        return  getNumber(KEY_BUSINESS_NAME);
     }
 
-    public void setServicePrice(String servicePrice){
+    public void setServicePrice(Number servicePrice){
         put(KEY_SERVICE_PRICE, servicePrice);
     }
 
@@ -87,4 +90,11 @@ public class BusinessPost extends ParseObject {
         put(KEY_BUSINESS_BIO, bio);
     }
 
+    public ParseUser getUserId(){
+        return  getParseUser(KEY_Business_OBJECT_ID);
+    }
+
+    public void setUserId(ParseUser status){
+        put(KEY_Business_OBJECT_ID, status);
+    }
 }

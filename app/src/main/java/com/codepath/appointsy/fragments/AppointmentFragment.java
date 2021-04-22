@@ -18,6 +18,7 @@ import com.codepath.appointsy.AppointmentPostAdapter;
 import com.codepath.appointsy.BusinessPost;
 import com.codepath.appointsy.R;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,14 +81,18 @@ public class AppointmentFragment extends Fragment {
 
     private void queryPosts(){
         ParseQuery<AppointmentPost> query = ParseQuery.getQuery(AppointmentPost.class);
-        query.include(AppointmentPost.KEY_USER_OBJECT_ID);
+        query.whereEqualTo(AppointmentPost.KEY_USER_OBJECT_ID, ParseUser.getCurrentUser());
+        //Log.i(TAG, String.valueOf(ParseUser.getCurrentUser()));
+        //query.include(AppointmentPost.KEY_BUSINESS_ID);
         query.findInBackground((posts, e) -> {
             if(e != null){
                 Log.e(TAG, "Issues with getting post", e);
                 return;
             }
             for(AppointmentPost post: posts){
-                Log.i(TAG, "Post " + post.getUserId() );
+                // Log.i(TAG, "Post " + post.getAppointmentBusinessImage() );
+                // Log.i(TAG, "Post " + post.getAppointmentBusinessName() );
+                Log.i(TAG, "Post " + post.getBusinessId() );
             }
             allAppointmentPost.addAll(posts);
             adapter.notifyDataSetChanged();

@@ -32,14 +32,16 @@
 
     <TextView
         android:id="@+id/tvAppointmentTime"
-        android:layout_width="wrap_content"
+        android:layout_width="64dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvAppointmentBusinessName"
+        android:layout_alignBottom="@+id/tvDate"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="57dp"
-        android:layout_toEndOf="@+id/ivAppointmentImage"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginBottom="1dp"
+        android:layout_toEndOf="@+id/tvDate"
         android:textStyle="bold"
         tools:text="Time" />
 
@@ -55,12 +57,12 @@
 
     <TextView
         android:id="@+id/tvAppointmentStatus"
-        android:layout_width="52dp"
+        android:layout_width="57dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvAppointmentBusinessName"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="34dp"
         android:layout_marginBottom="8dp"
@@ -73,11 +75,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="91dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="22dp"
         android:layout_toEndOf="@+id/tvAppointmentBusinessName"
         android:contentDescription="@string/indicate_if_business_is_open"
         app:srcCompat="@android:drawable/presence_online" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="78dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAppointmentBusinessName"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/ivAppointmentImage"
+        tools:text="Date" />
 
 
 </RelativeLayout>
