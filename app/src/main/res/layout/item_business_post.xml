@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/rlItemBusinessPost">
 
     <ImageView
         android:id="@+id/ivBusinessImage"
@@ -31,7 +34,7 @@
         tools:text="Snipz" />
 
     <TextView
-        android:id="@+id/tvAppointmentTime"
+        android:id="@+id/tvBusinessType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvBusinessName"
@@ -47,14 +50,14 @@
         android:id="@+id/tvDetails"
         android:layout_width="wrap_content"
         android:layout_height="39dp"
-        android:layout_below="@+id/tvAppointmentTime"
+        android:layout_below="@+id/tvBusinessType"
         android:layout_marginStart="23dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/ivBusinessImage"
         tools:text="The world best business in town" />
 
     <TextView
-        android:id="@+id/tvAppoinmentStatus"
+        android:id="@+id/tvBusinessStatus"
         android:layout_width="51dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvBusinessName"
@@ -90,3 +93,4 @@
         android:textStyle="bold"
         tools:text="3.2 mi" />
 </RelativeLayout>
+</layout>
