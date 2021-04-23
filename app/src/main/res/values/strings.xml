@@ -61,5 +61,6 @@
     <string name="directions">Directions</string>
     <string name="scheduleAppt">Schedule an Appointment</string>
     <string name="username">Username</string>
+    <string name="Example">Example</string>
 
 </resources>

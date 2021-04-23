@@ -3,8 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-
         <RelativeLayout
             android:id="@+id/rlMain"
             android:layout_width="match_parent"
@@ -15,7 +13,6 @@
                 android:id="@+id/drawerlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignBottom="@+id/flFragmentContainer"
                 android:layout_marginBottom="0dp"
                 android:fitsSystemWindows="true"
                 tools:context=".MainActivity"
@@ -36,6 +33,20 @@
                         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
                 </LinearLayout>
+
+                <!--    Fragment placeholder -->
+                <!--    BottomNavBar, Items in the Res > Menu folder -->
+                <FrameLayout
+                    android:id="@+id/flFragmentContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="619dp"
+                    android:layout_above="@+id/bottomNavBar"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="56dp"
+                    android:paddingTop="56dp">
+
+                </FrameLayout>
+
                 <!--- Generic SideBar Items, > Business and Appoinment filters -->
                 <com.google.android.material.navigation.NavigationView
                     android:id="@+id/nav_view"
@@ -47,19 +58,6 @@
                     app:headerLayout="@layout/nav_header"
                     app:menu="@menu/menu_side_bar_nav" />
             </androidx.drawerlayout.widget.DrawerLayout>
-
-
-            <!--    Fragment placeholder -->
-            <!--    BottomNavBar, Items in the Res > Menu folder -->
-            <FrameLayout
-                android:id="@+id/flFragmentContainer"
-                android:layout_width="match_parent"
-                android:layout_height="619dp"
-                android:layout_above="@+id/bottomNavBar"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="56dp">
-
-            </FrameLayout>
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavBar"

@@ -27,6 +27,7 @@
         <activity android:name=".MainActivity"
                    android:theme="@style/Theme.Appointsy.NoActionBar">
 <!--        add the MAIN & LAUNCHER here-->
+
         </activity>
     </application>
 
