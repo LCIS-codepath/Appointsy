@@ -1,0 +1,32 @@
+# Workflow name
+name: Build
+
+# Controls when the action will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main, dsantana-build ]
+  pull_request:
+    branches: [ main, dsantana-build ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on (Linux machine)
+    runs-on: ubuntu-latest
+    # List of steps to execute
+    steps:
+        # Checkout the code to use (uses -> action, run -> shell command)
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup env vars & create the apikey file with env.
+        env:
+          PARSE_APP_ID: ${{ secrets.PARSE_APP_ID }}
+          PARSE_CLIENT_KEY: ${{ secrets.PARSE_CLIENT_KEY }}
+        run: touch apikey.properties ; echo "$PARSE_APP_ID" >> apikey.properties ; echo "$PARSE_CLIENT_KEY" >> apikey.properties; cat apikey.properties
+      - name: Build the app
+        run: ./gradlew build
