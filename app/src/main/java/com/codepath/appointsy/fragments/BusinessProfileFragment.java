@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.codepath.appointsy.R;
 import com.codepath.appointsy.databinding.FragmentBusinessBinding;
@@ -108,10 +109,22 @@ public class BusinessProfileFragment extends Fragment {
         etBio = binding.etBio;
 
         //Set text for each field
-        //Ex: etName.setText(user.getBusinessName());
+        etName.setText(user.getUsername());
+        etOwner.setText(user.getString("ownerName"));
+        etEmail.setText(user.getEmail());
+        etPassword.setText(user.getString("password"));
+        etBio.setText(user.getString("bio"));
 
         btUpdate.setOnClickListener((e ->{
+            // TODO check if inputs are not null
+            user.setUsername(binding.tvName.getEditText().getText().toString());
+            //Currently not planning for email update, but left in for testing purposes.
+            //user.setEmail(binding.tvEmail.getEditText().getText().toString());
+            user.setPassword(binding.tvPassword.getEditText().getText().toString());
+            user.put("ownerName", binding.tvOwner.getEditText().getText().toString());
+            user.put("bio", binding.tvBio.getEditText().getText().toString());
 
+            Toast.makeText(getContext(), "Profile update successful!", Toast.LENGTH_SHORT).show();
         }));
     }
 }
