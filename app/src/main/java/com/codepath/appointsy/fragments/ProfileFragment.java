@@ -124,7 +124,8 @@ public class ProfileFragment extends Fragment {
             //user.setEmail(binding.tvEmail.getEditText().getText().toString());
             user.setPassword(binding.tvPassword.getEditText().getText().toString());
             user.put("fullName", binding.tvName.getEditText().getText().toString());
-            user.put("bio", binding.tvBio.getEditText().getText().toString());
+            user.put("userBio", binding.tvBio.getEditText().getText().toString());
+            user.saveInBackground();
 
             Toast.makeText(getContext(), "Profile update successful!", Toast.LENGTH_SHORT).show();
         }));
