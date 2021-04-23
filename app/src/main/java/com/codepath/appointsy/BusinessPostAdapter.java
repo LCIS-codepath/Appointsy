@@ -76,7 +76,7 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
             tvAppointmentStatus =  itemView.findViewById(R.id.tvBusinessStatus);
             ivStatusIcon =  itemView.findViewById(R.id.ivStatusIcon);
             tvDistance =  itemView.findViewById(R.id.tvDistance);
-            rlBusinessPost = itemView.findViewById(R.id.rlItemBusinessPost);
+//            rlBusinessPost = itemView.findViewById(R.id.rlItemBusinessPost);
         }
 
         public void bind(BusinessPost businessPosts) {
@@ -87,15 +87,15 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
             if(image != null){
                 Glide.with(context).load(image.getUrl()).override(300, 200).into(ivBusinessImage);
             }
-            rlBusinessPost.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+//            rlBusinessPost.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
 //                  Intent i = new Intent(context, )
 //                    // need to add Parcels to the project
 //                  i.putExtra("tweet", Parcels.wrap());
 //                  context.startActivities(new Intent[]{i});
-                }
-            });
+//                }
+//            });
 
         }
     }
