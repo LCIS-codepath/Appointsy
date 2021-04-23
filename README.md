@@ -139,9 +139,8 @@ An application for businesses that allows clients to schedule appointments throu
 ### [BONUS] Interactive Prototype
 <img src='https://github.com/LCIS-codepath/Appointsy/blob/main/appointsy_prototype.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
 
-## Schema 1.1
-![Schema](https://user-images.githubusercontent.com/25497457/113808142-3b9cae80-971a-11eb-87a6-4d008b83cb08.png)
-
+## Schema 1.2
+![Schema](https://user-images.githubusercontent.com/25497457/115927435-4903a980-a439-11eb-8412-e098d350194d.png)
 
 ## Models
 
@@ -173,18 +172,6 @@ An application for businesses that allows clients to schedule appointments throu
 | Hours       |   Int       | Business hours of service |
 | Service/Avg Price|   Int  |  Average price of service       |
 | Business Type|   String   |  Type of bussiness   |
-
-#### Settings
-
-| Property         | Type    | Description    |
-| ---------------  | ------- |:-------------- |
-| Dark Theme       | Boolean | Set light or dark theme of the app              |
-| Notifications    | Boolean | If the user wants notifications             |
-| Credits          | String  | Developers who worked on app   |
-| App Version      | String  | What revision the  app is on               |
-| Release Notes    | String  | Release notes of the app    |
-| License/Legal    | File    | License about the app              |
-| Notifiction Freq.| Int     | Number of times the user will be notified of their appointments           |
 
 #### Appointments
 
