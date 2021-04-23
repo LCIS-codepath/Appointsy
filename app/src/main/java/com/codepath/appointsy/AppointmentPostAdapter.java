@@ -1,11 +1,13 @@
 package com.codepath.appointsy;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -61,6 +63,7 @@ public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPost
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
+        private  RelativeLayout rlAppointment;
         private final ImageView ivAppointmentImage;
         private final TextView tvAppointmentBusinessName;
         private final TextView tvAppointmentTime;
@@ -71,6 +74,7 @@ public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPost
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            rlAppointment = itemView.findViewById(R.id.rlAppoinment);
             ivAppointmentImage = itemView.findViewById(R.id.ivAppointmentImage);
             tvAppointmentBusinessName =  itemView.findViewById(R.id.tvAppointmentBusinessName);
             tvAppointmentTime =  itemView.findViewById(R.id.tvAppointmentTime);
@@ -95,6 +99,15 @@ public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPost
                 Glide.with(context).load(R.drawable.ic_iconcmpt).override(300, 200).into(ivAppointmentImage);
 
             }
+            rlAppointment.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                   // Intent i = new Intent(context, )
+                   //  i.putExtra("tweet", Parcels.wrap(tweet));
+                   //  context.startActivities(new Intent[]{i});
+                }
+            });
+
         }
     }
 }

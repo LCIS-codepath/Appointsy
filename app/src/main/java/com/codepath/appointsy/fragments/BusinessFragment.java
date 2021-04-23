@@ -40,7 +40,6 @@ public class BusinessFragment extends Fragment {
     private List<BusinessPost> allBusinessPost;
 
 
-
     public BusinessFragment() {
         // Required empty public constructor
     }
@@ -108,6 +107,7 @@ public class BusinessFragment extends Fragment {
             swipeContainer.setRefreshing(false);
             //allBusinessPost.addAll(posts);
           //  adapter.notifyDataSetChanged();
+
         });
     }
 }

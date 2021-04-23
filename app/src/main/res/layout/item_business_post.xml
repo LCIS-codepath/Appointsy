@@ -6,7 +6,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/itemBusinessPost">
+    android:id="@+id/rlItemBusinessPost">
 
     <ImageView
         android:id="@+id/ivBusinessImage"
