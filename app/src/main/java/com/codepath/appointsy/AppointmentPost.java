@@ -16,7 +16,10 @@ public class AppointmentPost extends ParseObject {
     public static final String KEY_APPOINTMENT_IS_RESCHEDULE = "isReschedule";
     public static final String KEY_BUSINESS_ID = "businessObjectID";
     public static final String KEY_USER_OBJECT_ID = "userObjectID";
+
+    // to read data access the User id then call the profileImage
     public static final String KEY_BUSINESS_IMAGE = "profileImage";
+    // to read data access the Business id then call businessName
     public static final String KEY_BUSINESS_NAME = "businessName";
     public  ParseFile businessImage;
 
