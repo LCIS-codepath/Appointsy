@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.codepath.appointsy.R;
 import com.codepath.appointsy.databinding.ActivityRegisterBinding;
@@ -38,9 +39,13 @@ public class ProfileFragment extends Fragment {
     private TextInputLayout tvName;
     private EditText etName;
     private TextInputLayout tvUsername;
+    private EditText etUsername;
     private TextInputLayout tvEmail;
+    private EditText etEmail;
     private TextInputLayout tvPassword;
+    private EditText etPassword;
     private TextInputLayout tvBio;
+    private EditText etBio;
     private MaterialButton btUpdate;
 
 
@@ -100,9 +105,28 @@ public class ProfileFragment extends Fragment {
         tvBio = binding.tvBio;
         btUpdate = binding.btUpdate;
         etName = binding.etName;
+        etUsername = binding.etUsername;
+        etEmail = binding.etEmail;
+        etPassword = binding.etPassword;
+        etBio = binding.etBio;
+
+        //Set text for each field
+        etName.setText(user.getString("fullName"));
+        etUsername.setText(user.getUsername());
+        etEmail.setText(user.getEmail());
+        etPassword.setText(user.getString("password"));
+        etBio.setText(user.getString("userBio"));
 
         btUpdate.setOnClickListener((e ->{
+            // TODO check if inputs are not null
+            user.setUsername(binding.tvName.getEditText().getText().toString());
+            //Currently not planning for email update, but left in for testing purposes.
+            //user.setEmail(binding.tvEmail.getEditText().getText().toString());
+            user.setPassword(binding.tvPassword.getEditText().getText().toString());
+            user.put("fullName", binding.tvName.getEditText().getText().toString());
+            user.put("bio", binding.tvBio.getEditText().getText().toString());
 
+            Toast.makeText(getContext(), "Profile update successful!", Toast.LENGTH_SHORT).show();
         }));
     }
 }
