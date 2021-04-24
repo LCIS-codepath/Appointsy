@@ -35,27 +35,27 @@ An application for businesses that allows clients to schedule appointments throu
 * [x] Register through sign up 
 * [ ] Favorited/liked businesses
 * [ ] Notifications and Reminders of Appointment
-* [ ] Setup profile
+* [x] Setup profile
 * [ ]  Google Maps API to show distance between User and Business
 
 #### Business
-* [ ] Sign up or log in
+* [x] Sign up or log in
 * [ ] Create business profile
 * [ ] Set availability hours
-* [ ] View all upcoming appointments
+* [x] View all upcoming appointments
 
 #### General
 * [x] UI Setup
 * [ ] Custom App Icon
 * [ ] Infinite scrolling
 * [ ] Floating Action Button to compose an appointment (user/business)
-* [ ] Swipe to refresh
+* [x] Swipe to refresh
 * [ ] Modal overlays (fragments)
-* [ ] Bottom Navigation Bar
+* [x] Bottom Navigation Bar
 * [ ] Data binding MVVM
 * [ ] Google API Maps
 * [ ] Google API Calendar
-* [ ]   Back4App connect
+* [x]   Back4App connect
 * [ ] Connect Google Calendar API to allow users to add their appointment
 
 **Optional: Nice-to-have Stories**
@@ -71,7 +71,7 @@ An application for businesses that allows clients to schedule appointments throu
 * [ ]  MVVM
 * [ ]  Phone number confirmation
 * [ ]  GitHub Actions setup
-    * * [ ]  CI - build
+    * * [x]  CI - build
     * * [ ] CD - deploy
 
 
