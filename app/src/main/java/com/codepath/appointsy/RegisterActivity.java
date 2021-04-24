@@ -9,11 +9,17 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.codepath.appointsy.databinding.ActivityRegisterBinding;
+import com.codepath.appointsy.fragments.BusinessProfileFragment;
 import com.codepath.appointsy.fragments.ProfileFragment;
+import com.codepath.appointsy.objects.User;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.snackbar.Snackbar;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import org.parceler.Parcels;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -33,45 +39,44 @@ public class RegisterActivity extends AppCompatActivity {
         llRegister = binding.llRegister;
 
         btnConfirm.setOnClickListener((e) -> {
-            ParseUser user = new ParseUser();
+            User user = new User();
             // TODO check if inputs are not null
             user.setUsername(binding.tiUsername.getEditText().getText().toString());
             user.setEmail(binding.tiEmail.getEditText().getText().toString());
             user.setPassword(binding.tiPassword.getEditText().getText().toString());
-            user.put("fullName", binding.tiName.getEditText().getText().toString());
-            user.put("phoneNumber", binding.tiPhoneNum.getEditText().getText().toString());
-            signUpFunc(user);
+            user.setFullName(binding.tiName.getEditText().getText().toString());
+            user.setPhoneNumber(binding.tiPhoneNum.getEditText().getText().toString());
+            routeToFragment(user);
         });
 
     }
 
-    private void signUpFunc(ParseUser user) {
-        user.signUpInBackground((e) -> {
-            // check if sign up has errors
-            if(e != null){
-                Snackbar.make(llRegister, "Register failed.", Snackbar.LENGTH_SHORT).show();
+    private void routeToFragment(User user) {
+        // check User data is taken
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereExists(user.getUsername());
+        query.whereExists(user.getPhoneNumber());
+        query.whereExists(user.getEmail());
+        query.findInBackground((users, e) -> {
+            if(users != null){
+                Snackbar.make(llRegister, "Register failed. Username/Number/Email taken.", Snackbar.LENGTH_SHORT).show();
             } else {
-                // register successful
-
+                // No users have the combination
                 Toast.makeText(this, "Register successful!", Toast.LENGTH_SHORT).show();
-//                Intent intent;
-//                if(!cbBusiness.isChecked()){
-//                    // navigate to client profile
-//                    // TODO navigate to respective setup profiles, pass the current Inputs through Intents
-//                    intent = new Intent(this, ProfileFragment.class);
-//                }
-//                else {
-//                    // cb is checked, navigate to business profile
-//                    intent = new Intent(this, ProfileFragment.class);
-//                    // pass data (check if we can store the object instead POJO
-//                }
-//                intent.putExtra("username", user.getUsername());
-//                intent.putExtra("email", user.getEmail());
-//                intent.putExtra("password", user.get("password").toString());
-//                intent.putExtra("fullName", user.get("fullName").toString());
-//                intent.putExtra("phoneNumber", user.get("phoneNumber").toString());
-//                startActivity(intent);
+                Intent intent;
+                if(!cbBusiness.isChecked()){
+                    // navigate to client profile
+                    intent = new Intent(this, ProfileFragment.class);
+                }
+                else {
+                    // cb is checked, navigate to business profile
+                    intent = new Intent(this, BusinessProfileFragment.class);
+                }
+                // Add user object and pass to respective setup
+                intent.putExtra("user", Parcels.wrap(user));
+                startActivity(intent);
             }
         });
     }
+
 }
