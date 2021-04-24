@@ -1,4 +1,4 @@
-package com.codepath.appointsy.fragments;
+   package com.codepath.appointsy.fragments;
 
 import android.os.Bundle;
 
@@ -21,6 +21,7 @@ import com.codepath.appointsy.BusinessPostAdapter;
 import com.codepath.appointsy.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
@@ -91,16 +92,22 @@ public class BusinessFragment extends Fragment {
     }
 
     private void queryPosts(){
-        ParseQuery<BusinessPost> query = ParseQuery.getQuery(BusinessPost.class);
-        query.include(BusinessPost.KEY_BUSINESS_NAME);
-        query.setLimit(20);
+        Log.i(TAG, "Post query");
+
+        ParseQuery<BusinessPost> query = ParseQuery.getQuery("User");
+        query.include("businessProfileID");
+        query.whereExists("businessProfileID");
+        //query.include(BusinessPost.KEY_Business_OBJECT_ID);
+        //query.setLimit(20);
         query.findInBackground((posts, e) -> {
             if(e != null){
                 Log.e(TAG, "Issues with getting post", e);
                 return;
             }
             for(BusinessPost post: posts){
-                Log.i(TAG, "Post " + post.getBusinessName());
+                ParseObject writer = post.getParseObject("businessProfileID");
+                String  location = writer.getString("location");
+                Log.i(TAG, "location "+ location);
             }
             adapter.clear();
             adapter.addAll(posts);

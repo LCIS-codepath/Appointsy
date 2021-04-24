@@ -5,7 +5,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
-@ParseClassName("BusinessProfile")
+@ParseClassName("User")
 public class BusinessPost extends ParseObject {
     public static final String KEY_BUSINESS_NAME = "businessName";
     public static final String KEY_SERVICE_PRICE = "servicePrice";
@@ -13,8 +13,10 @@ public class BusinessPost extends ParseObject {
     public static final String KEY_BUSINESS_TYPE = "businessType";
     public static final String KEY_BUSINESS_OWNER_NAME = "ownerName";
     public static final String KEY_BUSINESS_HOURS = "businessHours";
+    public static final String KEY_Business_OBJECT_ID = "businessProfileID";
 
-    public static final String KEY_Business_OBJECT_ID = "objectID";
+    public static final String KEY_BUSINESS_BIO = "userBio";
+    public static final String KEY_BUSINESS_IMAGE = "profileImage";
 
     public String getBusinessName(){
         return  getString(KEY_BUSINESS_NAME);
@@ -72,5 +74,26 @@ public class BusinessPost extends ParseObject {
 
     public void setUserId(ParseUser status){
         put(KEY_Business_OBJECT_ID, status);
+    }
+
+    // Items from Business needed for the Appointment
+    // retrieve the object ID from the business table then get the specified query
+    public void setBusinessBio(String status){
+        put(KEY_BUSINESS_BIO, status);
+    }
+
+
+    public String getBusinessBio(){
+        return  getString(KEY_BUSINESS_BIO);
+    }
+
+
+    public void setBusinessImage(ParseFile status){
+        put(KEY_BUSINESS_IMAGE, status);
+    }
+
+    public ParseFile getBusinessImage(){
+
+        return getParseFile(KEY_BUSINESS_IMAGE);
     }
 }

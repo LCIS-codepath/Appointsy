@@ -94,6 +94,7 @@ public class AppointmentFragment extends Fragment {
         //find the appointments for the signed in user
         query.whereEqualTo(AppointmentPost.KEY_USER_OBJECT_ID, ParseUser.getCurrentUser() );
         // include will join the business Table with Appointment Table
+        query.include(AppointmentPost.KEY_USER_OBJECT_ID);
         query.include(AppointmentPost.KEY_BUSINESS_ID);
         query.findInBackground((posts, e) -> {
             if(e != null){
@@ -104,13 +105,13 @@ public class AppointmentFragment extends Fragment {
                 // to access the Business Table
                 // Use ParseObject on business Object Id to access it's data
                 ParseObject businessTable = post.getParseObject("businessObjectID");
-                String userName = businessTable.getString("businessType");
                 String businessName = businessTable.getString("businessName");
-                ParseFile image = businessTable.getParseFile("businessImage");
+                ParseObject appointmentTable = post.getParseObject(post.KEY_USER_OBJECT_ID);
+                ParseFile image = appointmentTable.getParseFile(post.KEY_Profile_Image);
                 post.setAppointmentBusinessName(businessName);
                 // add a null check for business Image
                 post.setAppointmentBusinessImage(image);
-                Log.i(TAG, "Post " + userName  + " #" + businessName + " img: " + post.getAppointmentBusinessName());
+                Log.i(TAG, "Post "   + " #" + businessName + " img: " + post.getAppointmentBusinessName());
             }
             adapter.clear();
             adapter.addAll(posts);
