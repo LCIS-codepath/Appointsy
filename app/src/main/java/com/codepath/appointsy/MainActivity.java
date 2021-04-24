@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment frag_profile = new ProfileFragment();
         Fragment frag_settings = new SettingsFragment();
 
+        // TODO, route to respective profiles (user/business)
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             // Fragment reference
             Fragment fragment;
