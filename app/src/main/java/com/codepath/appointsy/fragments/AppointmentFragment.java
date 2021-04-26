@@ -18,6 +18,7 @@ import com.codepath.appointsy.AppointmentPost;
 import com.codepath.appointsy.AppointmentPostAdapter;
 import com.codepath.appointsy.BusinessPost;
 import com.codepath.appointsy.R;
+import com.codepath.appointsy.databinding.FragmentAppointmentBinding;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -38,6 +39,7 @@ public class AppointmentFragment extends Fragment {
     private SwipeRefreshLayout swipeContainerAppointment;
     private AppointmentPostAdapter adapter;
     private List<AppointmentPost> allAppointmentPost;
+    private FragmentAppointmentBinding binding;
 
 
     public AppointmentFragment() {
@@ -55,22 +57,22 @@ public class AppointmentFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_appointment, container, false);
+        binding = FragmentAppointmentBinding.inflate(inflater,container, false);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        rvAppointmentPost = view.findViewById(R.id.rvAppointmentPost);
+        rvAppointmentPost = binding.rvAppointmentPost;
 
-        swipeContainerAppointment= view.findViewById(R.id.swipeContainerAppointment);
+        swipeContainerAppointment= binding.swipeContainerAppointment;
         swipeContainerAppointment.setOnRefreshListener(() -> {
             Log.i(TAG, "fetching Data");
             queryPosts();

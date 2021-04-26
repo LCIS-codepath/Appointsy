@@ -1,4 +1,4 @@
-   package com.codepath.appointsy.fragments;
+package com.codepath.appointsy.fragments;
 
 import android.os.Bundle;
 
@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.codepath.appointsy.BusinessPost;
 import com.codepath.appointsy.BusinessPostAdapter;
-import com.codepath.appointsy.R;
+import com.codepath.appointsy.databinding.FragmentBusinessBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -27,11 +27,7 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BusinessFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class BusinessFragment extends Fragment {
 
     private String TAG = "BusinessFragment";
@@ -39,6 +35,7 @@ public class BusinessFragment extends Fragment {
     private BusinessPostAdapter adapter;
     private SwipeRefreshLayout swipeContainer;
     private List<BusinessPost> allBusinessPost;
+    private FragmentBusinessBinding binding;
 
 
     public BusinessFragment() {
@@ -63,7 +60,8 @@ public class BusinessFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_business, container, false);
+        binding = FragmentBusinessBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -72,13 +70,13 @@ public class BusinessFragment extends Fragment {
         Log.i(TAG, "Post started");
 
 
-        swipeContainer =  view.findViewById(R.id.swipeContainer);
+        swipeContainer =  binding.swipeContainer;
         swipeContainer.setOnRefreshListener(()->{
             Log.i(TAG, "fetching Data");
             queryPosts();
         });
 
-        rvBusinessPost = view.findViewById(R.id.rvBusinessPost);
+        rvBusinessPost = binding.rvBusinessPost;
         allBusinessPost = new ArrayList<>();
         adapter = new BusinessPostAdapter(getContext(), allBusinessPost);
         // 1. create layout for one row in the list

@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.codepath.appointsy.databinding.ItemBusinessPostBinding;
 import com.parse.ParseFile;
 
 import java.util.List;
@@ -20,19 +21,19 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
 
     private final Context context;
     private final List<BusinessPost> businessPost;
+    private ItemBusinessPostBinding binding;
 
     public BusinessPostAdapter(Context context, List<BusinessPost> businessPost ){
         this.context = context;
         this.businessPost = businessPost;
     }
 
-
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_business_post, parent, false);
-        return new ViewHolder(view);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        binding = ItemBusinessPostBinding.inflate(inflater, parent, false);
+        return new ViewHolder(binding.getRoot());
     }
 
     @Override
@@ -69,14 +70,14 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivBusinessImage = itemView.findViewById(R.id.ivBusinessImage);
-            tvBusinessName =  itemView.findViewById(R.id.tvBusinessName);
-            tvBusinessType =  itemView.findViewById(R.id.tvBusinessType);
-            tvDetails =  itemView.findViewById(R.id.tvDetails);
-            tvAppointmentStatus =  itemView.findViewById(R.id.tvBusinessStatus);
-            ivStatusIcon =  itemView.findViewById(R.id.ivStatusIcon);
-            tvDistance =  itemView.findViewById(R.id.tvDistance);
-//            rlBusinessPost = itemView.findViewById(R.id.rlItemBusinessPost);
+            ivBusinessImage = binding.ivBusinessImage;
+            tvBusinessName =  binding.tvBusinessName;
+            tvBusinessType =  binding.tvBusinessType;
+            tvDetails =  binding.tvDetails;
+            tvAppointmentStatus =  binding.tvBusinessStatus;
+            ivStatusIcon =  binding.ivStatusIcon;
+            tvDistance =  binding.tvDistance;
+//            rlBusinessPost = binding.rlItemBusinessPost;
         }
 
         public void bind(BusinessPost businessPosts) {
