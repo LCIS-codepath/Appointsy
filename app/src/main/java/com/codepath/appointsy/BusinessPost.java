@@ -4,19 +4,21 @@ import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+@ParseClassName("_User")
+public class BusinessPost extends ParseUser {
+    public static final String KEY_BUSINESS_BIO = "userBio";
+    public static final String KEY_BUSINESS_IMAGE = "profileImage";
+    public static final String KEY_Business_OBJECT_ID = "businessProfileID";
 
-@ParseClassName("User")
-public class BusinessPost extends ParseObject {
+
     public static final String KEY_BUSINESS_NAME = "businessName";
     public static final String KEY_SERVICE_PRICE = "servicePrice";
     public static final String KEY_Business_LOCATION = "location";
     public static final String KEY_BUSINESS_TYPE = "businessType";
     public static final String KEY_BUSINESS_OWNER_NAME = "ownerName";
     public static final String KEY_BUSINESS_HOURS = "businessHours";
-    public static final String KEY_Business_OBJECT_ID = "businessProfileID";
 
-    public static final String KEY_BUSINESS_BIO = "userBio";
-    public static final String KEY_BUSINESS_IMAGE = "profileImage";
+
 
     public String getBusinessName(){
         return  getString(KEY_BUSINESS_NAME);

@@ -16,8 +16,6 @@ import android.view.ViewGroup;
 
 import com.codepath.appointsy.AppointmentPost;
 import com.codepath.appointsy.AppointmentPostAdapter;
-import com.codepath.appointsy.BusinessPost;
-import com.codepath.appointsy.R;
 import com.codepath.appointsy.databinding.FragmentAppointmentBinding;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -26,6 +24,7 @@ import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -109,10 +108,16 @@ public class AppointmentFragment extends Fragment {
                 ParseObject businessTable = post.getParseObject("businessObjectID");
                 String businessName = businessTable.getString("businessName");
                 ParseObject appointmentTable = post.getParseObject(post.KEY_USER_OBJECT_ID);
-                ParseFile image = appointmentTable.getParseFile(post.KEY_Profile_Image);
+                ParseFile image = queryBusinessImage(post.getParseObject("businessObjectID"));
                 post.setAppointmentBusinessName(businessName);
                 // add a null check for business Image
-                post.setAppointmentBusinessImage(image);
+                if(image != null) {
+                    Log.i(TAG, "image found ");
+                    post.setAppointmentBusinessImage(image);
+                }else {
+                    Log.i(TAG, "image failed ");
+
+                }
                 Log.i(TAG, "Post "   + " #" + businessName + " img: " + post.getAppointmentBusinessName());
             }
             adapter.clear();
@@ -120,4 +125,28 @@ public class AppointmentFragment extends Fragment {
             swipeContainerAppointment.setRefreshing(false);
         });
     }
-}
+
+    private ParseFile queryBusinessImage(ParseObject businessId){
+        ParseFile[] imageFile = {null};
+        Log.i(TAG, "hello " + businessId);
+
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+       // query.whereEqualTo("objectId", businessId);
+        query.whereExists("businessObjectID");
+        query.findInBackground((post, e) -> {
+            for(ParseUser user: post){
+                Log.i(TAG, user.getString("username"));
+                Log.i(TAG, "iohooih " +String.valueOf(user.getParseObject("businessObjectID")));
+
+                if(user.getParseObject("businessProfileID") == businessId) {
+                    Log.i(TAG, "Post 2nd" + " # " + user.getString("username"));
+                    ParseFile profileImage = user.getParseFile("profileImage");
+                    imageFile[0] = profileImage;
+                }
+
+            }
+        });
+        return imageFile[0];
+    }
+    }
+

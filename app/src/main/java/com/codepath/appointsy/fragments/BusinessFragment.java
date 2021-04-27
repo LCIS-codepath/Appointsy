@@ -16,14 +16,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.codepath.appointsy.AppointmentPost;
 import com.codepath.appointsy.BusinessPost;
 import com.codepath.appointsy.BusinessPostAdapter;
 import com.codepath.appointsy.databinding.FragmentBusinessBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
+import org.json.JSONArray;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,29 +96,40 @@ public class BusinessFragment extends Fragment {
     }
 
     private void queryPosts(){
-        Log.i(TAG, "Post query");
-
-        ParseQuery<BusinessPost> query = ParseQuery.getQuery("User");
+        ParseQuery<BusinessPost> query = ParseQuery.getQuery(BusinessPost.class);
+        query.whereExists("businessProfileID"); // find adults
         query.include("businessProfileID");
-        query.whereExists("businessProfileID");
-        //query.include(BusinessPost.KEY_Business_OBJECT_ID);
-        //query.setLimit(20);
-        query.findInBackground((posts, e) -> {
-            if(e != null){
-                Log.e(TAG, "Issues with getting post", e);
-                return;
-            }
-            for(BusinessPost post: posts){
-                ParseObject writer = post.getParseObject("businessProfileID");
-                String  location = writer.getString("location");
-                Log.i(TAG, "location "+ location);
+        query.findInBackground((List<BusinessPost> posts, ParseException e) -> {
+            if (e == null) {
+                for(BusinessPost post: posts){
+                    // getData from User
+                    String businessBio = post.getString("userBio");
+                    ParseFile businessImage = post.getParseFile("profileImage");
+
+                    // getData from the business Table
+                    ParseObject businessTable = post.getParseObject("businessProfileID");
+                    String businessName = businessTable.getString("businessName");
+                    Number businessPrice = businessTable.getNumber("servicePrice");
+                    String businessLocation = businessTable.getString("location");
+                    String businessType = businessTable.getString("businessType");
+                    String businessOwner = businessTable.getString("ownerName");
+                    JSONArray businessHours = businessTable.getJSONArray("businessHours");
+
+                    //set the post
+                    post.setBusinessName(businessName);
+                    post.setServicePrice(businessPrice);
+                    post.setBusinessLocation(businessLocation);
+                    post.setBusinessType(businessType);
+                    post.setBusinessOwner(businessOwner);
+                    Log.i(TAG, "Post " + businessName  + " #e " +  businessBio + "  ");
+
+                }
+            } else {
+                // Something went wrong.
             }
             adapter.clear();
             adapter.addAll(posts);
             swipeContainer.setRefreshing(false);
-            //allBusinessPost.addAll(posts);
-          //  adapter.notifyDataSetChanged();
-
         });
     }
 }

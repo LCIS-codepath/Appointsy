@@ -2,10 +2,12 @@ package com.codepath.appointsy;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -59,7 +61,7 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
         notifyDataSetChanged();
     }
     class ViewHolder extends RecyclerView.ViewHolder{
-        private RecyclerView rlBusinessPost;
+        private final RelativeLayout rlBusinessPost;
         private final ImageView ivBusinessImage;
         private final TextView tvBusinessName;
         private final TextView tvBusinessType;
@@ -70,6 +72,7 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            rlBusinessPost = binding.rlItemBusinessPost;
             ivBusinessImage = binding.ivBusinessImage;
             tvBusinessName =  binding.tvBusinessName;
             tvBusinessType =  binding.tvBusinessType;
@@ -77,16 +80,21 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
             tvAppointmentStatus =  binding.tvBusinessStatus;
             ivStatusIcon =  binding.ivStatusIcon;
             tvDistance =  binding.tvDistance;
-//            rlBusinessPost = binding.rlItemBusinessPost;
         }
 
         public void bind(BusinessPost businessPosts) {
+            Log.i("BusinessFragment", "bind adapter called");
+
             tvBusinessName.setText(businessPosts.getBusinessName());
             tvBusinessType.setText(businessPosts.getBusinessType());
             tvDetails.setText(businessPosts.getBusinessBio());
             ParseFile image = businessPosts.getBusinessImage();
             if(image != null){
                 Glide.with(context).load(image.getUrl()).override(300, 200).into(ivBusinessImage);
+            }
+            else{
+                Glide.with(context).load(R.drawable.ic_iconcmpt).override(300, 200).into(ivBusinessImage);
+
             }
 //            rlBusinessPost.setOnClickListener(new View.OnClickListener() {
 //                @Override

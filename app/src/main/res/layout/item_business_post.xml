@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 <RelativeLayout
+    android:layout_marginBottom="3dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/rlItemBusinessPost">
@@ -15,17 +16,20 @@
         android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:contentDescription="@string/business_image"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvBusinessName"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="23dp"
         android:layout_marginTop="26dp"
+        android:layout_marginEnd="13dp"
+        android:layout_toStartOf="@+id/ivStatusIcon"
         android:layout_toEndOf="@+id/ivBusinessImage"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -39,7 +43,7 @@
         android:layout_below="@+id/tvBusinessName"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="23dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="57dp"
         android:layout_toEndOf="@+id/ivBusinessImage"
         android:textStyle="bold"
@@ -51,22 +55,20 @@
         android:layout_height="39dp"
         android:layout_below="@+id/tvBusinessType"
         android:layout_marginStart="23dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/ivBusinessImage"
         tools:text="The world best business in town" />
 
     <TextView
         android:id="@+id/tvBusinessStatus"
-        android:layout_width="51dp"
+        android:layout_width="63dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvBusinessName"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="8dp"
-        android:layout_toEndOf="@+id/ivStatusIcon"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="0dp"
         android:textSize="18sp"
         tools:text="Open" />
 
@@ -75,9 +77,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="22dp"
-        android:layout_toEndOf="@+id/tvBusinessName"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="2dp"
+        android:layout_toStartOf="@+id/tvBusinessStatus"
         android:contentDescription="@string/indicate_if_business_is_open"
         app:srcCompat="@android:drawable/presence_online" />
 

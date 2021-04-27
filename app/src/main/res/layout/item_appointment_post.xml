@@ -23,11 +23,13 @@
 
     <TextView
         android:id="@+id/tvAppointmentBusinessName"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="23dp"
         android:layout_marginTop="26dp"
+        android:layout_marginEnd="11dp"
+        android:layout_toStartOf="@+id/ivStatusIcon"
         android:layout_toEndOf="@+id/ivAppointmentImage"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -61,16 +63,14 @@
 
     <TextView
         android:id="@+id/tvAppointmentStatus"
-        android:layout_width="57dp"
+        android:layout_width="68dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tvAppointmentBusinessName"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginBottom="8dp"
-        android:layout_toEndOf="@+id/ivStatusIcon"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="3dp"
         android:textSize="18sp"
         tools:text="Status" />
 
@@ -79,9 +79,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="22dp"
-        android:layout_toEndOf="@+id/tvAppointmentBusinessName"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="7dp"
+        android:layout_toStartOf="@+id/tvAppointmentStatus"
         android:contentDescription="@string/indicate_if_business_is_open"
         app:srcCompat="@android:drawable/presence_online" />
 
