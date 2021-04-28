@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.codepath.appointsy.databinding.ItemAppointmentPostBinding;
 import com.parse.ParseFile;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPost
 
     private final Context context;
     private final List<AppointmentPost> appointmentPosts;
+    private ItemAppointmentPostBinding binding;
 
     public AppointmentPostAdapter(Context context, List<AppointmentPost> appointmentPosts){
         this.context = context;
@@ -31,8 +33,9 @@ public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPost
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_appointment_post, parent, false);
-        return new ViewHolder(view);
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        binding = ItemAppointmentPostBinding.inflate(layoutInflater, parent, false);
+        return new ViewHolder(binding.getRoot());
         
     }
 
@@ -74,14 +77,14 @@ public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPost
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            rlAppointment = itemView.findViewById(R.id.rlAppoinment);
-            ivAppointmentImage = itemView.findViewById(R.id.ivAppointmentImage);
-            tvAppointmentBusinessName =  itemView.findViewById(R.id.tvAppointmentBusinessName);
-            tvAppointmentTime =  itemView.findViewById(R.id.tvAppointmentTime);
-            tvAppointmentDetails =  itemView.findViewById(R.id.tvAppointmentDetails);
-            tvAppointmentStatus =  itemView.findViewById(R.id.tvAppointmentStatus);
-            ivStatusIcon =  itemView.findViewById(R.id.ivStatusIcon);
-            tvDate = itemView.findViewById(R.id.tvDate);
+            rlAppointment = binding.rlAppoinment;
+            ivAppointmentImage = binding.ivAppointmentImage;
+            tvAppointmentBusinessName =  binding.tvAppointmentBusinessName;
+            tvAppointmentTime =  binding.tvAppointmentTime;
+            tvAppointmentDetails =  binding.tvAppointmentDetails;
+            tvAppointmentStatus =  binding.tvAppointmentStatus;
+            ivStatusIcon = binding.ivStatusIcon;
+            tvDate = binding.tvDate;
 
         }
 
@@ -99,13 +102,10 @@ public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPost
                 Glide.with(context).load(R.drawable.ic_iconcmpt).override(300, 200).into(ivAppointmentImage);
 
             }
-            rlAppointment.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                   // Intent i = new Intent(context, )
-                   //  i.putExtra("tweet", Parcels.wrap(tweet));
-                   //  context.startActivities(new Intent[]{i});
-                }
+            rlAppointment.setOnClickListener((v) -> {
+               // Intent i = new Intent(context, )
+               //  i.putExtra("tweet", Parcels.wrap(tweet));
+               //  context.startActivities(new Intent[]{i});
             });
 
         }
