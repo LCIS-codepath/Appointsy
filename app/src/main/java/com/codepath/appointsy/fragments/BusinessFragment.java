@@ -16,28 +16,32 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.codepath.appointsy.AppointmentPost;
 import com.codepath.appointsy.BusinessPost;
 import com.codepath.appointsy.BusinessPostAdapter;
-import com.codepath.appointsy.R;
+import com.codepath.appointsy.databinding.FragmentBusinessBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
+import org.json.JSONArray;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BusinessFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class BusinessFragment extends Fragment {
 
     private String TAG = "BusinessFragment";
     private RecyclerView rvBusinessPost;
-    private BusinessPostAdapter adapter;
-    private SwipeRefreshLayout swipeContainer;
-    private List<BusinessPost> allBusinessPost;
+    protected BusinessPostAdapter adapter;
+    protected SwipeRefreshLayout swipeContainer;
+    protected List<BusinessPost> allBusinessPost;
+    private FragmentBusinessBinding binding;
 
 
     public BusinessFragment() {
@@ -62,7 +66,8 @@ public class BusinessFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_business, container, false);
+        binding = FragmentBusinessBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -71,13 +76,13 @@ public class BusinessFragment extends Fragment {
         Log.i(TAG, "Post started");
 
 
-        swipeContainer =  view.findViewById(R.id.swipeContainer);
+        swipeContainer =  binding.swipeContainer;
         swipeContainer.setOnRefreshListener(()->{
             Log.i(TAG, "fetching Data");
             queryPosts();
         });
 
-        rvBusinessPost = view.findViewById(R.id.rvBusinessPost);
+        rvBusinessPost = binding.rvBusinessPost;
         allBusinessPost = new ArrayList<>();
         adapter = new BusinessPostAdapter(getContext(), allBusinessPost);
         // 1. create layout for one row in the list
@@ -90,24 +95,41 @@ public class BusinessFragment extends Fragment {
         queryPosts();
     }
 
-    private void queryPosts(){
+    protected void queryPosts(){
         ParseQuery<BusinessPost> query = ParseQuery.getQuery(BusinessPost.class);
-        query.include(BusinessPost.KEY_BUSINESS_NAME);
-        query.setLimit(20);
-        query.findInBackground((posts, e) -> {
-            if(e != null){
-                Log.e(TAG, "Issues with getting post", e);
-                return;
-            }
-            for(BusinessPost post: posts){
-                Log.i(TAG, "Post " + post.getBusinessName());
+        query.whereExists("businessProfileID"); // find adults
+        query.include("businessProfileID");
+        query.findInBackground((List<BusinessPost> posts, ParseException e) -> {
+            if (e == null) {
+                for(BusinessPost post: posts){
+                    // getData from User
+                    String businessBio = post.getString("userBio");
+                    ParseFile businessImage = post.getParseFile("profileImage");
+
+                    // getData from the business Table
+                    ParseObject businessTable = post.getParseObject("businessProfileID");
+                    String businessName = businessTable.getString("businessName");
+                    Number businessPrice = businessTable.getNumber("servicePrice");
+                    String businessLocation = businessTable.getString("location");
+                    String businessType = businessTable.getString("businessType");
+                    String businessOwner = businessTable.getString("ownerName");
+                    JSONArray businessHours = businessTable.getJSONArray("businessHours");
+
+                    //set the post
+                    post.setBusinessName(businessName);
+                    post.setServicePrice(businessPrice);
+                    post.setBusinessLocation(businessLocation);
+                    post.setBusinessType(businessType);
+                    post.setBusinessOwner(businessOwner);
+                    Log.i(TAG, "Post " + businessName  + " #e " +  businessBio + "  ");
+
+                }
+            } else {
+                // Something went wrong.
             }
             adapter.clear();
             adapter.addAll(posts);
             swipeContainer.setRefreshing(false);
-            //allBusinessPost.addAll(posts);
-          //  adapter.notifyDataSetChanged();
-
         });
     }
 }

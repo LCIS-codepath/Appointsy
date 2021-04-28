@@ -16,7 +16,11 @@ public class AppointmentPost extends ParseObject {
     public static final String KEY_APPOINTMENT_IS_RESCHEDULE = "isReschedule";
     public static final String KEY_BUSINESS_ID = "businessObjectID";
     public static final String KEY_USER_OBJECT_ID = "userObjectID";
-    public static final String KEY_BUSINESS_IMAGE = "profileImage";
+
+    // to read data access the User id then call the profileImage
+    public static final String KEY_Profile_Image = "profileImage";
+
+    // to read data access the Business id then call businessName
     public static final String KEY_BUSINESS_NAME = "businessName";
     public  ParseFile businessImage;
 
@@ -95,18 +99,18 @@ public class AppointmentPost extends ParseObject {
     }
 
 
-
     public String getAppointmentBusinessName(){
         return  getString(KEY_BUSINESS_NAME);
     }
 
+
     public void setAppointmentBusinessImage(ParseFile status){
-        put(KEY_BUSINESS_IMAGE, status);
+        put(KEY_Profile_Image, status);
     }
 
     public ParseFile getAppointmentBusinessImage(){
 
-        return getParseFile(KEY_BUSINESS_IMAGE);
+        return getParseFile(KEY_Profile_Image);
     }
 
 

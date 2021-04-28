@@ -16,8 +16,7 @@ import android.view.ViewGroup;
 
 import com.codepath.appointsy.AppointmentPost;
 import com.codepath.appointsy.AppointmentPostAdapter;
-import com.codepath.appointsy.BusinessPost;
-import com.codepath.appointsy.R;
+import com.codepath.appointsy.databinding.FragmentAppointmentBinding;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -25,6 +24,7 @@ import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +38,7 @@ public class AppointmentFragment extends Fragment {
     private SwipeRefreshLayout swipeContainerAppointment;
     private AppointmentPostAdapter adapter;
     private List<AppointmentPost> allAppointmentPost;
+    private FragmentAppointmentBinding binding;
 
 
     public AppointmentFragment() {
@@ -55,22 +56,22 @@ public class AppointmentFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_appointment, container, false);
+        binding = FragmentAppointmentBinding.inflate(inflater,container, false);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        rvAppointmentPost = view.findViewById(R.id.rvAppointmentPost);
+        rvAppointmentPost = binding.rvAppointmentPost;
 
-        swipeContainerAppointment= view.findViewById(R.id.swipeContainerAppointment);
+        swipeContainerAppointment= binding.swipeContainerAppointment;
         swipeContainerAppointment.setOnRefreshListener(() -> {
             Log.i(TAG, "fetching Data");
             queryPosts();
@@ -94,6 +95,7 @@ public class AppointmentFragment extends Fragment {
         //find the appointments for the signed in user
         query.whereEqualTo(AppointmentPost.KEY_USER_OBJECT_ID, ParseUser.getCurrentUser() );
         // include will join the business Table with Appointment Table
+        query.include(AppointmentPost.KEY_USER_OBJECT_ID);
         query.include(AppointmentPost.KEY_BUSINESS_ID);
         query.findInBackground((posts, e) -> {
             if(e != null){
@@ -104,17 +106,47 @@ public class AppointmentFragment extends Fragment {
                 // to access the Business Table
                 // Use ParseObject on business Object Id to access it's data
                 ParseObject businessTable = post.getParseObject("businessObjectID");
-                String userName = businessTable.getString("businessType");
                 String businessName = businessTable.getString("businessName");
-                ParseFile image = businessTable.getParseFile("businessImage");
+                ParseObject appointmentTable = post.getParseObject(post.KEY_USER_OBJECT_ID);
+                ParseFile image = queryBusinessImage(post.getParseObject("businessObjectID"));
                 post.setAppointmentBusinessName(businessName);
                 // add a null check for business Image
-                post.setAppointmentBusinessImage(image);
-                Log.i(TAG, "Post " + userName  + " #" + businessName + " img: " + post.getAppointmentBusinessName());
+                if(image != null) {
+                    Log.i(TAG, "image found ");
+                    post.setAppointmentBusinessImage(image);
+                }else {
+                    Log.i(TAG, "image failed ");
+
+                }
+                Log.i(TAG, "Post "   + " #" + businessName + " img: " + post.getAppointmentBusinessName());
             }
             adapter.clear();
             adapter.addAll(posts);
             swipeContainerAppointment.setRefreshing(false);
         });
     }
-}
+
+    private ParseFile queryBusinessImage(ParseObject businessId){
+        ParseFile[] imageFile = {null};
+        Log.i(TAG, "hello " + businessId);
+
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+       // query.whereEqualTo("objectId", businessId);
+        query.whereExists("businessObjectID");
+        query.findInBackground((post, e) -> {
+            for(ParseUser user: post){
+                Log.i(TAG, user.getString("username"));
+                Log.i(TAG, "iohooih " +String.valueOf(user.getParseObject("businessObjectID")));
+
+                if(user.getParseObject("businessProfileID") == businessId) {
+                    Log.i(TAG, "Post 2nd" + " # " + user.getString("username"));
+                    ParseFile profileImage = user.getParseFile("profileImage");
+                    imageFile[0] = profileImage;
+                }
+
+            }
+        });
+        return imageFile[0];
+    }
+    }
+
