@@ -38,9 +38,9 @@ public class BusinessFragment extends Fragment {
 
     private String TAG = "BusinessFragment";
     private RecyclerView rvBusinessPost;
-    private BusinessPostAdapter adapter;
-    private SwipeRefreshLayout swipeContainer;
-    private List<BusinessPost> allBusinessPost;
+    protected BusinessPostAdapter adapter;
+    protected SwipeRefreshLayout swipeContainer;
+    protected List<BusinessPost> allBusinessPost;
     private FragmentBusinessBinding binding;
 
 
@@ -95,7 +95,7 @@ public class BusinessFragment extends Fragment {
         queryPosts();
     }
 
-    private void queryPosts(){
+    protected void queryPosts(){
         ParseQuery<BusinessPost> query = ParseQuery.getQuery(BusinessPost.class);
         query.whereExists("businessProfileID"); // find adults
         query.include("businessProfileID");

@@ -1,5 +1,6 @@
 package com.codepath.appointsy;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,21 +11,27 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.codepath.appointsy.databinding.ActivityMainBinding;
 import com.codepath.appointsy.fragments.AppointmentFragment;
+import com.codepath.appointsy.fragments.BusinessFavoritesFragment;
 import com.codepath.appointsy.fragments.BusinessFragment;
 import com.codepath.appointsy.fragments.ProfileFragment;
 import com.codepath.appointsy.fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnNavigationItemSelectedListener {
 
     // For binding, (enabled in build.gradle app)
     private ActivityMainBinding binding;
-
+    public static final String TAG ="MainActivity";
     // Views references
     BottomNavigationView bottomNavigationView;
     RelativeLayout rlMain;
@@ -48,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
         drawer = binding.drawerlayout;
+        NavigationView navigationView = binding.navView;
+        navigationView.setNavigationItemSelectedListener( this);
 
         //Enable sideBar to open
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.nav_drawer_open, R.string.nav_drawer_close);
@@ -97,5 +106,15 @@ public class MainActivity extends AppCompatActivity {
         }else{
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.nav_favorites) {
+            Log.i(TAG, "favorites ");
+            Toast.makeText(this, "favorites", Toast.LENGTH_LONG).show();
+            getSupportFragmentManager().beginTransaction().replace(R.id.flFragmentContainer, new BusinessFavoritesFragment()).commit();
+        }
+        return true;
     }
 }
