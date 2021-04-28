@@ -62,5 +62,6 @@
     <string name="scheduleAppt">Schedule an Appointment</string>
     <string name="username">Username</string>
     <string name="Example">Example</string>
+    <string name="create_appointment">Create Appointment</string>
 
 </resources>
