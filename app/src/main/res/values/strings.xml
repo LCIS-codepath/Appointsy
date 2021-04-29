@@ -63,6 +63,7 @@
     <string name="username">Username</string>
     <string name="Example">Example</string>
     <string name="create_appointment">Create Appointment</string>
-    <string name="date">Date:</string>
+    <string name="scheduleTime">Choose the date and time</string>
+    <string name="estimated_price">Estimated Price:</string>
 
 </resources>
