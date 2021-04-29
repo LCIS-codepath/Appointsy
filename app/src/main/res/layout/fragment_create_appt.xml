@@ -54,30 +54,64 @@
         app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
     <LinearLayout
-        android:id="@+id/listHours"
-        android:layout_width="365dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"></LinearLayout>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvServiceType3"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        tools:layout_editor_absoluteX="16dp">
+
+        <ScrollView
+            android:id="@+id/listHours"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:padding="8dp"
-            android:text="test"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="504dp"
-            tools:text="Types of Services" />
+            android:orientation="vertical"
+            android:visibility="visible">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <CheckedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="96dp"
+                    android:padding="4dp"
+                    android:text=""
+                    tools:text="9:00am" />
+
+                <CheckedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="96dp"
+                    android:padding="4dp"
+                    android:text=""
+                    tools:text="11:00am" />
+
+                <CheckedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="96dp"
+                    android:padding="4dp"
+                    android:text=""
+                    tools:text="2:00pm" />
+
+                <CheckedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="96dp"
+                    android:padding="4dp"
+                    android:text=""
+                    tools:text="4:00pm" />
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
     <com.google.android.material.textview.MaterialTextView
@@ -85,19 +119,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:padding="8dp"
         android:text="@string/estimated_price"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listHours"
-        app:layout_constraintVertical_bias="0.0"
-        tools:text="Types of Services" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:text="@string/estimated_price" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvServiceType2"
+        android:id="@+id/tvApptConfirmation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -108,7 +141,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvEstimatedPrice"
-        tools:text="Types of Services" />
+        tools:text="April 7th, 2021 @ 1:00pm-1:30pm" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/scheduleAppt"
@@ -125,6 +158,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvServiceType2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvApptConfirmation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
