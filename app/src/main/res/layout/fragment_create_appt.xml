@@ -1,102 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="480dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp">
 
-        <ImageView
-            android:id="@+id/ivIcon"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:contentDescription="@string/iconimage"
-            android:src="@drawable/ic_iconcmpt"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvBusinessName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:padding="8dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Business Name" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:padding="8dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivIcon"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Business Name" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:padding="8dp"
+        android:text="@string/date"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBusinessName" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvContactInfo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:padding="8dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivIcon"
-            app:layout_constraintTop_toBottomOf="@+id/tvName"
-            tools:text="Owner" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvPhoneNumber"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:padding="8dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/ivIcon"
-            app:layout_constraintTop_toBottomOf="@+id/tvContactInfo"
-            tools:text="Phone Number" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvHours"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:padding="8dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/ivIcon"
-            app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber"
-            tools:text="Hours of Operation" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvDetails"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:padding="8dp"
-            android:text=""
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivIcon"
-            tools:text="Details" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:padding="8dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMap"
+        tools:text="Details" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvServiceType"
@@ -113,44 +72,48 @@
             app:layout_constraintTop_toBottomOf="@+id/tvDetails"
             tools:text="Types of Services" />
 
-        <Button
-            android:id="@+id/btnMap"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvServiceType2"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            app:icon="@android:drawable/ic_dialog_map"
-            app:iconGravity="textStart"
-            app:iconPadding="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:text=""
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvServiceType"
-            app:layout_constraintVertical_bias="1.0" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            tools:text="Types of Services" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/directions"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="#46A3FA"
-        android:text="@string/directions"
-        android:textSize="20sp"
-        app:cornerRadius="5dp" />
+        android:id="@+id/btnMap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:icon="@android:drawable/ic_dialog_map"
+        app:iconGravity="textStart"
+        app:iconPadding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/scheduleAppt"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTint="#46A3FA"
-        android:text="@string/scheduleAppt"
+        android:text="Schedule It"
         android:textSize="20sp"
-        app:cornerRadius="5dp" />
-
-</LinearLayout>
+        app:cornerRadius="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvServiceType2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
