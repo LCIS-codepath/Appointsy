@@ -145,7 +145,7 @@
         tools:text="April 7th, 2021 @ 1:00pm-1:30pm" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/scheduleAppt"
+        android:id="@+id/btnScheduleAppt"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
