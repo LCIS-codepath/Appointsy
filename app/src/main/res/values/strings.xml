@@ -65,5 +65,6 @@
     <string name="create_appointment">Create Appointment</string>
     <string name="scheduleTime">Choose the date and time</string>
     <string name="estimated_price">Estimated Price:</string>
+    <string name="times">Times:</string>
 
 </resources>

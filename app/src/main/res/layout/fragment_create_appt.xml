@@ -54,16 +54,21 @@
         app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"></LinearLayout>
-
-    <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
-        tools:layout_editor_absoluteX="16dp">
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView">
+
+        <TextView
+            android:id="@+id/tvAvailTimes"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:text="@string/times" />
 
         <ScrollView
             android:id="@+id/listHours"
@@ -82,7 +87,6 @@
                 <CheckedTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="96dp"
                     android:padding="4dp"
                     android:text=""
                     tools:text="9:00am" />
@@ -90,7 +94,6 @@
                 <CheckedTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="96dp"
                     android:padding="4dp"
                     android:text=""
                     tools:text="11:00am" />
@@ -98,7 +101,6 @@
                 <CheckedTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="96dp"
                     android:padding="4dp"
                     android:text=""
                     tools:text="2:00pm" />
@@ -106,7 +108,6 @@
                 <CheckedTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="96dp"
                     android:padding="4dp"
                     android:text=""
                     tools:text="4:00pm" />
