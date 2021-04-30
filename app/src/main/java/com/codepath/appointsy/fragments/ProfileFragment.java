@@ -1,5 +1,6 @@
 package com.codepath.appointsy.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -96,7 +97,8 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ParseUser user = ParseUser.getCurrentUser();
+        Intent i = getActivity().getIntent();
+        ParseUser user = (ParseUser) i.getParcelableExtra("user");
         ivProfile = binding.ivProfile;
         tvName = binding.tvName;
         tvUsername = binding.tvUsername;

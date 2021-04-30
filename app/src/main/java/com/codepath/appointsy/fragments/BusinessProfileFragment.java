@@ -1,5 +1,6 @@
 package com.codepath.appointsy.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -94,7 +95,8 @@ public class BusinessProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ParseUser user = ParseUser.getCurrentUser();
+        Intent i = getActivity().getIntent();
+        ParseUser user = (ParseUser) i.getParcelableExtra("user");
         ivProfile = binding.ivProfile;
         tvName = binding.tvName;
         tvOwner = binding.tvOwner;
@@ -109,7 +111,7 @@ public class BusinessProfileFragment extends Fragment {
         etBio = binding.etBio;
 
         //Set text for each field
-        etName.setText(user.getUsername());
+        etName.setText(user.getString("businessName"));
         etOwner.setText(user.getString("ownerName"));
         etEmail.setText(user.getEmail());
         etPassword.setText(user.getString("password"));
@@ -117,7 +119,7 @@ public class BusinessProfileFragment extends Fragment {
 
         btUpdate.setOnClickListener((e ->{
             // TODO check if inputs are not null
-            user.setUsername(binding.tvName.getEditText().getText().toString());
+            //user.setUsername(binding.tvName.getEditText().getText().toString());
             //Currently not planning for email update, but left in for testing purposes.
             //user.setEmail(binding.tvEmail.getEditText().getText().toString());
             user.setPassword(binding.tvPassword.getEditText().getText().toString());
