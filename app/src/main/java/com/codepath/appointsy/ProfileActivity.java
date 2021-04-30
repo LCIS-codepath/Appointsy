@@ -16,6 +16,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.parse.ParseUser;
 
+import org.parceler.Parcels;
+
 public class ProfileActivity extends AppCompatActivity {
 
     private ActivityProfileBinding binding;
@@ -38,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
 
         Intent i = getIntent();
-        ParseUser user = (ParseUser) i.getParcelableExtra("user");
+        ParseUser user = Parcels.unwrap((ParseUser) i.getParcelableExtra("user"));
         ivProfile = binding.ivProfile;
         tvName = binding.tvName;
         tvUsername = binding.tvUsername;

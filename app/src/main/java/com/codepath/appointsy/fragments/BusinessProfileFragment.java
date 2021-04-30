@@ -22,6 +22,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.parse.ParseUser;
 
+import org.parceler.Parcels;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link BusinessProfileFragment#newInstance} factory method to
@@ -96,7 +98,7 @@ public class BusinessProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Intent i = getActivity().getIntent();
-        ParseUser user = (ParseUser) i.getParcelableExtra("user");
+        ParseUser user = Parcels.unwrap((ParseUser) i.getParcelableExtra("user"));
         ivProfile = binding.ivProfile;
         tvName = binding.tvName;
         tvOwner = binding.tvOwner;
