@@ -5,7 +5,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 @ParseClassName("_User")
-public class BusinessPost extends ParseUser {
+public class  BusinessPost extends ParseUser {
     public static final String KEY_BUSINESS_BIO = "userBio";
     public static final String KEY_BUSINESS_IMAGE = "profileImage";
     public static final String KEY_Business_OBJECT_ID = "businessProfileID";

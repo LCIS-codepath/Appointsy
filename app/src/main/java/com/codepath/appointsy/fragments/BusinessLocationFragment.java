@@ -12,19 +12,21 @@ import org.json.JSONArray;
 
 import java.util.List;
 
-public class BusinessFavoritesFragment extends BusinessFragment {
-    @Override
+public class BusinessLocationFragment extends BusinessFragment {
     protected void queryPosts() {
         super.queryPosts();
-        adapter.clear();
-        ParseQuery<BusinessPost> query = ParseQuery.getQuery(BusinessPost.class);
-        query.whereExists("businessProfileID"); // find adults
-        query.include("businessProfileID");
-        query.setLimit(1);
+        int count  = adapter.getItemCount();
+
+        Log.i("LocationFragment", String.valueOf(count));
+        ParseQuery<BusinessPost> query = ParseQuery.getQuery("UserFavorites");
+        query.whereExists("businessObjectID"); // find adults
+        query.include("userObjectID");
+        query.setLimit(10);
         query.findInBackground((List<BusinessPost> posts, ParseException e) -> {
             if (e == null) {
                 for(BusinessPost post: posts){
                     // getData from User
+
                     String businessBio = post.getString("userBio");
                     ParseFile businessImage = post.getParseFile("profileImage");
 
@@ -42,7 +44,7 @@ public class BusinessFavoritesFragment extends BusinessFragment {
                     post.setBusinessLocation(businessLocation);
                     post.setBusinessType(businessType);
                     post.setBusinessOwner(businessOwner);
-                   // Log.i(TAG, "Post " + businessName  + " #e " +  businessBio + "  ");
+                    // Log.i(TAG, "Post " + businessName  + " #e " +  businessBio + "  ");
 
                 }
             } else {
@@ -53,4 +55,5 @@ public class BusinessFavoritesFragment extends BusinessFragment {
             swipeContainer.setRefreshing(false);
         });
     }
+
 }

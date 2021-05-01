@@ -20,6 +20,7 @@ import com.codepath.appointsy.databinding.ActivityMainBinding;
 import com.codepath.appointsy.fragments.AppointmentFragment;
 import com.codepath.appointsy.fragments.BusinessFavoritesFragment;
 import com.codepath.appointsy.fragments.BusinessFragment;
+import com.codepath.appointsy.fragments.BusinessLocationFragment;
 import com.codepath.appointsy.fragments.ProfileFragment;
 import com.codepath.appointsy.fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -114,6 +115,10 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
             Log.i(TAG, "favorites ");
             Toast.makeText(this, "favorites", Toast.LENGTH_LONG).show();
             getSupportFragmentManager().beginTransaction().replace(R.id.flFragmentContainer, new BusinessFavoritesFragment()).commit();
+        }else if(item.getItemId() == R.id.business_type){
+            Log.i(TAG, "favorites ");
+            Toast.makeText(this, "favorites", Toast.LENGTH_LONG).show();
+            getSupportFragmentManager().beginTransaction().replace(R.id.flFragmentContainer, new BusinessLocationFragment()).commit();
         }
         return true;
     }
