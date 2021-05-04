@@ -62,5 +62,9 @@
     <string name="scheduleAppt">Schedule an Appointment</string>
     <string name="username">Username</string>
     <string name="Example">Example</string>
+    <string name="client_business">Client Business</string>
+    <string name="day">day</string>
+    <string name="year">year</string>
+    <string name="complete">Complete</string>
 
 </resources>
