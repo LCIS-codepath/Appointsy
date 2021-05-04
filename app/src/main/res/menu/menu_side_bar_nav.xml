@@ -4,12 +4,14 @@
     tools:showIn="navigation_view">
 
 
-    <item android:title="Client Business">
+    <item android:title="@string/client_business">
         <menu>
+
             <item android:id="@+id/nav_favorites"
                 android:title="@string/favorites"/>
             <item android:id="@+id/business_type"
-                android:title="@string/type_of_business"/>
+                android:title="@string/type_of_business"
+            />
             <item android:id="@+id/business_location"
                 android:title="@string/location"/>
         </menu>
@@ -33,8 +35,16 @@
             <item android:id="@+id/sort_date"
                 android:title="@string/sort_by_date"/>
             <item android:id="@+id/sort_by_name"
-                android:title="@string/sort_by_name"/>
+                android:title="@string/sort_by_name"
+                android:bottom="10dp"/>
+            <item android:id="@+id/sort_by_yr"
+                android:title="@string/year"
+                android:bottom="10dp"/>
+            <item android:id="@+id/sort_by_day"
+                android:title="@string/day"
+                android:bottom="10dp"/>
         </menu>
+
     </item>
 
 </menu>

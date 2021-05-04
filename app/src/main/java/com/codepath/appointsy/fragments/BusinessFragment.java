@@ -76,7 +76,10 @@ public class BusinessFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.i(TAG, "Post started");
-
+        Bundle bundle = this.getArguments();
+        if(bundle != null) {
+            String type = bundle.getString("getBusinessType");
+        }
 
         swipeContainer =  binding.swipeContainer;
         swipeContainer.setOnRefreshListener(()->{

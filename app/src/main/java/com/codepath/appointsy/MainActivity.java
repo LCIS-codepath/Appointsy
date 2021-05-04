@@ -18,17 +18,18 @@ import android.widget.Toast;
 
 import com.codepath.appointsy.databinding.ActivityMainBinding;
 import com.codepath.appointsy.fragments.AppointmentFragment;
-import com.codepath.appointsy.fragments.BusinessFavoritesFragment;
+import com.codepath.appointsy.sideBarFragments.BusinessFavoritesFragment;
 import com.codepath.appointsy.fragments.BusinessFragment;
-import com.codepath.appointsy.fragments.BusinessLocationFragment;
+import com.codepath.appointsy.sideBarFragments.BusinessLocationFragment;
 import com.codepath.appointsy.fragments.ProfileFragment;
 import com.codepath.appointsy.fragments.SettingsFragment;
+import com.codepath.appointsy.sideBarFragments.BusinessTypeFragment;
+import com.codepath.appointsy.sideBarFragments.BusinessTypeModuleOverlay;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
-import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity implements OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements OnNavigationItemSelectedListener, BusinessTypeModuleOverlay.EditNameDialogListener {
 
     // For binding, (enabled in build.gradle app)
     private ActivityMainBinding binding;
@@ -116,10 +117,34 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
             Toast.makeText(this, "favorites", Toast.LENGTH_LONG).show();
             getSupportFragmentManager().beginTransaction().replace(R.id.flFragmentContainer, new BusinessFavoritesFragment()).commit();
         }else if(item.getItemId() == R.id.business_type){
-            Log.i(TAG, "favorites ");
-            Toast.makeText(this, "favorites", Toast.LENGTH_LONG).show();
-            getSupportFragmentManager().beginTransaction().replace(R.id.flFragmentContainer, new BusinessLocationFragment()).commit();
+//            Log.i(TAG, "favorites ");
+//            Toast.makeText(this, "favorites", Toast.LENGTH_LONG).show();
+//            getSupportFragmentManager().beginTransaction().replace(R.id.flFragmentContainer, new BusinessLocationFragment()).commit();
+            showEditDialog();
         }
         return true;
+    }
+
+    // 3. This method is invoked in the activity when the listener is triggered
+    // Access the data result passed to the activity here
+    @Override
+    public void onFinishEditDialog(String inputText) {
+        Toast.makeText(this, "Hi, " + inputText, Toast.LENGTH_SHORT).show();
+        Bundle bundle = new Bundle();
+        bundle.putString("getBusienessType", inputText);
+        BusinessTypeFragment fragmentObject = new BusinessTypeFragment();
+        fragmentObject.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.flFragmentContainer, new BusinessTypeFragment()).commit();
+
+
+    }
+
+
+    private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        BusinessTypeModuleOverlay editNameDialogFragment = BusinessTypeModuleOverlay.newInstance("Some Title");
+        // SETS the target fragment for use later when sending results
+        editNameDialogFragment.show(fm, "fragment_edit_name");
     }
 }
