@@ -14,6 +14,7 @@ import com.codepath.appointsy.databinding.ActivityProfileBinding;
 import com.codepath.appointsy.databinding.FragmentProfileBinding;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import org.parceler.Parcels;
@@ -28,6 +29,8 @@ public class ProfileActivity extends AppCompatActivity {
     private EditText etUsername;
     private TextInputLayout tvEmail;
     private EditText etEmail;
+    private TextInputLayout tvPhoneNumber;
+    private EditText etPhoneNumber;
     private TextInputLayout tvPassword;
     private EditText etPassword;
     private TextInputLayout tvBio;
@@ -45,12 +48,14 @@ public class ProfileActivity extends AppCompatActivity {
         tvName = binding.tvName;
         tvUsername = binding.tvUsername;
         tvEmail = binding.tvEmail;
+        tvPhoneNumber = binding.tvPhoneNumber;
         tvPassword = binding.tvPassword;
         tvBio = binding.tvBio;
         btUpdate = binding.btUpdate;
         etName = binding.etName;
         etUsername = binding.etUsername;
         etEmail = binding.etEmail;
+        etPhoneNumber = binding.etPhoneNumber;
         etPassword = binding.etPassword;
         etBio = binding.etBio;
 
@@ -60,6 +65,23 @@ public class ProfileActivity extends AppCompatActivity {
         etEmail.setText(user.getEmail());
         etPassword.setText(user.getString("password"));
         etBio.setText(user.getString("userBio"));
+        etPhoneNumber.setText(user.getString("phoneNumber"));
+
+        ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereExists(user.getUsername());
+        query.findInBackground((users, e) -> {
+            if(users == null){
+                ParseUser newUser = new ParseUser();
+                newUser.setUsername(binding.tvName.getEditText().getText().toString());
+                newUser.setEmail(binding.tvEmail.getEditText().getText().toString());
+                newUser.setPassword(binding.tvPassword.getEditText().getText().toString());
+                newUser.put("fullName", binding.tvName.getEditText().getText().toString());
+                newUser.put("userBio", binding.tvBio.getEditText().getText().toString());
+                newUser.put("phoneNumber",binding.tvPhoneNumber.getEditText().getText().toString());
+
+                newUser.signUpInBackground();
+            }
+        });
 
         btUpdate.setOnClickListener((e ->{
             // TODO check if inputs are not null
@@ -69,9 +91,15 @@ public class ProfileActivity extends AppCompatActivity {
             user.setPassword(binding.tvPassword.getEditText().getText().toString());
             user.put("fullName", binding.tvName.getEditText().getText().toString());
             user.put("userBio", binding.tvBio.getEditText().getText().toString());
+            user.put("phoneNumber",binding.tvPhoneNumber.getEditText().getText().toString());
+
             user.saveInBackground();
 
             Toast.makeText(this, "Profile update successful!", Toast.LENGTH_SHORT).show();
+            Intent out = new Intent(this, MainActivity.class)
+                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(out);
         }));
     }
 
