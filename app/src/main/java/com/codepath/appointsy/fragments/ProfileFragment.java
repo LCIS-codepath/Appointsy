@@ -27,19 +27,13 @@ import com.google.android.material.textview.MaterialTextView;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.jetbrains.annotations.NotNull;
 import org.parceler.Parcels;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.Objects;
+
 public class ProfileFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     private FragmentProfileBinding binding;
     private ImageView ivProfile;
     private TextInputLayout tvName;
@@ -77,8 +71,6 @@ public class ProfileFragment extends Fragment {
     public static ProfileFragment newInstance(String param1, String param2) {
         ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -86,14 +78,11 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater, container, false);
@@ -104,8 +93,8 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Intent i = getActivity().getIntent();
-        ParseUser user = Parcels.unwrap((ParseUser) i.getParcelableExtra("user"));
+        // Use ParseUser.getCurrentUser to display info. from their profile (User Object may have it details)
+        ParseUser user = ParseUser.getCurrentUser();
         ivProfile = binding.ivProfile;
         tvName = binding.tvName;
         tvUsername = binding.tvUsername;
@@ -122,39 +111,39 @@ public class ProfileFragment extends Fragment {
         etBio = binding.etBio;
 
         //Set text for each field
-        etName.setText(user.getString("fullName"));
+        etName.setText(Objects.requireNonNull(user).getString("fullName"));
         etUsername.setText(user.getUsername());
         etEmail.setText(user.getEmail());
         etPassword.setText(user.getString("password"));
         etBio.setText(user.getString("userBio"));
         etPhoneNumber.setText(user.getString("phoneNumber"));
 
-        ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereExists(user.getUsername());
-        query.findInBackground((users, e) -> {
-            if(users == null){
-                ParseUser newUser = new ParseUser();
-                newUser.setUsername(binding.tvName.getEditText().getText().toString());
-                newUser.setEmail(binding.tvEmail.getEditText().getText().toString());
-                newUser.setPassword(binding.tvPassword.getEditText().getText().toString());
-                newUser.put("fullName", binding.tvName.getEditText().getText().toString());
-                newUser.put("userBio", binding.tvBio.getEditText().getText().toString());
-                newUser.put("phoneNumber",binding.tvPhoneNumber.getEditText().getText().toString());
-
-                newUser.signUpInBackground();
-            }
-        });
-
         btUpdate.setOnClickListener((e ->{
-            // TODO check if inputs are not null
-            user.setUsername(binding.tvName.getEditText().getText().toString());
-            //Currently not planning for email update, but left in for testing purposes.
-            //user.setEmail(binding.tvEmail.getEditText().getText().toString());
-            user.setPassword(binding.tvPassword.getEditText().getText().toString());
-            user.put("fullName", binding.tvName.getEditText().getText().toString());
-            user.put("userBio", binding.tvBio.getEditText().getText().toString());
-            user.put("phoneNumber",binding.tvPhoneNumber.getEditText().getText().toString());
-            user.saveInBackground();
+//            // TODO check if inputs are not null
+//            user.setUsername(binding.tvName.getEditText().getText().toString());
+//            //Currently not planning for email update, but left in for testing purposes.
+//            //user.setEmail(binding.tvEmail.getEditText().getText().toString());
+//            user.setPassword(binding.tvPassword.getEditText().getText().toString());
+//            user.put("fullName", binding.tvName.getEditText().getText().toString());
+//            user.put("userBio", binding.tvBio.getEditText().getText().toString());
+//            user.put("phoneNumber",binding.tvPhoneNumber.getEditText().getText().toString());
+//            user.saveInBackground();
+
+            ParseQuery<ParseUser> query = ParseUser.getQuery();
+            query.whereExists(user.getUsername());
+            query.findInBackground((users, err) -> {
+                if(users == null){
+                    ParseUser newUser = new ParseUser();
+                    newUser.setUsername(binding.tvName.getEditText().getText().toString());
+                    newUser.setEmail(binding.tvEmail.getEditText().getText().toString());
+                    newUser.setPassword(binding.tvPassword.getEditText().getText().toString());
+                    newUser.put("fullName", binding.tvName.getEditText().getText().toString());
+                    newUser.put("userBio", binding.tvBio.getEditText().getText().toString());
+                    newUser.put("phoneNumber",binding.tvPhoneNumber.getEditText().getText().toString());
+
+                    newUser.signUpInBackground();
+                }
+            });
 
             Toast.makeText(getContext(), "Profile update successful!", Toast.LENGTH_SHORT).show();
             Intent out = new Intent(getContext(), MainActivity.class)

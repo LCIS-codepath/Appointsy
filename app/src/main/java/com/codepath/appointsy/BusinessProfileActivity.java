@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.codepath.appointsy.databinding.ActivityBusinessProfileBinding;
-import com.codepath.appointsy.databinding.FragmentBusinessProfileBinding;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.parse.GetCallback;
@@ -54,6 +53,7 @@ public class BusinessProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_business_profile);
 
+        // TODO Activity will only receive a User not ParseUser
         Intent i = getIntent();
         ParseUser user = Parcels.unwrap((ParseUser) i.getParcelableExtra("user"));
         ivProfile = binding.ivProfile;
@@ -89,6 +89,7 @@ public class BusinessProfileActivity extends AppCompatActivity {
         etBio.setText(user.getString("userBio"));
         etPhoneNumber.setText(user.getString("phoneNumber"));
 
+        // TODO possibly move towards the Register only
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereExists(user.getUsername());
         query.findInBackground((users, e) -> {

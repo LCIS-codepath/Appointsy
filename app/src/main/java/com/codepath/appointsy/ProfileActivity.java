@@ -6,12 +6,14 @@ import androidx.databinding.ViewDataBinding;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.codepath.appointsy.databinding.ActivityProfileBinding;
 import com.codepath.appointsy.databinding.FragmentProfileBinding;
+import com.codepath.appointsy.objects.User;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.parse.ParseQuery;
@@ -19,9 +21,12 @@ import com.parse.ParseUser;
 
 import org.parceler.Parcels;
 
+import java.util.Objects;
+
 public class ProfileActivity extends AppCompatActivity {
 
     private ActivityProfileBinding binding;
+    public final String TAG = "ProfileActivity";
     private ImageView ivProfile;
     private TextInputLayout tvName;
     private EditText etName;
@@ -41,9 +46,9 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
-
-        Intent i = getIntent();
-        ParseUser user = Parcels.unwrap((ParseUser) i.getParcelableExtra("user"));
+        // user object passed from register (not a ParseUser)
+        User user = Parcels.unwrap((getIntent().getParcelableExtra("user")));
+        Log.i(TAG, Objects.requireNonNull(user).toString());
         ivProfile = binding.ivProfile;
         tvName = binding.tvName;
         tvUsername = binding.tvUsername;
@@ -60,42 +65,42 @@ public class ProfileActivity extends AppCompatActivity {
         etBio = binding.etBio;
 
         //Set text for each field
-        etName.setText(user.getString("fullName"));
+        etName.setText(Objects.requireNonNull(user).getFullName());
         etUsername.setText(user.getUsername());
         etEmail.setText(user.getEmail());
-        etPassword.setText(user.getString("password"));
-        etBio.setText(user.getString("userBio"));
-        etPhoneNumber.setText(user.getString("phoneNumber"));
-
-        ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereExists(user.getUsername());
-        query.findInBackground((users, e) -> {
-            if(users == null){
-                ParseUser newUser = new ParseUser();
-                newUser.setUsername(binding.tvName.getEditText().getText().toString());
-                newUser.setEmail(binding.tvEmail.getEditText().getText().toString());
-                newUser.setPassword(binding.tvPassword.getEditText().getText().toString());
-                newUser.put("fullName", binding.tvName.getEditText().getText().toString());
-                newUser.put("userBio", binding.tvBio.getEditText().getText().toString());
-                newUser.put("phoneNumber",binding.tvPhoneNumber.getEditText().getText().toString());
-
-                newUser.signUpInBackground();
-            }
-        });
+        etPassword.setText(user.getPassword());
+        etPhoneNumber.setText(user.getPhoneNumber());
 
         btUpdate.setOnClickListener((e ->{
-            // TODO check if inputs are not null
-            user.setUsername(binding.tvName.getEditText().getText().toString());
-            //Currently not planning for email update, but left in for testing purposes.
-            //user.setEmail(binding.tvEmail.getEditText().getText().toString());
-            user.setPassword(binding.tvPassword.getEditText().getText().toString());
-            user.put("fullName", binding.tvName.getEditText().getText().toString());
-            user.put("userBio", binding.tvBio.getEditText().getText().toString());
-            user.put("phoneNumber",binding.tvPhoneNumber.getEditText().getText().toString());
+//            // TODO check if inputs are not null
+//            user.setUsername(binding.tvName.getEditText().getText().toString());
+//            //Currently not planning for email update, but left in for testing purposes.
+//            //user.setEmail(binding.tvEmail.getEditText().getText().toString());
+//            user.setPassword(binding.tvPassword.getEditText().getText().toString());
+//            user.put("fullName", binding.tvName.getEditText().getText().toString());
+//            user.put("userBio", binding.tvBio.getEditText().getText().toString());
+//            user.put("phoneNumber",binding.tvPhoneNumber.getEditText().getText().toString());
+//
+//            user.saveInBackground();
 
-            user.saveInBackground();
+            ParseQuery<ParseUser> query = ParseUser.getQuery();
+            query.whereExists(user.getUsername());
+            query.findInBackground((users, err) -> {
+                if(users == null){
+                    ParseUser newUser = new ParseUser();
+                    newUser.setUsername(binding.tvName.getEditText().getText().toString());
+                    newUser.setEmail(binding.tvEmail.getEditText().getText().toString());
+                    newUser.setPassword(binding.tvPassword.getEditText().getText().toString());
+                    newUser.put("fullName", binding.tvName.getEditText().getText().toString());
+                    newUser.put("userBio", binding.tvBio.getEditText().getText().toString());
+                    newUser.put("phoneNumber",binding.tvPhoneNumber.getEditText().getText().toString());
 
-            Toast.makeText(this, "Profile update successful!", Toast.LENGTH_SHORT).show();
+                    newUser.signUpInBackground();
+                }
+            });
+
+
+            Toast.makeText(this, "Profile created successful!", Toast.LENGTH_SHORT).show();
             Intent out = new Intent(this, MainActivity.class)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
