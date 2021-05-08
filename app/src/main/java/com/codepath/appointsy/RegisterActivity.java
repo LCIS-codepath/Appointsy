@@ -21,6 +21,8 @@ import com.parse.ParseUser;
 
 import org.parceler.Parcels;
 
+import java.util.Objects;
+
 public class RegisterActivity extends AppCompatActivity {
 
     private final String TAG = "RegisterActivity";
@@ -41,11 +43,11 @@ public class RegisterActivity extends AppCompatActivity {
         btnConfirm.setOnClickListener((e) -> {
             User user = new User();
             // TODO check if inputs are not null
-            user.setUsername(binding.tiUsername.getEditText().getText().toString());
-            user.setEmail(binding.tiEmail.getEditText().getText().toString());
-            user.setPassword(binding.tiPassword.getEditText().getText().toString());
-            user.setFullName(binding.tiName.getEditText().getText().toString());
-            user.setPhoneNumber(binding.tiPhoneNum.getEditText().getText().toString());
+            user.setUsername(Objects.requireNonNull(binding.tiUsername.getEditText()).getText().toString());
+            user.setEmail(Objects.requireNonNull(binding.tiEmail.getEditText()).getText().toString());
+            user.setPassword(Objects.requireNonNull(binding.tiPassword.getEditText()).getText().toString());
+            user.setFullName(Objects.requireNonNull(binding.tiName.getEditText()).getText().toString());
+            user.setPhoneNumber(Objects.requireNonNull(binding.tiPhoneNum.getEditText()).getText().toString());
             routeToFragment(user);
         });
 
@@ -66,11 +68,12 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intent;
                 if(!cbBusiness.isChecked()){
                     // navigate to client profile
-                    intent = new Intent(this, ProfileFragment.class);
+                    intent = new Intent(this, ProfileActivity.class);
                 }
                 else {
                     // cb is checked, navigate to business profile
-                    intent = new Intent(this, BusinessProfileFragment.class);
+                    // TODO BusinessProfileActivity needed
+                    intent = new Intent(this, BusinessProfileActivity.class);
                 }
                 // Add user object and pass to respective setup
                 intent.putExtra("user", Parcels.wrap(user));

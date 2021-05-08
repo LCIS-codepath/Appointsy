@@ -1,118 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.ProfileFragment">
-
-    <LinearLayout
+    >
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:orientation="vertical"
-        android:padding="24dp"
-        android:paddingTop="16dp">
+        android:layout_height="match_parent"
+        tools:context=".fragments.ProfileFragment">
 
-
-        <ImageView
-            android:id="@+id/ivProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            tools:src="@tools:sample/avatars" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="2dp"
-            android:hint="Business Name">
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:paddingTop="16dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etName"
+
+            <ImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                tools:src="@tools:sample/avatars" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="2dp"
+                android:hint="Username">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvOwner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="2dp"
-            android:hint="Owner">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etOwner"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="2dp"
+                android:hint="Business Name">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="2dp"
-            android:hint="Email">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="2dp"
-            android:hint="Password">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPassword"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvOwner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="2dp"
+                android:hint="Owner">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvBio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="2dp"
-            android:hint="Bio">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etOwner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etBio"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="2dp"
+                android:hint="Email">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btUpdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-            android:text="Update Profile" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="2dp"
+                android:hint="Phone Number">
 
-</ScrollView>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhoneNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="2dp"
+                android:hint="Password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvBio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="2dp"
+                android:hint="Bio">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvHours"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="2dp"
+                android:hint="Business Hours">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="2dp"
+                android:hint="Service Price">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="2dp"
+                android:hint="Business Location">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tvType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="2dp"
+                android:hint="Business Type">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:text="Update Profile" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>
