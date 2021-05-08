@@ -44,6 +44,7 @@ public class BusinessFragment extends Fragment {
     protected SwipeRefreshLayout swipeContainer;
     protected List<BusinessPost> allBusinessPost;
     private FragmentBusinessBinding binding;
+    protected String UserInput;
 
 
     public BusinessFragment() {
@@ -78,7 +79,7 @@ public class BusinessFragment extends Fragment {
         Log.i(TAG, "Post started");
         Bundle bundle = this.getArguments();
         if(bundle != null) {
-            String type = bundle.getString("getBusinessType");
+            UserInput = bundle.getString("getBusinessType");
         }
 
         swipeContainer =  binding.swipeContainer;
@@ -101,6 +102,7 @@ public class BusinessFragment extends Fragment {
     }
 
     protected void queryPosts(){
+        String type = UserInput;
         ParseQuery<BusinessPost> query = ParseQuery.getQuery(BusinessPost.class);
         query.whereExists("businessProfileID"); // find adults
         query.include("businessProfileID");

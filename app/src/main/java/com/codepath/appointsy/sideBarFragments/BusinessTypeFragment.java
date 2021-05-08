@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.lifecycle.ViewModelProvider;
+
 import com.codepath.appointsy.BusinessPost;
 import com.codepath.appointsy.fragments.BusinessFragment;
 import com.parse.ParseException;
@@ -19,15 +21,23 @@ public class BusinessTypeFragment extends BusinessFragment {
 
     public static final String TAG = "BusinessTypeFragment";
 
-
+    private SearchViewModel searchViewModel;
+    private String searchType = "";
     protected void queryPosts(){
-      //  Bundle bundle = this.getArguments();
-      //  String type = bundle.getString("getBusinessType");
+        String search;
+        SearchViewModel model = new ViewModelProvider(requireActivity()).get(SearchViewModel.class);
+       search = String.valueOf(model.getSelected().getValue());
+        Log.i(TAG, "get value " + search);
 
-     //   Log.i(TAG, "TESTING 12345 " +type);
+        ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("BusinessProfile");
+        innerQuery.whereMatches("businessType", search);
+
         ParseQuery<BusinessPost> query = ParseQuery.getQuery(BusinessPost.class);
         query.whereExists("businessProfileID"); // find adults
         query.include("businessProfileID");
+        query.whereMatchesQuery("businessProfileID", innerQuery);
+
+
         query.findInBackground((List<BusinessPost> posts, ParseException e) -> {
             if (e == null) {
                 for(BusinessPost post: posts){
@@ -44,7 +54,6 @@ public class BusinessTypeFragment extends BusinessFragment {
                     String businessType = businessTable.getString("businessType");
                     String businessOwner = businessTable.getString("ownerName");
                     JSONArray businessHours = businessTable.getJSONArray("businessHours");
-
                     //set the post
                     post.setBusinessName(businessName);
                     post.setServicePrice(businessPrice);

@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ import com.codepath.appointsy.fragments.ProfileFragment;
 import com.codepath.appointsy.fragments.SettingsFragment;
 import com.codepath.appointsy.sideBarFragments.BusinessTypeFragment;
 import com.codepath.appointsy.sideBarFragments.BusinessTypeModuleOverlay;
+import com.codepath.appointsy.sideBarFragments.SearchViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
     RelativeLayout rlMain;
      DrawerLayout drawer;
     Toolbar toolbar;
+    private String sideBarKey = "";
+    private SearchViewModel searchViewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +126,12 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
 //            Toast.makeText(this, "favorites", Toast.LENGTH_LONG).show();
 //            getSupportFragmentManager().beginTransaction().replace(R.id.flFragmentContainer, new BusinessLocationFragment()).commit();
             showEditDialog();
+
+
+            sideBarKey = "business_type";
+        } else if(item.getItemId() == R.id.business_location){
+            showEditDialog();
+            sideBarKey = "location";
         }
         return true;
     }
@@ -130,13 +141,16 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
     @Override
     public void onFinishEditDialog(String inputText) {
         Toast.makeText(this, "Hi, " + inputText, Toast.LENGTH_SHORT).show();
-        Bundle bundle = new Bundle();
-        bundle.putString("getBusienessType", inputText);
-        BusinessTypeFragment fragmentObject = new BusinessTypeFragment();
-        fragmentObject.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.flFragmentContainer, new BusinessTypeFragment()).commit();
+        searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
+        searchViewModel.setSelected(inputText);
 
+        if(sideBarKey.equals("business_type")){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragmentContainer, new BusinessTypeFragment()).commit();
+        }else if(sideBarKey.equals("location")){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragmentContainer, new BusinessLocationFragment()).commit();
+        }
 
     }
 

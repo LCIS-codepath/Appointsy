@@ -2,6 +2,8 @@ package com.codepath.appointsy.sideBarFragments;
 
 import android.util.Log;
 
+import androidx.lifecycle.ViewModelProvider;
+
 import com.codepath.appointsy.BusinessPost;
 import com.codepath.appointsy.fragments.BusinessFragment;
 import com.parse.ParseException;
@@ -14,15 +16,23 @@ import org.json.JSONArray;
 import java.util.List;
 
 public class BusinessLocationFragment extends BusinessFragment {
+
+    private String TAG = "BusinessLocationFragment";
     protected void queryPosts() {
         super.queryPosts();
         int count  = adapter.getItemCount();
 
-        Log.i("LocationFragment", String.valueOf(count));
-        ParseQuery<BusinessPost> query = ParseQuery.getQuery("UserFavorites");
-        query.whereExists("businessObjectID"); // find adults
-        query.include("userObjectID");
-        query.setLimit(10);
+        SearchViewModel model = new ViewModelProvider(requireActivity()).get(SearchViewModel.class);
+        String search = String.valueOf(model.getSelected().getValue());
+        Log.i(TAG, "get value " + search);
+
+        ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("BusinessProfile");
+        innerQuery.whereMatches("location", search);
+
+        ParseQuery<BusinessPost> query = ParseQuery.getQuery(BusinessPost.class);
+        query.whereExists("businessProfileID"); // find adults
+        query.include("businessProfileID");
+        query.whereMatchesQuery("businessProfileID", innerQuery);
         query.findInBackground((List<BusinessPost> posts, ParseException e) -> {
             if (e == null) {
                 for(BusinessPost post: posts){
