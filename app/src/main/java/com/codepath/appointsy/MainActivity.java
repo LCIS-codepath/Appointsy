@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
     @Override
     public void onFinishEditDialog(String inputText) {
         Toast.makeText(this, "Hi, " + inputText, Toast.LENGTH_SHORT).show();
+        this.getViewModelStore().clear();
         searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         searchViewModel.setSelected(inputText);
 
