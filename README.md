@@ -30,8 +30,8 @@ An application for businesses that allows clients to schedule appointments throu
 #### User
 * [x]  User can login & register
 * [ ]  User can favorite Businesses
-* [ ] Login to view nearby businesses
-* [ ] Filter nearby businesses by location/favorites
+* [x] Login to view nearby businesses
+* [x] Filter nearby businesses by location/favorites
 * [x] Register through sign up 
 * [ ] Favorited/liked businesses
 * [ ] Notifications and Reminders of Appointment
@@ -49,9 +49,9 @@ An application for businesses that allows clients to schedule appointments throu
 * [ ] Custom App Icon
 * [ ] Infinite scrolling
 * [x] Swipe to refresh
-* [ ] Modal overlays (fragments)
+* [x] Modal overlays (fragments)
 * [x] Bottom Navigation Bar
-* [ ] Data binding MVVM
+* [x] Data binding MVVM
 * [ ] Google API Maps
 * [ ] Google API Calendar
 * [x] Back4App connect
@@ -285,7 +285,7 @@ public void createObject() {
 
 
 ## App Updates
-<img src='https://github.com/LCIS-codepath/Appointsy/blob/echilin/HomeStreamImplementation/app_walkthrough.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
+<img src='https://github.com/LCIS-codepath/Appointsy/blob/echilin/HomeStreamImplementation/app_walkthrough_week_13.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
 
 
 
