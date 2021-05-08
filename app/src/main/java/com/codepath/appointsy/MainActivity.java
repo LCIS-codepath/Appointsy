@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import com.codepath.appointsy.databinding.ActivityMainBinding;
 import com.codepath.appointsy.fragments.AppointmentFragment;
+import com.codepath.appointsy.sideBarAppoinments.AppoinmentOderDateFragment;
+import com.codepath.appointsy.sideBarAppoinments.AppoinmentOrderNameFragment;
 import com.codepath.appointsy.sideBarFragments.BusinessFavoritesFragment;
 import com.codepath.appointsy.fragments.BusinessFragment;
 import com.codepath.appointsy.sideBarFragments.BusinessLocationFragment;
@@ -132,6 +134,12 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
         } else if(item.getItemId() == R.id.business_location){
             showEditDialog();
             sideBarKey = "location";
+        } else if(item.getItemId() == R.id.sort_date){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragmentContainer, new AppoinmentOderDateFragment()).commit();
+        }else if(item.getItemId() == R.id.sort_by_name){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragmentContainer, new AppoinmentOrderNameFragment()).commit();
         }
         return true;
     }

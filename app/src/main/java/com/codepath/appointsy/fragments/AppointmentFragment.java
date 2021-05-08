@@ -46,9 +46,9 @@ public class AppointmentFragment extends Fragment {
     public static AtomicInteger atomInt = new AtomicInteger(0);
     public static Hashtable<ParseObject, ParseFile> businessImageHashMap;
     private RecyclerView rvAppointmentPost;
-    private SwipeRefreshLayout swipeContainerAppointment;
-    private AppointmentPostAdapter adapter;
-    private List<AppointmentPost> allAppointmentPost;
+    protected SwipeRefreshLayout swipeContainerAppointment;
+    protected AppointmentPostAdapter adapter;
+    protected List<AppointmentPost> allAppointmentPost;
     private FragmentAppointmentBinding binding;
 
 
@@ -156,7 +156,7 @@ public class AppointmentFragment extends Fragment {
     }
 
 
-    private void queryPosts(){
+    protected void queryPosts(){
 
       //  Log.i(TAG, "business Hash Table Size " + businessImageHashMap.size() );
         ParseQuery<AppointmentPost> query1 = ParseQuery.getQuery(AppointmentPost.class);
