@@ -7,8 +7,13 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.parceler.Parcel;
 @ParseClassName("Appointment")
 public class AppointmentPost extends ParseObject {
+
+    public  AppointmentPost(){
+
+    }
     public static final String KEY_APPOINTMENT_DETAILS = "details";
     public static final String KEY_APPOINTMENT_TIME = "time";
     public static final String KEY_APPOINTMENT_DATE = "date";

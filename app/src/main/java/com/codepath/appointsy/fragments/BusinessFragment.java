@@ -31,10 +31,12 @@ import org.json.JSONArray;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class BusinessFragment extends Fragment {
+
 
     private String TAG = "BusinessFragment";
     private RecyclerView rvBusinessPost;
@@ -42,6 +44,7 @@ public class BusinessFragment extends Fragment {
     protected SwipeRefreshLayout swipeContainer;
     protected List<BusinessPost> allBusinessPost;
     private FragmentBusinessBinding binding;
+    protected String UserInput;
 
 
     public BusinessFragment() {
@@ -74,7 +77,10 @@ public class BusinessFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.i(TAG, "Post started");
-
+        Bundle bundle = this.getArguments();
+        if(bundle != null) {
+            UserInput = bundle.getString("getBusinessType");
+        }
 
         swipeContainer =  binding.swipeContainer;
         swipeContainer.setOnRefreshListener(()->{
@@ -96,6 +102,7 @@ public class BusinessFragment extends Fragment {
     }
 
     protected void queryPosts(){
+        String type = UserInput;
         ParseQuery<BusinessPost> query = ParseQuery.getQuery(BusinessPost.class);
         query.whereExists("businessProfileID"); // find adults
         query.include("businessProfileID");
@@ -103,6 +110,7 @@ public class BusinessFragment extends Fragment {
             if (e == null) {
                 for(BusinessPost post: posts){
                     // getData from User
+                    String businessUser = post.getString("username");
                     String businessBio = post.getString("userBio");
                     ParseFile businessImage = post.getParseFile("profileImage");
 
@@ -122,6 +130,8 @@ public class BusinessFragment extends Fragment {
                     post.setBusinessType(businessType);
                     post.setBusinessOwner(businessOwner);
                     Log.i(TAG, "Post " + businessName  + " #e " +  businessBio + "  ");
+
+                    //add image
 
                 }
             } else {

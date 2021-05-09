@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -18,16 +19,21 @@ import android.widget.Toast;
 
 import com.codepath.appointsy.databinding.ActivityMainBinding;
 import com.codepath.appointsy.fragments.AppointmentFragment;
-import com.codepath.appointsy.fragments.BusinessFavoritesFragment;
+import com.codepath.appointsy.sideBarAppoinments.AppoinmentOderDateFragment;
+import com.codepath.appointsy.sideBarAppoinments.AppoinmentOrderNameFragment;
+import com.codepath.appointsy.sideBarFragments.BusinessFavoritesFragment;
 import com.codepath.appointsy.fragments.BusinessFragment;
+import com.codepath.appointsy.sideBarFragments.BusinessLocationFragment;
 import com.codepath.appointsy.fragments.ProfileFragment;
 import com.codepath.appointsy.fragments.SettingsFragment;
+import com.codepath.appointsy.sideBarFragments.BusinessTypeFragment;
+import com.codepath.appointsy.sideBarFragments.BusinessTypeModuleOverlay;
+import com.codepath.appointsy.sideBarFragments.SearchViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener;
-import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity implements OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements OnNavigationItemSelectedListener, BusinessTypeModuleOverlay.EditNameDialogListener {
 
     // For binding, (enabled in build.gradle app)
     private ActivityMainBinding binding;
@@ -37,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
     RelativeLayout rlMain;
      DrawerLayout drawer;
     Toolbar toolbar;
+    private String sideBarKey = "";
+    private SearchViewModel searchViewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +123,51 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
             Log.i(TAG, "favorites ");
             Toast.makeText(this, "favorites", Toast.LENGTH_LONG).show();
             getSupportFragmentManager().beginTransaction().replace(R.id.flFragmentContainer, new BusinessFavoritesFragment()).commit();
+        }else if(item.getItemId() == R.id.business_type){
+//            Log.i(TAG, "favorites ");
+//            Toast.makeText(this, "favorites", Toast.LENGTH_LONG).show();
+//            getSupportFragmentManager().beginTransaction().replace(R.id.flFragmentContainer, new BusinessLocationFragment()).commit();
+            showEditDialog();
+
+
+            sideBarKey = "business_type";
+        } else if(item.getItemId() == R.id.business_location){
+            showEditDialog();
+            sideBarKey = "location";
+        } else if(item.getItemId() == R.id.sort_date){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragmentContainer, new AppoinmentOderDateFragment()).commit();
+        }else if(item.getItemId() == R.id.sort_by_name){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragmentContainer, new AppoinmentOrderNameFragment()).commit();
         }
         return true;
+    }
+
+    // 3. This method is invoked in the activity when the listener is triggered
+    // Access the data result passed to the activity here
+    @Override
+    public void onFinishEditDialog(String inputText) {
+        Toast.makeText(this, "Hi, " + inputText, Toast.LENGTH_SHORT).show();
+        this.getViewModelStore().clear();
+        searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
+        searchViewModel.setSelected(inputText);
+
+        if(sideBarKey.equals("business_type")){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragmentContainer, new BusinessTypeFragment()).commit();
+        }else if(sideBarKey.equals("location")){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.flFragmentContainer, new BusinessLocationFragment()).commit();
+        }
+
+    }
+
+
+    private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        BusinessTypeModuleOverlay editNameDialogFragment = BusinessTypeModuleOverlay.newInstance("Some Title");
+        // SETS the target fragment for use later when sending results
+        editNameDialogFragment.show(fm, "fragment_edit_name");
     }
 }
