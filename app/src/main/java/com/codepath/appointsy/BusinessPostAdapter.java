@@ -15,7 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.appointsy.databinding.ItemBusinessPostBinding;
+import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.List;
 
@@ -24,6 +28,8 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
     private final Context context;
     private final List<BusinessPost> businessPost;
     private ItemBusinessPostBinding binding;
+    private boolean status = false;
+    private final String TAG = "BusinessPostAdapter";
 
     public BusinessPostAdapter(Context context, List<BusinessPost> businessPost ){
         this.context = context;
@@ -69,6 +75,7 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
         private final TextView tvAppointmentStatus;
         private final ImageView ivStatusIcon;
         private final TextView tvDistance;
+        private final ImageView ivFavorites;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,6 +87,7 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
             tvAppointmentStatus =  binding.tvBusinessStatus;
             ivStatusIcon =  binding.ivStatusIcon;
             tvDistance =  binding.tvDistance;
+            ivFavorites = binding.ivFavorite;
         }
 
         public void bind(BusinessPost businessPosts) {
@@ -96,6 +104,23 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
                 Glide.with(context).load(R.drawable.ic_iconcmpt).override(300, 200).into(ivBusinessImage);
 
             }
+
+
+            ivFavorites.setOnClickListener(v -> {
+                if(status){
+                    ivFavorites.setImageResource(R.drawable.filled_star);
+                    status = false;
+                    favoriteQuery(ParseUser.getCurrentUser(), businessPosts.getBusinessId());
+                }else{
+                    ivFavorites.setImageResource(R.drawable.ic_not_favorite);
+                    status = true;
+                }
+
+            });
+
+
+
+
 //            rlBusinessPost.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
@@ -106,6 +131,22 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
 //                }
 //            });
 
+        }
+
+        private void favoriteQuery(ParseUser user, ParseUser business) {
+            ParseObject favorites = new ParseObject("UserFavorites");
+
+            String data = "CibJYeLNkz";
+            favorites.put("userObjectID", ParseObject.createWithoutData("_User","HiwnIOsxa8" ));
+            favorites.put("businessObjectID", ParseObject.createWithoutData(  "BusinessProfile", data));
+            favorites.saveInBackground(e -> {
+                if(e == null){
+                    Log.i(TAG, "Success");
+                }else{
+                    Log.e(TAG, "falure ", e);
+
+                }
+            });
         }
     }
 
