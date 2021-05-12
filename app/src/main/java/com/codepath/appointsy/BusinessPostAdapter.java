@@ -2,6 +2,7 @@ package com.codepath.appointsy;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.appointsy.databinding.ItemBusinessPostBinding;
+import com.codepath.appointsy.fragments.BusinessFragment;
+import com.codepath.appointsy.fragments.CreateApptFragment;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -72,8 +75,8 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
         private final TextView tvBusinessName;
         private final TextView tvBusinessType;
         private final TextView tvDetails;
-        private final TextView tvAppointmentStatus;
-        private final ImageView ivStatusIcon;
+//        private final TextView tvAppointmentStatus;
+//        private final ImageView ivStatusIcon;
         private final TextView tvDistance;
         private final ImageView ivFavorites;
 
@@ -84,8 +87,8 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
             tvBusinessName =  binding.tvBusinessName;
             tvBusinessType =  binding.tvBusinessType;
             tvDetails =  binding.tvDetails;
-            tvAppointmentStatus =  binding.tvBusinessStatus;
-            ivStatusIcon =  binding.ivStatusIcon;
+//            tvAppointmentStatus =  binding.tvBusinessStatus;
+//            ivStatusIcon =  binding.ivStatusIcon;
             tvDistance =  binding.tvDistance;
             ivFavorites = binding.ivFavorite;
         }
@@ -98,10 +101,10 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
             tvDetails.setText(businessPosts.getBusinessBio());
             ParseFile image = businessPosts.getBusinessImage();
             if(image != null){
-                Glide.with(context).load(image.getUrl()).override(300, 200).into(ivBusinessImage);
+                Glide.with(context).load(image.getUrl()).into(ivBusinessImage);
             }
             else{
-                Glide.with(context).load(R.drawable.ic_iconcmpt).override(300, 200).into(ivBusinessImage);
+                Glide.with(context).load(R.drawable.ic_iconcmpt).into(ivBusinessImage);
 
             }
 
@@ -120,16 +123,16 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
 
 
 
+            rlBusinessPost.setOnClickListener(v -> {
+              Intent i = new Intent(context, BusinessFragment.class);
+                // need to add Parcels to the project
+              i.putExtra("ParseOBJECT", businessPosts);
+              context.startActivities(new Intent[]{i});
+              Log.i(TAG, "open activity");
 
-//            rlBusinessPost.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                  Intent i = new Intent(context, )
-//                    // need to add Parcels to the project
-//                  i.putExtra("tweet", Parcels.wrap());
-//                  context.startActivities(new Intent[]{i});
-//                }
-//            });
+
+
+            });
 
         }
 

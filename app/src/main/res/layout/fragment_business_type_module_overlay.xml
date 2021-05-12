@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/edit_name"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
     tools:context=".sideBarFragments.BusinessTypeModuleOverlay">
@@ -19,8 +19,8 @@
         android:layout_width="258dp"
         android:layout_height="90dp"
         android:imeOptions="actionDone"
-        android:inputType="text"
-        android:importantForAutofill="no" />
+        android:importantForAutofill="no"
+        android:inputType="text" />
 
     <Button
         android:id="@+id/btnDone"
