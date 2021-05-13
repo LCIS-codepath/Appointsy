@@ -2,31 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/edit_name"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".sideBarFragments.BusinessTypeModuleOverlay">
 
-    <TextView
-        android:id="@+id/lbl_your_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/type_of_business" />
-
-    <EditText
-        android:id="@+id/txt_your_name"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/generic_meu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
         android:layout_width="258dp"
-        android:layout_height="90dp"
-        android:imeOptions="actionDone"
-        android:importantForAutofill="no"
-        android:inputType="text" />
+        android:layout_height="wrap_content"
+        android:hint="@string/search_for"
+
+        android:paddingBottom="20dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/search_info"
+            android:layout_width="258dp"
+            android:layout_height="75dp"
+            android:inputType="none"
+            android:paddingBottom="20dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnDone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/complete" />
-
 
 </LinearLayout>

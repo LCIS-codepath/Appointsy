@@ -10,11 +10,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.codepath.appointsy.R;
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +32,10 @@ public class BusinessTypeModuleOverlay extends DialogFragment {
 
     private EditText etExample;
     private Button btnDone;
+
+    ArrayList<String> arrayList_Search;
+    ArrayAdapter<String> arrayAdapter_UserInput;
+
 
     public BusinessTypeModuleOverlay() {
         // Required empty public constructor
@@ -62,24 +73,44 @@ public class BusinessTypeModuleOverlay extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // Get field from view
-        etExample = view.findViewById(R.id.txt_your_name);
+        TextInputLayout generic_meu = view.findViewById(R.id.generic_meu);
+        AutoCompleteTextView search_info = view.findViewById(R.id.search_info);
         btnDone = view.findViewById(R.id.btnDone);
+
+        arrayList_Search = new ArrayList<>();
+        arrayList_Search.add("barber shop");
+        arrayList_Search.add("salon");
+        arrayList_Search.add("food");
+        arrayList_Search.add("taco");
+        arrayList_Search.add("vegan");
+
+        arrayAdapter_UserInput = new ArrayAdapter<>(getContext(), R.layout.support_simple_spinner_dropdown_item, arrayList_Search);
+        search_info.setAdapter(arrayAdapter_UserInput);
+
+        search_info.setThreshold(1);
+
+        //pass a variable to intialize the array
+
+
 
         // Fetch arguments from bundle and set title
         String title = getArguments().getString("title", "Enter Name");
         getDialog().setTitle(title);
         // Show soft keyboard automatically and request focus to field
-        etExample.requestFocus();
+        generic_meu.requestFocus();
         getDialog().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         btnDone.setOnClickListener(v -> {
             // Return input text back to activity through the implemented listener
             EditNameDialogListener listener = (EditNameDialogListener) getActivity();
-            listener.onFinishEditDialog(etExample.getText().toString());
+            listener.onFinishEditDialog(search_info.getText().toString());
             // Close the dialog and return back to the parent activity
             dismiss();
         });
+
+
+
+
     }
 
 }
