@@ -27,6 +27,6 @@ jobs:
         env:
           PARSE_APP_ID: ${{ secrets.PARSE_APP_ID }}
           PARSE_CLIENT_KEY: ${{ secrets.PARSE_CLIENT_KEY }}
-        run: touch apikey.properties ; echo "$PARSE_APP_ID" >> apikey.properties ; echo "$PARSE_CLIENT_KEY" >> apikey.properties; cat apikey.properties
+        run: touch apikey.properties ; echo "$PARSE_APP_ID" >> apikey.properties ; echo "$PARSE_CLIENT_KEY" >> apikey.properties
       - name: Build the app
         run: ./gradlew build

@@ -1,40 +1,32 @@
-package com.codepath.appointsy.fragments;
+package com.codepath.appointsy;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.codepath.appointsy.MainActivity;
-import com.codepath.appointsy.R;
-import com.codepath.appointsy.databinding.ActivityRegisterBinding;
+import com.codepath.appointsy.databinding.ActivityProfileBinding;
 import com.codepath.appointsy.databinding.FragmentProfileBinding;
+import com.codepath.appointsy.objects.User;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.android.material.textview.MaterialTextView;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import org.jetbrains.annotations.NotNull;
 import org.parceler.Parcels;
 
 import java.util.Objects;
 
-public class ProfileFragment extends Fragment {
+public class ProfileActivity extends AppCompatActivity {
 
-    private FragmentProfileBinding binding;
+    private ActivityProfileBinding binding;
+    public final String TAG = "ProfileActivity";
     private ImageView ivProfile;
     private TextInputLayout tvName;
     private EditText etName;
@@ -50,51 +42,13 @@ public class ProfileFragment extends Fragment {
     private EditText etBio;
     private MaterialButton btUpdate;
 
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ProfileFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(String param1, String param2) {
-        ProfileFragment fragment = new ProfileFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        binding = FragmentProfileBinding.inflate(inflater, container, false);
-        return binding.getRoot();
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        // Use ParseUser.getCurrentUser to display info. from their profile (User Object may have it details)
-        ParseUser user = ParseUser.getCurrentUser();
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
+        // user object passed from register (not a ParseUser)
+        User user = Parcels.unwrap((getIntent().getParcelableExtra("user")));
+        Log.i(TAG, Objects.requireNonNull(user).toString());
         ivProfile = binding.ivProfile;
         tvName = binding.tvName;
         tvUsername = binding.tvUsername;
@@ -111,12 +65,11 @@ public class ProfileFragment extends Fragment {
         etBio = binding.etBio;
 
         //Set text for each field
-        etName.setText(Objects.requireNonNull(user).getString("fullName"));
+        etName.setText(Objects.requireNonNull(user).getFullName());
         etUsername.setText(user.getUsername());
         etEmail.setText(user.getEmail());
-        etPassword.setText(user.getString("password"));
-        etBio.setText(user.getString("userBio"));
-        etPhoneNumber.setText(user.getString("phoneNumber"));
+        etPassword.setText(user.getPassword());
+        etPhoneNumber.setText(user.getPhoneNumber());
 
         btUpdate.setOnClickListener((e ->{
 //            // TODO check if inputs are not null
@@ -127,6 +80,7 @@ public class ProfileFragment extends Fragment {
 //            user.put("fullName", binding.tvName.getEditText().getText().toString());
 //            user.put("userBio", binding.tvBio.getEditText().getText().toString());
 //            user.put("phoneNumber",binding.tvPhoneNumber.getEditText().getText().toString());
+//
 //            user.saveInBackground();
 
             ParseQuery<ParseUser> query = ParseUser.getQuery();
@@ -145,11 +99,14 @@ public class ProfileFragment extends Fragment {
                 }
             });
 
-            Toast.makeText(getContext(), "Profile update successful!", Toast.LENGTH_SHORT).show();
-            Intent out = new Intent(getContext(), MainActivity.class)
+
+            Toast.makeText(this, "Profile created successful!", Toast.LENGTH_SHORT).show();
+            Intent out = new Intent(this, MainActivity.class)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(out);
         }));
     }
+
+
 }

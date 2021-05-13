@@ -30,8 +30,8 @@ An application for businesses that allows clients to schedule appointments throu
 #### User
 * [x]  User can login & register
 * [ ]  User can favorite Businesses
-* [ ] Login to view nearby businesses
-* [ ] Filter nearby businesses by location/favorites
+* [x] Login to view nearby businesses
+* [x] Filter nearby businesses by location/favorites
 * [x] Register through sign up 
 * [ ] Favorited/liked businesses
 * [ ] Notifications and Reminders of Appointment
@@ -40,7 +40,7 @@ An application for businesses that allows clients to schedule appointments throu
 
 #### Business
 * [x] Sign up or log in
-* [ ] Create business profile
+* [x] Create business profile
 * [ ] Set availability hours
 * [x] View all upcoming appointments
 
@@ -48,28 +48,23 @@ An application for businesses that allows clients to schedule appointments throu
 * [x] UI Setup
 * [ ] Custom App Icon
 * [ ] Infinite scrolling
-* [ ] Floating Action Button to compose an appointment (user/business)
 * [x] Swipe to refresh
-* [ ] Modal overlays (fragments)
+* [x] Modal overlays (fragments)
 * [x] Bottom Navigation Bar
-* [ ] Data binding MVVM
+* [x] Data binding MVVM
 * [ ] Google API Maps
 * [ ] Google API Calendar
-* [x]   Back4App connect
+* [x] Back4App connect
 * [ ] Connect Google Calendar API to allow users to add their appointment
 
 **Optional: Nice-to-have Stories**
-* [ ]  Data Binding
+* [x]  Data Binding
 * [ ]  Stride API Payment system for SaaS
 * [ ]  Table Orders
 * [ ]  Splash Screen
 * [ ]  Business Analytics
-* [ ]  Google Login API
-* [ ]  Offline persistence (to view nearby places)
-* [ ]  Login with Google™ functionality
 * [ ]  Offline persistence
-* [ ]  MVVM
-* [ ]  Phone number confirmation
+* [ ]  Phone number/email confirmation
 * [ ]  GitHub Actions setup
     * * [x]  CI - build
     * * [ ] CD - deploy
@@ -139,12 +134,12 @@ An application for businesses that allows clients to schedule appointments throu
 ### [BONUS] Interactive Prototype
 <img src='https://github.com/LCIS-codepath/Appointsy/blob/main/appointsy_prototype.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
 
-## Schema 1.2
-![Schema](https://user-images.githubusercontent.com/25497457/115927435-4903a980-a439-11eb-8412-e098d350194d.png)
+## Schema 1.3
+![Schema](https://user-images.githubusercontent.com/25497457/116343161-c8c2a880-a798-11eb-8446-7312605a1ea2.png)
 
 ## Models
 
-#### User Profile
+#### User
 
 | Property    | Type        |Description |
 | ----------- | ----------- |----------- |
@@ -156,18 +151,13 @@ An application for businesses that allows clients to schedule appointments throu
 | Phone Number | Integer     |  Optional/Required  |
 | Bio         | String      | Optional bio for user           |
 
-#### Business Profile 
+#### Business 
 
 | Property    | Type        |Description |
 | ----------- | ----------- |----------- |
 | ObjectID    | Integer     |Unique object ID            |
 | Business name | String    |Business's name            |
 | Owner name  | String      |Owner's name |
-| Email       | String      |Unique email            |
-| Password    | String      |Business' password            |
-| Image       | File        | Business image |
-| Phone Number | Integer     |  Optional/Required  |
-| Bio         | String      |Optional bio           |
 | Location    |   Int       |Business location           |
 | Hours       |   Int       | Business hours of service |
 | Service/Avg Price|   Int  |  Average price of service       |
@@ -178,13 +168,15 @@ An application for businesses that allows clients to schedule appointments throu
 | Property    | Type        |Description |
 | ----------- | ----------- |----------- |
 | ObjectID    | Integer     | Unique ID        |
-| Business Name| String     | Name of Business        |
-| Name        | String      | Name of the appointee           |
-| Time        | String      | Time of the appoinment          |
-| Details     | String      | Information about the appoinment           |
-| Status      | Boolean     | Indicate if appoinment is canceled or confirmed           |
-| Image       | File        | Business image 
+| Time | String     | Appointment time        |
+| Details        | String      | Detail information           |
+| Date      | Date     | When the appointment is scheduled      |
 | isReschedule| Boolean     | User can reschedule only 1 time           |
+| Status | Boolean     |     If the appointment is cancelled or awaiting       |
+| UserObjectID | Pointer |  Reference key to User  |
+| BussinessObjectID | Pointer |  Reference key to Business |
+
+
 
 
 ### Networking
@@ -293,13 +285,8 @@ public void createObject() {
 
 
 ## App Updates
-#### Current App Gif need to merge features
-<img src='https://github.com/LCIS-codepath/Appointsy/blob/HomeStream/appointsy_gif1.gif' title='Video Walkthrough' 
-width='250' alt='Video Walkthrough' style="margin-right: 100px;" />  
-<img src='https://github.com/LCIS-codepath/Appointsy/blob/HomeStream/appointsygif2.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
+<img src='https://github.com/LCIS-codepath/Appointsy/blob/echilin/HomeStreamImplementation/app_walkthrough_week_13.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
 
-#### Need to read data from back 4 app to display it's content
-<img src='https://github.com/LCIS-codepath/Appointsy/blob/HomeStream/Appointment.png' title='Video Walkthrough' width='250' alt='Video Walkthrough' /> <img src='https://github.com/LCIS-codepath/Appointsy/blob/HomeStream/Business.png' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
 
 
 
