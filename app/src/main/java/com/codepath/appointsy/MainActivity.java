@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements OnNavigationItemS
 
     private void showEditDialog() {
         FragmentManager fm = getSupportFragmentManager();
+
         BusinessTypeModuleOverlay editNameDialogFragment = BusinessTypeModuleOverlay.newInstance("Some Title");
         // SETS the target fragment for use later when sending results
         editNameDialogFragment.show(fm, "fragment_edit_name");

@@ -72,6 +72,10 @@
     <string name="scheduleTime">Choose the date and time</string>
     <string name="estimated_price">Estimated Price:</string>
     <string name="times">Times:</string>
+    <string name="pomona_ca">Pomona,CA</string>
+    <string name="ontario_ca">Ontario, CA</string>
+    <string name="los_angeles_ca">Los Angeles, CA</string>
+    <string name="search_for">Search for</string>
 
 
 </resources>

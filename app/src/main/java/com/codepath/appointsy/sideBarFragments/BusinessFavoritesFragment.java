@@ -1,4 +1,4 @@
-package com.codepath.appointsy.sideBarFragments;
+  package com.codepath.appointsy.sideBarFragments;
 
 import android.util.Log;
 
@@ -18,6 +18,7 @@ public class BusinessFavoritesFragment extends BusinessFragment {
     protected void queryPosts() {
         super.queryPosts();
         adapter.clear();
+
         ParseQuery<BusinessPost> query = ParseQuery.getQuery(BusinessPost.class);
         query.whereExists("businessProfileID"); // find adults
         query.include("businessProfileID");
