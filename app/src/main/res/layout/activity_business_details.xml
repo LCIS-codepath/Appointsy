@@ -136,7 +136,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/directions"
+            android:id="@+id/btnDirections"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="48dp"
@@ -147,7 +147,7 @@
             app:cornerRadius="5dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/scheduleAppt"
+            android:id="@+id/btnScheduleAppt"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginBottom="8dp"
