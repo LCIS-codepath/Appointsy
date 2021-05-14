@@ -4,19 +4,21 @@ import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+@ParseClassName("_User")
+public class  BusinessPost extends ParseUser {
+    public static final String KEY_BUSINESS_BIO = "userBio";
+    public static final String KEY_BUSINESS_IMAGE = "profileImage";
+    public static final String KEY_Business_OBJECT_ID = "businessProfileID";
 
-@ParseClassName("BusinessProfile")
-public class BusinessPost extends ParseObject {
+
     public static final String KEY_BUSINESS_NAME = "businessName";
     public static final String KEY_SERVICE_PRICE = "servicePrice";
     public static final String KEY_Business_LOCATION = "location";
-    public static final String KEY_BUSINESS_PHONE_NUMBER = "phoneNumber";
     public static final String KEY_BUSINESS_TYPE = "businessType";
-    public static final String KEY_BUSINESS_IMAGE = "businessImage";
-    public static final String KEY_BUSINESS_EMAIL = "email";
     public static final String KEY_BUSINESS_OWNER_NAME = "ownerName";
-    public static final String KEY_BUSINESS_BIO = "bio";
-    public static final String KEY_Business_OBJECT_ID = "objectID";
+    public static final String KEY_BUSINESS_HOURS = "businessHours";
+
+
 
     public String getBusinessName(){
         return  getString(KEY_BUSINESS_NAME);
@@ -42,12 +44,13 @@ public class BusinessPost extends ParseObject {
         put(KEY_Business_LOCATION, location);
     }
 
+    // have to look into ready array for business hours
     public String getBusinessPhoneNumber(){
-        return  getString(KEY_BUSINESS_PHONE_NUMBER);
+        return  getString(KEY_BUSINESS_HOURS);
     }
 
-    public void setBusinessPhoneNumber(String phoneNumber){
-        put(KEY_BUSINESS_PHONE_NUMBER, phoneNumber);
+    public void setBusinessHours(String phoneNumber){
+        put(KEY_BUSINESS_HOURS, phoneNumber);
     }
 
     public String getBusinessType(){
@@ -58,22 +61,6 @@ public class BusinessPost extends ParseObject {
         put(KEY_BUSINESS_TYPE, businessType);
     }
 
-    public ParseFile getBusinessImage(){
-        return getParseFile(KEY_BUSINESS_IMAGE);
-    }
-
-    public void setBusinessImage(ParseFile parseFile){
-         put(KEY_BUSINESS_IMAGE, parseFile);
-    }
-
-    public String getBusinessEmail(){
-        return  getString(KEY_BUSINESS_EMAIL);
-    }
-
-    public void setBusinessEmail(String email){
-        put(KEY_BUSINESS_EMAIL, email);
-    }
-
     public String getBusinessOwner(){
         return  getString(KEY_BUSINESS_OWNER_NAME);
     }
@@ -82,13 +69,6 @@ public class BusinessPost extends ParseObject {
         put(KEY_BUSINESS_OWNER_NAME, owner);
     }
 
-    public String getBusinessBio(){
-        return  getString(KEY_BUSINESS_BIO);
-    }
-
-    public void setBusinessBio(String bio){
-        put(KEY_BUSINESS_BIO, bio);
-    }
 
     public ParseUser getUserId(){
         return  getParseUser(KEY_Business_OBJECT_ID);
@@ -96,5 +76,26 @@ public class BusinessPost extends ParseObject {
 
     public void setUserId(ParseUser status){
         put(KEY_Business_OBJECT_ID, status);
+    }
+
+    // Items from Business needed for the Appointment
+    // retrieve the object ID from the business table then get the specified query
+    public void setBusinessBio(String status){
+        put(KEY_BUSINESS_BIO, status);
+    }
+
+
+    public String getBusinessBio(){
+        return  getString(KEY_BUSINESS_BIO);
+    }
+
+
+    public void setBusinessImage(ParseFile status){
+        put(KEY_BUSINESS_IMAGE, status);
+    }
+
+    public ParseFile getBusinessImage(){
+
+        return getParseFile(KEY_BUSINESS_IMAGE);
     }
 }
