@@ -80,7 +80,7 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/directions"
+        android:id="@+id/btnDirections"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
@@ -91,7 +91,7 @@
         app:cornerRadius="5dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/Reschedule"
+        android:id="@+id/btnReschedule"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginBottom="8dp"
