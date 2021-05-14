@@ -21,18 +21,13 @@ public class BusinessDetails extends AppCompatActivity {
     private MaterialTextView tvHours;
     private MaterialTextView tvDetails;
     private MaterialTextView tvServiceType;
-    private MaterialButton btnMap;
     private MaterialButton btnDirections;
     private MaterialButton btnScheduleAppt;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_details);
-
-        Intent i = getIntent();
 
         ivIcon = binding.ivIcon;
         tvName = binding.tvName;
@@ -42,24 +37,23 @@ public class BusinessDetails extends AppCompatActivity {
         tvDetails = binding.tvDetails;
         tvServiceType = binding.tvServiceType;
 
-//        ivIcon.setImageIcon();
-//        tvName.setText();
-//        tvContactInfo.setText();
-//        tvPhoneNumber.setText();
+        Bundle bundle = getIntent().getExtras();
+        BusinessPost businessPost = bundle.getParcelable("businessParseObject");
+
+//        ivIcon.setImageURI(businessPost.getBusinessImage());
+        tvName.setText(businessPost.getBusinessName());
+        tvContactInfo.setText(businessPost.getBusinessOwner());
+        tvPhoneNumber.setText(businessPost.getBusinessPhoneNumber());
 //        tvHours.setText();
-//        tvDetails.setText();
-//        tvServiceType.setText();
-
-        btnMap.setOnClickListener((e -> {
-
-        }));
+        tvDetails.setText(businessPost.getBusinessBio());
+        tvServiceType.setText(businessPost.getBusinessType());
 
         btnDirections.setOnClickListener((e -> {
-
+            // extended feature
         }));
 
         btnScheduleAppt.setOnClickListener((e -> {
-
+            // in progress
         }));
         
     }
