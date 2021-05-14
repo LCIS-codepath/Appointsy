@@ -1,4 +1,4 @@
-package com.codepath.appointsy.sideBarFragments;
+ package com.codepath.appointsy.sideBarFragments;
 
 import android.os.Bundle;
 
@@ -32,9 +32,12 @@ public class BusinessTypeModuleOverlay extends DialogFragment {
 
     private EditText etExample;
     private Button btnDone;
+    private TextInputLayout generic_menu;
+    private AutoCompleteTextView search_info;
 
-    ArrayList<String> arrayList_Search;
-    ArrayAdapter<String> arrayAdapter_UserInput;
+    protected ArrayList<String> arrayList_Search;
+    protected ArrayAdapter<String> arrayAdapter_UserInput;
+
 
 
     public BusinessTypeModuleOverlay() {
@@ -69,14 +72,7 @@ public class BusinessTypeModuleOverlay extends DialogFragment {
         return inflater.inflate(R.layout.fragment_business_type_module_overlay, container, false);
     }
 
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        TextInputLayout generic_meu = view.findViewById(R.id.generic_meu);
-        AutoCompleteTextView search_info = view.findViewById(R.id.search_info);
-        btnDone = view.findViewById(R.id.btnDone);
-
+    private void setUpArray(){
         arrayList_Search = new ArrayList<>();
         arrayList_Search.add("barber shop");
         arrayList_Search.add("salon");
@@ -84,11 +80,21 @@ public class BusinessTypeModuleOverlay extends DialogFragment {
         arrayList_Search.add("taco");
         arrayList_Search.add("vegan");
 
+    }
+
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        generic_menu = view.findViewById(R.id.generic_meu);
+        search_info = view.findViewById(R.id.search_info);
+        btnDone = view.findViewById(R.id.btnDone);
+
+        setUpArray();
         arrayAdapter_UserInput = new ArrayAdapter<>(getContext(), R.layout.support_simple_spinner_dropdown_item, arrayList_Search);
         search_info.setAdapter(arrayAdapter_UserInput);
 
         search_info.setThreshold(1);
-
         //pass a variable to intialize the array
 
 
@@ -97,7 +103,7 @@ public class BusinessTypeModuleOverlay extends DialogFragment {
         String title = getArguments().getString("title", "Enter Name");
         getDialog().setTitle(title);
         // Show soft keyboard automatically and request focus to field
-        generic_meu.requestFocus();
+        generic_menu.requestFocus();
         getDialog().getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         btnDone.setOnClickListener(v -> {
@@ -107,9 +113,6 @@ public class BusinessTypeModuleOverlay extends DialogFragment {
             // Close the dialog and return back to the parent activity
             dismiss();
         });
-
-
-
 
     }
 
