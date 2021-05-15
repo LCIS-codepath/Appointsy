@@ -109,16 +109,6 @@
         app:cornerRadius="5dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnReschedule"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="#46A3FA"
-        android:text="@string/reschedule"
-        android:textSize="20sp"
-        app:cornerRadius="5dp" />
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCancel"
         android:layout_width="match_parent"
         android:layout_height="60dp"

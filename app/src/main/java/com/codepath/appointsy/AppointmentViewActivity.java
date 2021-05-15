@@ -26,7 +26,6 @@ public class AppointmentViewActivity extends AppCompatActivity {
     private MaterialTextView tvDate;
     private MaterialTextView tvDetails;
     private MaterialButton btnDirections;
-    private MaterialButton btnReschedule;
     private MaterialButton btnCancel;
 
     @Override
@@ -39,7 +38,6 @@ public class AppointmentViewActivity extends AppCompatActivity {
         tvDate = binding.tvDate;
         tvDetails = binding.tvDetails;
         btnDirections = binding.btnDirections;
-        btnReschedule = binding.btnReschedule;
         btnCancel = binding.btnCancel;
 
         Bundle bundle = getIntent().getExtras();
@@ -60,14 +58,9 @@ public class AppointmentViewActivity extends AppCompatActivity {
             // extended feature
         }));
 
-        // reschedule appointment
-        btnReschedule.setOnClickListener((e -> {
-            
-        }));
-
         // cancel appointment
         btnCancel.setOnClickListener((e -> {
-
+            
         }));
     }
 }
