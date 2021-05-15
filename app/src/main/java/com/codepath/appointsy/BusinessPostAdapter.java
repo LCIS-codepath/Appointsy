@@ -2,7 +2,6 @@ package com.codepath.appointsy;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.codepath.appointsy.databinding.ItemBusinessPostBinding;
 import com.codepath.appointsy.fragments.BusinessFragment;
-import com.codepath.appointsy.fragments.CreateApptFragment;
-import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 import java.util.List;
 
