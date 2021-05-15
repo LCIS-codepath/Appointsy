@@ -1,6 +1,7 @@
 package com.codepath.appointsy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.content.Context;
 import android.content.Intent;
@@ -35,6 +36,9 @@ public class AppointmentViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment_view);
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_appointment_view);
+
 
         ivIcon = binding.ivIcon;
         tvName = binding.tvName;
