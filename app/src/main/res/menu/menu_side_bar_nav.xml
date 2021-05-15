@@ -38,11 +38,9 @@
                 android:title="@string/sort_by_name"
                 android:bottom="10dp"/>
             <item android:id="@+id/sort_by_yr"
-                android:title="@string/year"
+                android:title=" "
                 android:bottom="10dp"/>
-            <item android:id="@+id/sort_by_day"
-                android:title="@string/day"
-                android:bottom="10dp"/>
+
         </menu>
 
     </item>

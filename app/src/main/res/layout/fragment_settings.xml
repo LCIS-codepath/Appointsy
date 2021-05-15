@@ -104,8 +104,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnRelease"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="11dp"
         android:text="Contact Us" />
 
     <com.google.android.material.button.MaterialButton
@@ -113,8 +115,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnRelease"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="12dp"
         android:layout_marginRight="10dp"
         android:layout_toEndOf="@+id/btnContact"
         android:text="About Us" />
@@ -124,8 +126,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnContact"
-        android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/btnContact"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="14dp"
         android:text="Logout" />
 
     <com.google.android.material.textfield.TextInputLayout
