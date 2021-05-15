@@ -127,11 +127,11 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
 //            Log.i("TemporaryActivity", "testing "  + String.valueOf(businessPost.getBusinessBio()));
 
             rlBusinessPost.setOnClickListener(v -> {
-//              Intent i = new Intent(context, TemporaryActivity.class);
-//                // need to add Parcels to the project
-//              i.putExtra("businessParseObject", businessPosts);
-//              context.startActivities(new Intent[]{i});
-//              Log.i(TAG, "open activity");
+              Intent i = new Intent(context, BusinessDetails.class);
+                // need to add Parcels to the project
+              i.putExtra("businessParseObject", businessPosts);
+              context.startActivities(new Intent[]{i});
+              Log.i(TAG, "open activity");
 
 
 
