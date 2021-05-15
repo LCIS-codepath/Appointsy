@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.codepath.appointsy.databinding.ActivityAppointmentViewBinding;
@@ -15,6 +16,8 @@ import com.google.android.material.textview.MaterialTextView;
 import com.parse.ParseACL;
 import com.parse.ParseFile;
 import com.parse.ParseFileUtils;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import org.parceler.Parcels;
@@ -60,7 +63,26 @@ public class AppointmentViewActivity extends AppCompatActivity {
 
         // cancel appointment
         btnCancel.setOnClickListener((e -> {
-            
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Appointment");
+
+            // Retrieve the object by id
+            query.getInBackground("<PARSE_OBJECT_ID>", (object, a) -> {
+                if (a == null) {
+                    //Object was fetched
+                    //Deletes the fetched ParseObject from the database
+                    object.deleteInBackground(a2 -> {
+                        if(a2==null){
+                            Toast.makeText(this, "Delete Successful", Toast.LENGTH_SHORT).show();
+                        }else{
+                            //Something went wrong while deleting the Object
+                            Toast.makeText(this, "Error: "+a2.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }else{
+                    //Something went wrong
+                    Toast.makeText(this, a.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }));
     }
 }
