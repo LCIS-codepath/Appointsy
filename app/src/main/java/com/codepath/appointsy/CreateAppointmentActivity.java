@@ -5,7 +5,6 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.CalendarView;
 import android.widget.Toast;
 
 import com.codepath.appointsy.databinding.ActivityCreateAppointmentBinding;
@@ -18,8 +17,8 @@ public class CreateAppointmentActivity extends AppCompatActivity {
     private ActivityCreateAppointmentBinding binding;
 
     private MaterialTextView tvBusinessName;
-    private CalendarView calendarView;
-    private MaterialTextView tvSelectedDate;
+    private MaterialButton btnPickDate;
+    private MaterialButton btnPickTime;
     private MaterialTextView tvApptConfirmation;
     private MaterialButton btnScheduleAppt;
 
@@ -30,17 +29,23 @@ public class CreateAppointmentActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_create_appointment);
 
+        // set business name
         Bundle bundle = getIntent().getExtras();
         BusinessPost businessPost = bundle.getParcelable("businessParseObject");
-
         tvBusinessName = binding.tvBusinessName;
         tvBusinessName.setText(businessPost.getBusinessName());
 
-        calendarView = (CalendarView) findViewById(R.id.calendarView);
-        tvSelectedDate = (MaterialTextView) findViewById(R.id.tvApptConfirmation);
+        // select date
 
+
+        // select time
+
+
+
+        // show selected date and time
         tvApptConfirmation.setText();
 
+        // schedule it and go back to MainActivity
         btnScheduleAppt = binding.btnScheduleAppt;
         btnScheduleAppt.setOnClickListener(e -> {
             // create new appointment
@@ -58,6 +63,7 @@ public class CreateAppointmentActivity extends AppCompatActivity {
             entity.saveInBackground(a -> {
                 if (a == null) {
                     //Save was done
+                    Toast.makeText(this, "Appointment Scheduled", Toast.LENGTH_SHORT).show();
                 } else {
                     //Something went wrong
                     Toast.makeText(this, a.getMessage(), Toast.LENGTH_SHORT).show();
@@ -115,10 +121,6 @@ public class CreateAppointmentActivity extends AppCompatActivity {
 //        }, YEAR, MONTH, DATE);
 //
 //        datePickerDialog.show();
-//
-//
-//
-//
 //    }
 //
 //    private void handleTimeButton() {
@@ -140,5 +142,4 @@ public class CreateAppointmentActivity extends AppCompatActivity {
 //        }, HOUR, MINUTE, is24HourFormat);
 //
 //        timePickerDialog.show();
-//
 //    }
