@@ -52,40 +52,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="115dp"
+    <TextView
+        android:id="@+id/tvAvailTimes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:padding="8dp"
+        android:text="@string/times"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView">
-
-        <TextView
-            android:id="@+id/tvAvailTimes"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:padding="8dp"
-            android:text="@string/times" />
-
-        <ScrollView
-            android:id="@+id/listHours"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="vertical"
-            android:visibility="visible">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvApptConfirmation"
@@ -96,10 +73,11 @@
         android:layout_marginEnd="8dp"
         android:padding="8dp"
         android:text=""
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tvAvailTimes"
         tools:text="April 7th, 2021 @ 1:00pm-1:30pm" />
 
     <com.google.android.material.button.MaterialButton
