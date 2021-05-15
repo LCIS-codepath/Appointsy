@@ -14,11 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Appointsy"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CreateAppointmentActivity"></activity>
-<<<<<<< HEAD
-=======
+        <activity android:name=".CreateAppointmentActivity"/>
+        <activity android:name=".BusinessDetails"/>
         <activity android:name=".AppointmentViewActivity" />
->>>>>>> main
         <activity android:name=".BusinessProfileActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RegisterActivity" />
