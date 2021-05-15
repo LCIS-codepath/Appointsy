@@ -1,6 +1,7 @@
 package com.codepath.appointsy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ public class BusinessDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_details);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_business_details);
+
 
         ivIcon = binding.ivIcon;
         tvName = binding.tvName;
@@ -38,6 +41,8 @@ public class BusinessDetails extends AppCompatActivity {
         tvHours = binding.tvHours;
         tvDetails = binding.tvDetails;
         tvServiceType = binding.tvServiceType;
+        btnDirections = binding.btnDirections;
+        btnScheduleAppt = binding.btnScheduleAppt;
 
         Bundle bundle = getIntent().getExtras();
         BusinessPost businessPost = bundle.getParcelable("businessParseObject");
