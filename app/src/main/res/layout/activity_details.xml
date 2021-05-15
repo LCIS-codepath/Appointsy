@@ -43,7 +43,7 @@
             tools:text="Business Name" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvContactInfo"
+            android:id="@+id/tvDate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -68,7 +68,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/ivIcon"
-            app:layout_constraintTop_toBottomOf="@+id/tvContactInfo"
+            app:layout_constraintTop_toBottomOf="@+id/tvDate"
             tools:text="Phone Number" />
 
         <com.google.android.material.textview.MaterialTextView

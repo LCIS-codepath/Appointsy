@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.codepath.appointsy.databinding.ItemBusinessPostBinding;
 import com.codepath.appointsy.fragments.BusinessFragment;
+import com.codepath.appointsy.CreateAppointmentActivity;
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -118,13 +120,16 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
             });
 
 
+//            Bundle bundle = getIntent().getExtras();
+//            BusinessPost businessPost = bundle.getParcelable("ParseOBJECT");
+//            Log.i("TemporaryActivity", "testing "  + String.valueOf(businessPost.getBusinessBio()));
 
             rlBusinessPost.setOnClickListener(v -> {
-              Intent i = new Intent(context, BusinessFragment.class);
-                // need to add Parcels to the project
-              i.putExtra("ParseOBJECT", businessPosts);
-              context.startActivities(new Intent[]{i});
-              Log.i(TAG, "open activity");
+//              Intent i = new Intent(context, TemporaryActivity.class);
+//                // need to add Parcels to the project
+//              i.putExtra("businessParseObject", businessPosts);
+//              context.startActivities(new Intent[]{i});
+//              Log.i(TAG, "open activity");
 
 
 
@@ -134,6 +139,7 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
 
         private void favoriteQuery(ParseUser user, ParseUser business) {
             ParseObject favorites = new ParseObject("UserFavorites");
+
 
             String data = "CibJYeLNkz";
             favorites.put("userObjectID", ParseObject.createWithoutData("_User","HiwnIOsxa8" ));
