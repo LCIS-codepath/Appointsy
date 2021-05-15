@@ -51,7 +51,7 @@ public class BusinessDetails extends AppCompatActivity {
         tvName.setText(businessPost.getBusinessName());
         tvContactInfo.setText(businessPost.getBusinessOwner());
         tvPhoneNumber.setText(businessPost.getBusinessPhoneNumber());
-//        tvHours.setText();
+        tvHours.setText(businessPost.getBusinessHours());
         tvDetails.setText(businessPost.getBusinessBio());
         tvServiceType.setText(businessPost.getBusinessType());
 
@@ -60,7 +60,8 @@ public class BusinessDetails extends AppCompatActivity {
         }));
 
         btnScheduleAppt.setOnClickListener((e -> {
-            // in progress
+            Intent intent = new Intent(this, CreateAppointmentActivity.class);
+            startActivity(intent);
         }));
         
     }
