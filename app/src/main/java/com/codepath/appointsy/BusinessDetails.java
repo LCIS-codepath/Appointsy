@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.codepath.appointsy.databinding.ActivityBusinessDetailsBinding;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 import com.parse.ParseACL;
+import com.parse.ParseFile;
 
 public class BusinessDetails extends AppCompatActivity {
     private ActivityBusinessDetailsBinding binding;
@@ -40,7 +42,12 @@ public class BusinessDetails extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         BusinessPost businessPost = bundle.getParcelable("businessParseObject");
 
-//        ivIcon.setImageURI(businessPost.getBusinessImage());
+        ParseFile image = businessPost.getBusinessImage();
+        if(image != null)
+            Glide.with(this).load(image.getUrl()).into(ivIcon);
+        else
+            Glide.with(this).load(R.drawable.ic_iconcmpt).into(ivIcon);
+
         tvName.setText(businessPost.getBusinessName());
         tvContactInfo.setText(businessPost.getBusinessOwner());
         tvPhoneNumber.setText(businessPost.getBusinessPhoneNumber());
