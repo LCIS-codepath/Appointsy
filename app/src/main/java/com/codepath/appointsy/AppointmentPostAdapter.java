@@ -21,6 +21,7 @@ import java.util.List;
 
 public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPostAdapter.ViewHolder> {
 
+    private final String TAG = "AppointmentPostAdapter";
     private final Context context;
     private final List<AppointmentPost> appointmentPosts;
     private ItemAppointmentPostBinding binding;
@@ -103,9 +104,12 @@ public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPost
 
             }
             rlAppointment.setOnClickListener((v) -> {
-               // Intent i = new Intent(context, )
-               //  i.putExtra("tweet", Parcels.wrap(tweet));
-               //  context.startActivities(new Intent[]{i});
+
+              Intent i = new Intent(context, AppointmentViewActivity.class);
+                // need to add Parcels to the project
+              i.putExtra("appointmentParseObject", appointmentPost);
+              context.startActivities(new Intent[]{i});
+              Log.i(TAG, "open activity");
             });
 
         }
