@@ -53,9 +53,14 @@ public class  BusinessPost extends ParseUser {
         put(KEY_BUSINESS_HOURS, phoneNumber);
     }
 
+    public String getBusinessHours(){
+        return  getString(KEY_BUSINESS_NAME);
+    }
+
     public String getBusinessType(){
         return  getString(KEY_BUSINESS_TYPE);
     }
+
 
     public void setBusinessType(String businessType){
         put(KEY_BUSINESS_TYPE, businessType);
@@ -77,6 +82,8 @@ public class  BusinessPost extends ParseUser {
     public void setBusinessId(ParseUser status){
         put(KEY_Business_OBJECT_ID, status);
     }
+
+
 
     // Items from Business needed for the Appointment
     // retrieve the object ID from the business table then get the specified query

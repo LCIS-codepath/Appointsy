@@ -103,9 +103,12 @@ public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPost
 
             }
             rlAppointment.setOnClickListener((v) -> {
-               // Intent i = new Intent(context, )
-               //  i.putExtra("tweet", Parcels.wrap(tweet));
-               //  context.startActivities(new Intent[]{i});
+
+//              Intent i = new Intent(context, TemporaryActivity.class);
+//                // need to add Parcels to the project
+//              i.putExtra("appointmentParseObject", businessPosts);
+//              context.startActivities(new Intent[]{i});
+//              Log.i(TAG, "open activity");
             });
 
         }
