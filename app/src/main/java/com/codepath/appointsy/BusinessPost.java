@@ -75,11 +75,11 @@ public class  BusinessPost extends ParseUser {
     }
 
 
-    public ParseUser getBusinessId(){
-        return  getParseUser(KEY_Business_OBJECT_ID);
+    public String getBusinessId(){
+        return  getString(KEY_Business_OBJECT_ID);
     }
 
-    public void setBusinessId(ParseUser status){
+    public void setBusinessId(String status){
         put(KEY_Business_OBJECT_ID, status);
     }
 

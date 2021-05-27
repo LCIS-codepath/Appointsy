@@ -111,7 +111,11 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
                 if(status){
                     ivFavorites.setImageResource(R.drawable.filled_star);
                     status = false;
-                    favoriteQuery(ParseUser.getCurrentUser(), businessPosts.getBusinessId());
+                    try {
+                        favoriteQuery(ParseUser.getCurrentUser(), ParseUser.become(businessPosts.getBusinessId()));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                 }else{
                     ivFavorites.setImageResource(R.drawable.ic_not_favorite);
                     status = true;
@@ -122,7 +126,8 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
 
 //            Bundle bundle = getIntent().getExtras();
 //            BusinessPost businessPost = bundle.getParcelable("ParseOBJECT");
-//            Log.i("TemporaryActivity", "testing "  + String.valueOf(businessPost.getBusinessBio()));
+            Log.i("TemporaryActivity", "testing "  + businessPosts.getBusinessId() + " "
+            + businessPosts.getBusinessHours());
 
             rlBusinessPost.setOnClickListener(v -> {
               Intent i = new Intent(context, BusinessDetails.class);

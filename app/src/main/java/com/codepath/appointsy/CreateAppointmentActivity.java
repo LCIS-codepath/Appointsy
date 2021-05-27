@@ -52,7 +52,7 @@ public class CreateAppointmentActivity extends AppCompatActivity {
         // set business name
         Bundle bundle = getIntent().getExtras();
         BusinessPost businessPost = bundle.getParcelable("businessParseObject");
-        ParseUser businessID = businessPost.getBusinessId();
+        String businessID = businessPost.getBusinessId();
         Log.i(TAG, String.valueOf(businessID));
         tvBusinessName = findViewById(R.id.tvBusinessName);
         tvBusinessName.setText(businessPost.getBusinessName());
@@ -107,21 +107,23 @@ public class CreateAppointmentActivity extends AppCompatActivity {
     }
 
 
-    private void createAppointment(ParseUser businessID) {
+    private void createAppointment(String businessID) {
         AppointmentPost post = new AppointmentPost();
         post.setAppointmentStatus(true);
         post.setAppointmentTime(tvChosenTime.getText().toString());
         post.setAppointmentDetails("No extra information provided");
         post.setAppointmentDate(tvChosenDate.getText().toString());
-        post.setBusinessId(businessID);
+        post.setBusinessId(ParseObject.createWithoutData(  "BusinessProfile", businessID));
         post.setUserId(ParseUser.getCurrentUser());
         post.setAppointmentIsReschedule(false);
 
         post.saveInBackground(e -> {
        if(e == null){
            Toast.makeText(CreateAppointmentActivity.this, " Created ", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(CreateAppointmentActivity.this, MainActivity.class);
+            startActivity(i);
        }else{
-           Toast.makeText(CreateAppointmentActivity.this, "Not Created", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "ERROR " + e);
        }
         });
     }
