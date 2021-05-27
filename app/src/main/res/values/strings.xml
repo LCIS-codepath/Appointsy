@@ -76,6 +76,9 @@
     <string name="ontario_ca">Ontario, CA</string>
     <string name="los_angeles_ca">Los Angeles, CA</string>
     <string name="search_for">Search for</string>
+    <string name="choose_the_date">Choose the Date</string>
+    <string name="choose_the_time">Choose the Time</string>
+    <string name="schedule_it">Schedule It</string>
 
 
 </resources>
