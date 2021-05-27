@@ -73,7 +73,7 @@ public class AppointmentPost extends ParseObject {
         return  getBoolean(KEY_APPOINTMENT_IS_RESCHEDULE);
     }
 
-    public void setAppointmentIsReschedule(String status){
+    public void setAppointmentIsReschedule(Boolean status){
         put(KEY_APPOINTMENT_IS_RESCHEDULE, status);
     }
 

@@ -66,6 +66,7 @@ public class BusinessDetails extends AppCompatActivity {
 
         btnScheduleAppt.setOnClickListener((e -> {
             Intent intent = new Intent(this, CreateAppointmentActivity.class);
+            intent.putExtra("businessParseObject", businessPost );
             startActivity(intent);
         }));
         
