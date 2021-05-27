@@ -2,7 +2,6 @@ package com.codepath.appointsy;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.codepath.appointsy.databinding.ItemBusinessPostBinding;
 import com.codepath.appointsy.fragments.BusinessFragment;
-//import com.codepath.appointsy.fragments.CreateApptFragment;
+import com.codepath.appointsy.CreateAppointmentActivity;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
 
 import java.util.List;
 
@@ -113,7 +111,11 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
                 if(status){
                     ivFavorites.setImageResource(R.drawable.filled_star);
                     status = false;
-                    favoriteQuery(ParseUser.getCurrentUser(), businessPosts.getBusinessId());
+                    try {
+                        favoriteQuery(ParseUser.getCurrentUser(), ParseUser.become(businessPosts.getBusinessId()));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                 }else{
                     ivFavorites.setImageResource(R.drawable.ic_not_favorite);
                     status = true;
@@ -124,7 +126,8 @@ public class BusinessPostAdapter extends RecyclerView.Adapter<BusinessPostAdapte
 
 //            Bundle bundle = getIntent().getExtras();
 //            BusinessPost businessPost = bundle.getParcelable("ParseOBJECT");
-//            Log.i("TemporaryActivity", "testing "  + String.valueOf(businessPost.getBusinessBio()));
+            Log.i("TemporaryActivity", "testing "  + businessPosts.getBusinessId() + " "
+            + businessPosts.getBusinessHours());
 
             rlBusinessPost.setOnClickListener(v -> {
               Intent i = new Intent(context, BusinessDetails.class);

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
@@ -28,121 +27,92 @@
         tools:text="Business Name" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvDate"
+        android:id="@+id/tvInstructions"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/scheduleTime"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvBusinessName" />
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPickDate"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:dateTextAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Small"
+        android:layout_marginTop="96dp"
+        android:text="@string/choose_the_date"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDate" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView">
-
-        <TextView
-            android:id="@+id/tvAvailTimes"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:padding="8dp"
-            android:text="@string/times" />
-
-        <ScrollView
-            android:id="@+id/listHours"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="vertical"
-            android:visibility="visible">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <CheckedTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text=""
-                    tools:text="9:00am" />
-
-                <CheckedTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text=""
-                    tools:text="11:00am" />
-
-                <CheckedTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text=""
-                    tools:text="2:00pm" />
-
-                <CheckedTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="4dp"
-                    android:text=""
-                    tools:text="4:00pm" />
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/tvInstructions" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvEstimatedPrice"
+        android:id="@+id/tvChosenDate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:padding="8dp"
-        android:text="@string/estimated_price"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.562"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:text="@string/estimated_price" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPickDate"
+        tools:text="April 7th, 2021" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPickTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/choose_the_time"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChosenDate" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvApptConfirmation"
+        android:id="@+id/tvChosenTime"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:padding="8dp"
         android:text=""
+        android:textAlignment="center"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPickTime"
+        tools:text="1:00pm" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvApptConfirmation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="8dp"
+        android:padding="8dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="18dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEstimatedPrice"
-        tools:text="April 7th, 2021 @ 1:00pm-1:30pm" />
+        app:layout_constraintTop_toBottomOf="@+id/tvChosenTime"
+        tools:text="April 7th, 2021 @ 1:00pm" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnScheduleAppt"
@@ -151,9 +121,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="#46A3FA"
-        android:text="Schedule It"
+        android:text="@string/schedule_it"
         android:textSize="20sp"
         app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"

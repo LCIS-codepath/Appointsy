@@ -27,6 +27,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 
 import java.lang.reflect.Array;
@@ -66,7 +67,7 @@ public class BusinessFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentBusinessBinding.inflate(inflater, container, false);
@@ -116,6 +117,7 @@ public class BusinessFragment extends Fragment {
 
                     // getData from the business Table
                     ParseObject businessTable = post.getParseObject("businessProfileID");
+                    String businessId = businessTable.getObjectId();
                     String businessName = businessTable.getString("businessName");
                     Number businessPrice = businessTable.getNumber("servicePrice");
                     String businessLocation = businessTable.getString("location");
@@ -124,12 +126,13 @@ public class BusinessFragment extends Fragment {
                     JSONArray businessHours = businessTable.getJSONArray("businessHours");
 
                     //set the post
+                    post.setBusinessId(businessId);
                     post.setBusinessName(businessName);
                     post.setServicePrice(businessPrice);
                     post.setBusinessLocation(businessLocation);
                     post.setBusinessType(businessType);
                     post.setBusinessOwner(businessOwner);
-                    Log.i(TAG, "Post " + businessName  + " #e " +  businessBio + "  ");
+                    Log.i(TAG, "Post   #e   " + businessId);
 
                     //add image
 
