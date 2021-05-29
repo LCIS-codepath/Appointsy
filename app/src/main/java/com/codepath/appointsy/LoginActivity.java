@@ -14,6 +14,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.parse.ParseUser;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
 
     private final String TAG = "LoginActivity";
@@ -37,8 +39,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener((e) -> {
             // Perform API call
             // TODO check if inputs are not null
-            String username = binding.tiUsername.getEditText().getText().toString();
-            String pass = binding.tiPassword.getEditText().getText().toString();
+            String username = Objects.requireNonNull(binding.tiUsername).getEditText().getText().toString();
+            String pass = Objects.requireNonNull(binding.tiPassword.getEditText()).getText().toString();
             Toast.makeText(this, username + " " + pass, Toast.LENGTH_SHORT).show();
             loginUser(username, pass);
         });
