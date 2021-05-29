@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -61,7 +62,14 @@ public class BusinessDetails extends AppCompatActivity {
         tvServiceType.setText("Type of Service "+businessPost.getBusinessType());
 
         btnDirections.setOnClickListener((e -> {
-            // extended feature
+            // query
+            Uri intentUri = Uri.parse("geo:0,0?q=" + "1600 Amphitheatre Parkway, Mountain+View, California");
+            // create intent view w/ uri
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, intentUri);
+            // add maps package
+            mapIntent.setPackage("com.google.android.apps.maps");
+            // open Google maps
+            startActivity(mapIntent);
         }));
 
         btnScheduleAppt.setOnClickListener((e -> {

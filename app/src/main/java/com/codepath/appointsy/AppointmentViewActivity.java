@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -62,7 +63,14 @@ public class AppointmentViewActivity extends AppCompatActivity {
 
         // get directions to business location
         btnDirections.setOnClickListener((e -> {
-            // extended feature
+            // query
+            Uri intentUri = Uri.parse("geo:0,0?q=" + "1600 Amphitheatre Parkway, Mountain+View, California");
+            // create intent view w/ uri
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, intentUri);
+            // add maps package
+            mapIntent.setPackage("com.google.android.apps.maps");
+            // open Google maps
+            startActivity(mapIntent);
         }));
 
         // cancel appointment
