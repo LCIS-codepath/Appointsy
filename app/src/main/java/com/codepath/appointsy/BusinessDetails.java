@@ -54,11 +54,11 @@ public class BusinessDetails extends AppCompatActivity {
             Glide.with(this).load(R.drawable.ic_iconcmpt).into(ivIcon);
 
         tvName.setText(businessPost.getBusinessName());
-        tvContactInfo.setText(businessPost.getBusinessOwner());
-        tvPhoneNumber.setText(businessPost.getBusinessPhoneNumber());
-        tvHours.setText(businessPost.getBusinessHours());
-        tvDetails.setText(businessPost.getBusinessBio());
-        tvServiceType.setText(businessPost.getBusinessType());
+        tvContactInfo.setText(getString(R.string.ownerLabel) + businessPost.getBusinessOwner());
+        tvPhoneNumber.setText(" Phone Number: " +businessPost.getBusinessPhoneNumber());
+        tvHours.setText("Hours: " + businessPost.getBusinessHours());
+        tvDetails.setText("Details: " +businessPost.getBusinessBio());
+        tvServiceType.setText("Type of Service "+businessPost.getBusinessType());
 
         btnDirections.setOnClickListener((e -> {
             // extended feature
