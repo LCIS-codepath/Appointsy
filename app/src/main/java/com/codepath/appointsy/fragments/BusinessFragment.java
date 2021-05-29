@@ -35,9 +35,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
 public class BusinessFragment extends Fragment {
-
 
     private String TAG = "BusinessFragment";
     private RecyclerView rvBusinessPost;
@@ -46,7 +44,6 @@ public class BusinessFragment extends Fragment {
     protected List<BusinessPost> allBusinessPost;
     private FragmentBusinessBinding binding;
     protected String UserInput;
-
 
     public BusinessFragment() {
         // Required empty public constructor
@@ -79,6 +76,7 @@ public class BusinessFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Log.i(TAG, "Post started");
         Bundle bundle = this.getArguments();
+
         if(bundle != null) {
             UserInput = bundle.getString("getBusinessType");
         }
@@ -117,6 +115,7 @@ public class BusinessFragment extends Fragment {
 
                     // getData from the business Table
                     ParseObject businessTable = post.getParseObject("businessProfileID");
+                    assert businessTable != null;
                     String businessId = businessTable.getObjectId();
                     String businessName = businessTable.getString("businessName");
                     Number businessPrice = businessTable.getNumber("servicePrice");
@@ -135,10 +134,9 @@ public class BusinessFragment extends Fragment {
                     Log.i(TAG, "Post   #e   " + businessId);
 
                     //add image
-
                 }
             } else {
-                // Something went wrong.
+                Log.e(TAG, "Parse Exception Hit " + e);
             }
             adapter.clear();
             adapter.addAll(posts);

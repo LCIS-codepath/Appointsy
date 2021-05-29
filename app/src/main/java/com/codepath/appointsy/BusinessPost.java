@@ -102,7 +102,6 @@ public class  BusinessPost extends ParseUser {
     }
 
     public ParseFile getBusinessImage(){
-
         return getParseFile(KEY_BUSINESS_IMAGE);
     }
 }

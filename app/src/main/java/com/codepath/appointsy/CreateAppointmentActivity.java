@@ -18,6 +18,7 @@ import android.widget.DatePicker;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.codepath.appointsy.databinding.ActivityBusinessDetailsBinding;
 import com.codepath.appointsy.databinding.ActivityCreateAppointmentBinding;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
@@ -30,6 +31,7 @@ import com.parse.SaveCallback;
 import java.util.Calendar;
 
 public class CreateAppointmentActivity extends AppCompatActivity {
+
     private  final String TAG = "CreateAppointment";
     private ActivityCreateAppointmentBinding binding;
     private Context context;
@@ -47,6 +49,8 @@ public class CreateAppointmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_appointment);
 
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_create_appointment);
+
 
 
         // set business name
@@ -54,12 +58,12 @@ public class CreateAppointmentActivity extends AppCompatActivity {
         BusinessPost businessPost = bundle.getParcelable("businessParseObject");
         String businessID = businessPost.getBusinessId();
         Log.i(TAG, String.valueOf(businessID));
-        tvBusinessName = findViewById(R.id.tvBusinessName);
+        tvBusinessName = binding.tvBusinessName;
         tvBusinessName.setText(businessPost.getBusinessName());
 
         // select date
-        btnPickDate = findViewById(R.id.btnPickDate);
-        tvChosenDate = findViewById(R.id.tvChosenDate);
+        btnPickDate = binding.btnPickDate;
+        tvChosenDate = binding.tvChosenDate;
         btnPickDate.setOnClickListener(view -> {
             Calendar calendar = Calendar.getInstance();
             int YEAR = calendar.get(Calendar.YEAR);
@@ -79,8 +83,8 @@ public class CreateAppointmentActivity extends AppCompatActivity {
             datePickerDialog.show();            });
 
         // select time
-        btnPickTime = findViewById(R.id.btnPickTime);
-        tvChosenTime = findViewById(R.id.tvChosenTime);
+        btnPickTime = binding.btnPickTime;
+        tvChosenTime = binding.tvChosenTime;
         btnPickTime.setOnClickListener(view -> {
             Calendar calendar = Calendar.getInstance();
             int HOUR = calendar.get(Calendar.HOUR);
@@ -102,7 +106,7 @@ public class CreateAppointmentActivity extends AppCompatActivity {
 //       tvApptConfirmation.setText(chosenDateTime);
 
         // schedule it and go back to MainActivity
-        btnScheduleAppt = findViewById(R.id.btnScheduleAppt);
+        btnScheduleAppt = binding.btnScheduleAppt;
         btnScheduleAppt.setOnClickListener(e -> createAppointment(businessID));
     }
 

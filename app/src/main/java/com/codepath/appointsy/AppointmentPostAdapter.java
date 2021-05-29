@@ -72,8 +72,7 @@ public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPost
         private final TextView tvAppointmentBusinessName;
         private final TextView tvAppointmentTime;
         private final TextView  tvAppointmentDetails;
-        private final TextView tvAppointmentStatus;
-        private final ImageView ivStatusIcon;
+
         private final TextView tvDate;
 
         public ViewHolder(@NonNull View itemView) {
@@ -83,8 +82,7 @@ public class AppointmentPostAdapter extends RecyclerView.Adapter<AppointmentPost
             tvAppointmentBusinessName =  binding.tvAppointmentBusinessName;
             tvAppointmentTime =  binding.tvAppointmentTime;
             tvAppointmentDetails =  binding.tvAppointmentDetails;
-            tvAppointmentStatus =  binding.tvAppointmentStatus;
-            ivStatusIcon = binding.ivStatusIcon;
+
             tvDate = binding.tvDate;
 
         }

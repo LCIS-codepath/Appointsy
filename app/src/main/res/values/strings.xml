@@ -79,6 +79,7 @@
     <string name="choose_the_date">Choose the Date</string>
     <string name="choose_the_time">Choose the Time</string>
     <string name="schedule_it">Schedule It</string>
+    <string name="ownerLabel">Owner: </string>
 
 
 </resources>
