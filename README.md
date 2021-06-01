@@ -285,8 +285,11 @@ public void createObject() {
 
 
 ## App Updates
-<img src='https://github.com/LCIS-codepath/Appointsy/blob/echilin/HomeStreamImplementation/app_walkthrough_week_13.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
+### Create Appointent
+<img src='https://github.com/LCIS-codepath/Appointsy/blob/main/app_walkthrough.gif/' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
 
+### Features
+<img src='https://github.com/LCIS-codepath/Appointsy/blob/main/app_walkthrough_2.gif' title='Video Walkthrough' width='250' alt='Video Walkthrough' />
 
 
 
